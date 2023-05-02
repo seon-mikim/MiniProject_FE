@@ -6,6 +6,7 @@ import RegisterPage from '../pages/RegisterPage';
 import AdminApprovalPage from '../pages/AdminApprovalPage';
 import AdminAuthPage from '../pages/AdminAuthPage';
 import Mypage from '../pages/MyPage';
+import MainPage from '../pages/MainPage';
 
 function Routers() {
   return (
@@ -13,6 +14,7 @@ function Routers() {
       <Route path="/" element={<Layout />}>
         <Route index element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/main" element={<MainPage/>}/>
         <Route path="/mypage" element={<Mypage/>} />
         <Route path="/adminApproval" element={<AdminApprovalPage/>} />
         <Route path="/adminAuth" element={<AdminAuthPage/>} />
