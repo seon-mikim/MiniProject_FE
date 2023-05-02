@@ -3,9 +3,9 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from '../components/common/Layout';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
-import Mypage from '../pages/Mypage';
 import AdminApprovalPage from '../pages/AdminApprovalPage';
 import AdminAuthPage from '../pages/AdminAuthPage';
+import Mypage from '../pages/MyPage';
 
 function Routers() {
   return (
