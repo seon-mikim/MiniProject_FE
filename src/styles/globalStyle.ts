@@ -7,10 +7,10 @@ export const GlobalStyled = createGlobalStyle`
     font-size: 18px;
     font-weight: 400;
     font-family: 'Noto Sans', sans-serif;
-    color:#181818,
   }
   body{
     height:100vh;
+    color:#452E27;
     background-color:#EBE4DE;
   }
 `;
