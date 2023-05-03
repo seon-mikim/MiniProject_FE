@@ -14,102 +14,104 @@ function AdminApprovalPage() {
 
 
   return (
-
-    <S.ApprovalWapper>
-      <div>
-        <StSelectArea>
-          <span onClick={() => handleTabClick('request')}>당직/연차 요청현황</span>
-          <span onClick={() => handleTabClick('approval')}>당직/연차 승인내역</span>
-        </StSelectArea>
-        {selectedTab === 'request' && (
-          <div>
-            <StSearchAreaWrapper>
-              <div>
-                <StButton color="annual">연차</StButton>
-                <StButton color="duty">당직</StButton>
-              </div>
-              <StMonth>
-                <span>2023.05</span>
-              </StMonth>
-              <StSelectWapper>
-                <select name="">
-                  <option value="">이름</option>
-                  <option value="">이메일</option>
-                </select>
-                <StInputWapper>
-                  <input type="text" />
-                </StInputWapper>
-              </StSelectWapper>
-            </StSearchAreaWrapper>
-            <StCard>
-              <div>
-                <div>
-                  <img src="http://via.placeholder.com/36" alt="" />
-                </div>
-                <span>김준태</span>
-                <span>연차</span>
-                <span>8:30:00~17:30:00</span>
-                <span>2023.05.10</span>
-              </div>
-              <StButtonArea>
-                <StCheckButton color="approve">승인</StCheckButton>
-                <StCheckButton color="refuse">거절</StCheckButton>
-              </StButtonArea>
-            </StCard>
-          </div>
-        )}
-        {selectedTab === 'approval' && (
-          <div>
-            <StSearchAreaWrapper>
-              <div>
-                <StButton color="annual">연차</StButton>
-                <StButton color="duty">당직</StButton>
-              </div>
-              <StMonth>
-                <span>2023.05</span>
-              </StMonth>
-              <StSelectWapper>
-                <select name="">
-                  <option value="">이름</option>
-                  <option value="">이메일</option>
-                </select>
-                <StInputWapper>
-                  <input type="text" />
-                </StInputWapper>
-              </StSelectWapper>
-            </StSearchAreaWrapper>
-            <StCard>
-              <div>
-                <div>
-                  <img src="http://via.placeholder.com/36" alt="" />
-                </div>
-                <span>김준태</span>
-                <span>연차</span>
-                <span>8:30:00~17:30:00</span>
-                <span>2023.05.10</span>
-              </div>
-              <StButtonArea>
-                
-                <div>거절</div>
-              </StButtonArea>
-            </StCard>
-          </div>
-        )}
-
+    <div className='content'>
+      
+      <S.ApprovalWapper >
         <div>
-          <StPageNumber>
-            <li>&lt;</li>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>&gt;</li>
-          </StPageNumber>
+          <StSelectArea>
+            <span onClick={() => handleTabClick('request')}>당직/연차 요청현황</span>
+            <span onClick={() => handleTabClick('approval')}>당직/연차 승인내역</span>
+          </StSelectArea>
+          {selectedTab === 'request' && (
+            <div>
+              <StSearchAreaWrapper>
+                <div>
+                  <StButton color="annual">연차</StButton>
+                  <StButton color="duty">당직</StButton>
+                </div>
+                <StMonth>
+                  <span>2023.05</span>
+                </StMonth>
+                <StSelectWapper>
+                  <select name="">
+                    <option value="">이름</option>
+                    <option value="">이메일</option>
+                  </select>
+                  <StInputWapper>
+                    <input type="text" />
+                  </StInputWapper>
+                </StSelectWapper>
+              </StSearchAreaWrapper>
+              <StCard>
+                <div>
+                  <div>
+                    <img src="http://via.placeholder.com/36" alt="" />
+                  </div>
+                  <span>김준태</span>
+                  <span>연차</span>
+                  <span>8:30:00~17:30:00</span>
+                  <span>2023.05.10</span>
+                </div>
+                <StButtonArea>
+                  <StCheckButton color="approve">승인</StCheckButton>
+                  <StCheckButton color="refuse">거절</StCheckButton>
+                </StButtonArea>
+              </StCard>
+            </div>
+          )}
+          {selectedTab === 'approval' && (
+            <div>
+              <StSearchAreaWrapper>
+                <div>
+                  <StButton color="annual">연차</StButton>
+                  <StButton color="duty">당직</StButton>
+                </div>
+                <StMonth>
+                  <span>2023.05</span>
+                </StMonth>
+                <StSelectWapper>
+                  <select name="">
+                    <option value="">이름</option>
+                    <option value="">이메일</option>
+                  </select>
+                  <StInputWapper>
+                    <input type="text" />
+                  </StInputWapper>
+                </StSelectWapper>
+              </StSearchAreaWrapper>
+              <StCard>
+                <div>
+                  <div>
+                    <img src="http://via.placeholder.com/36" alt="" />
+                  </div>
+                  <span>김준태</span>
+                  <span>연차</span>
+                  <span>8:30:00~17:30:00</span>
+                  <span>2023.05.10</span>
+                </div>
+                <StButtonArea>
+                  
+                  <div>거절</div>
+                </StButtonArea>
+              </StCard>
+            </div>
+          )}
+  
+          <div>
+            <StPageNumber>
+              <li>&lt;</li>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>&gt;</li>
+            </StPageNumber>
+          </div>
         </div>
-      </div>
-    </S.ApprovalWapper>
-  );
+      </S.ApprovalWapper>
+    </div>
+    );
 
 }
 
