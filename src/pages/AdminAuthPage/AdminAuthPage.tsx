@@ -2,7 +2,7 @@ import React from 'react'
 
 function AdminAuthPage() {
   return (
-    <div>AdminAuthPage</div>
+    <div className='content'>AdminAuthPage</div>
   )
 }
 
