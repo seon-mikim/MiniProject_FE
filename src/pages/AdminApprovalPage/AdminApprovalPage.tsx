@@ -14,6 +14,7 @@ function AdminApprovalPage() {
 
 
   return (
+
     <S.ApprovalWapper>
       <div>
         <StSelectArea>
@@ -109,6 +110,7 @@ function AdminApprovalPage() {
       </div>
     </S.ApprovalWapper>
   );
+
 }
 
 export default AdminApprovalPage;
