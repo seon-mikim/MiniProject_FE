@@ -2,7 +2,7 @@ const color = {
   black: '#181818',
   white: '#ffffff',
   lightBeige: '#EBE4DE',
-  whiteBeige: '#F8FBEB',
+  whiteBeige: '#F8EBEB',
   beige: '#CAB3A3',
   lightBrown: '#856E5F',
   brown: '#5E463C',
