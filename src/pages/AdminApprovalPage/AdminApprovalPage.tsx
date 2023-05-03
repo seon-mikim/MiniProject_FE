@@ -1,178 +1,117 @@
 import React from 'react';
+import * as S from './style';
 import styled from 'styled-components';
+import { useState } from 'react';
 
 function AdminApprovalPage() {
+  const [selectedTab, setSelectedTab] = useState('request');
+
+  const handleTabClick = (tab: string) => {
+    setSelectedTab(tab);
+    console.log('click:', tab);
+  };
+
+
+
   return (
-    <StSection>
+    <S.ApprovalWapper>
       <div>
         <StSelectArea>
-          <span>당직/연차 요청현황</span>
-          <span>당직/연차 승인내역</span>
+          <span onClick={() => handleTabClick('request')}>당직/연차 요청현황</span>
+          <span onClick={() => handleTabClick('approval')}>당직/연차 승인내역</span>
         </StSelectArea>
-        <StSearchAreaWrapper>
+        {selectedTab === 'request' && (
           <div>
-            <StButton color="annual">연차</StButton>
-            <StButton color="duty">당직</StButton>
+            <StSearchAreaWrapper>
+              <div>
+                <StButton color="annual">연차</StButton>
+                <StButton color="duty">당직</StButton>
+              </div>
+              <StMonth>
+                <span>2023.05</span>
+              </StMonth>
+              <StSelectWapper>
+                <select name="">
+                  <option value="">이름</option>
+                  <option value="">이메일</option>
+                </select>
+                <StInputWapper>
+                  <input type="text" />
+                </StInputWapper>
+              </StSelectWapper>
+            </StSearchAreaWrapper>
+            <StCard>
+              <div>
+                <div>
+                  <img src="http://via.placeholder.com/36" alt="" />
+                </div>
+                <span>김준태</span>
+                <span>연차</span>
+                <span>8:30:00~17:30:00</span>
+                <span>2023.05.10</span>
+              </div>
+              <StButtonArea>
+                <StCheckButton color="approve">승인</StCheckButton>
+                <StCheckButton color="refuse">거절</StCheckButton>
+              </StButtonArea>
+            </StCard>
           </div>
-          <StMonth>
-            <span>2023.05</span>
-          </StMonth>
-          <StSelectWapper>
-            <select name="">
-              <option value="">이름</option>
-              <option value="">이메일</option>
-            </select>
-            <StInputWapper>
-              <input type="text" />
-            </StInputWapper>
-          </StSelectWapper>
-        </StSearchAreaWrapper>
-        <StCard>
+        )}
+        {selectedTab === 'approval' && (
           <div>
-            <div>
-              <img src="http://via.placeholder.com/36" alt="" />
-            </div>
-            <span>김준태</span>
-            <span>연차</span>
-            <span>8:30:00~17:30:00</span>
-            <span>2023.05.10</span>
+            <StSearchAreaWrapper>
+              <div>
+                <StButton color="annual">연차</StButton>
+                <StButton color="duty">당직</StButton>
+              </div>
+              <StMonth>
+                <span>2023.05</span>
+              </StMonth>
+              <StSelectWapper>
+                <select name="">
+                  <option value="">이름</option>
+                  <option value="">이메일</option>
+                </select>
+                <StInputWapper>
+                  <input type="text" />
+                </StInputWapper>
+              </StSelectWapper>
+            </StSearchAreaWrapper>
+            <StCard>
+              <div>
+                <div>
+                  <img src="http://via.placeholder.com/36" alt="" />
+                </div>
+                <span>김준태</span>
+                <span>연차</span>
+                <span>8:30:00~17:30:00</span>
+                <span>2023.05.10</span>
+              </div>
+              <StButtonArea>
+                
+                <div>거절</div>
+              </StButtonArea>
+            </StCard>
           </div>
-          <StButtonArea>
-            <StCheckButton color="approve">승인</StCheckButton>
-            <StCheckButton color="refuse">거절</StCheckButton>
-          </StButtonArea>
-        </StCard>
-        <StCard>
-          <div>
-            <div>
-              <img src="http://via.placeholder.com/36" alt="" />
-            </div>
-            <span>김준태</span>
-            <span>연차</span>
-            <span>8:30:00~17:30:00</span>
-            <span>2023.05.10</span>
-          </div>
-          <StButtonArea>
-            <StCheckButton color="approve">승인</StCheckButton>
-            <StCheckButton color="refuse">거절</StCheckButton>
-          </StButtonArea>
-        </StCard>
-        <StCard>
-          <div>
-            <div>
-              <img src="http://via.placeholder.com/36" alt="" />
-            </div>
-            <span>김준태</span>
-            <span>연차</span>
-            <span>8:30:00~17:30:00</span>
-            <span>2023.05.10</span>
-          </div>
-          <StButtonArea>
-            <StCheckButton color="approve">승인</StCheckButton>
-            <StCheckButton color="refuse">거절</StCheckButton>
-          </StButtonArea>
-        </StCard>
-        <StCard>
-          <div>
-            <div>
-              <img src="http://via.placeholder.com/36" alt="" />
-            </div>
-            <span>김준태</span>
-            <span>연차</span>
-            <span>8:30:00~17:30:00</span>
-            <span>2023.05.10</span>
-          </div>
-          <StButtonArea>
-            <StCheckButton color="approve">승인</StCheckButton>
-            <StCheckButton color="refuse">거절</StCheckButton>
-          </StButtonArea>
-        </StCard>
-        <StCard>
-          <div>
-            <div>
-              <img src="http://via.placeholder.com/36" alt="" />
-            </div>
-            <span>김준태</span>
-            <span>연차</span>
-            <span>8:30:00~17:30:00</span>
-            <span>2023.05.10</span>
-          </div>
-          <StButtonArea>
-            <StCheckButton color="approve">승인</StCheckButton>
-            <StCheckButton color="refuse">거절</StCheckButton>
-          </StButtonArea>
-        </StCard>
-        <StCard>
-          <div>
-            <div>
-              <img src="http://via.placeholder.com/36" alt="" />
-            </div>
-            <span>김준태</span>
-            <span>연차</span>
-            <span>8:30:00~17:30:00</span>
-            <span>2023.05.10</span>
-          </div>
-          <StButtonArea>
-            <StCheckButton color="approve">승인</StCheckButton>
-            <StCheckButton color="refuse">거절</StCheckButton>
-          </StButtonArea>
-        </StCard>
-        <StCard>
-          <div>
-            <div>
-              <img src="http://via.placeholder.com/36" alt="" />
-            </div>
-            <span>김준태</span>
-            <span>연차</span>
-            <span>8:30:00~17:30:00</span>
-            <span>2023.05.10</span>
-          </div>
-          <StButtonArea>
-            <StCheckButton color="approve">승인</StCheckButton>
-            <StCheckButton color="refuse">거절</StCheckButton>
-          </StButtonArea>
-        </StCard>
-        <StCard>
-          <div>
-            <div>
-              <img src="http://via.placeholder.com/36" alt="" />
-            </div>
-            <span>김준태</span>
-            <span>연차</span>
-            <span>8:30:00~17:30:00</span>
-            <span>2023.05.10</span>
-          </div>
-          <StButtonArea>
-            <StCheckButton color="approve">승인</StCheckButton>
-            <StCheckButton color="refuse">거절</StCheckButton>
-          </StButtonArea>
-        </StCard>
+        )}
+
+        <div>
+          <StPageNumber>
+            <li>&lt;</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>&gt;</li>
+          </StPageNumber>
+        </div>
       </div>
-      <div>
-        <StPageNumber>
-          <li>&lt;</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>&gt;</li>
-        </StPageNumber>
-      </div>
-    </StSection>
+    </S.ApprovalWapper>
   );
 }
 
 export default AdminApprovalPage;
-
-const StSection = styled.div`
-  margin-left: auto;
-  margin-right: 150px;
-  width: 1308px;
-  height: 882px;
-  border-radius: 8px;
-  background-color: ${(props) => props.theme.color.beige};
-`;
 
 const StSelectArea = styled.div`
   color: ${(props) => props.theme.color.darkBrown};
@@ -322,11 +261,11 @@ const StCheckButton = styled.button`
   background-color: ${(props) => (props.color === 'approve' ? props.theme.color.lightBrown : props.theme.color.brown)};
 `;
 
-const StPageNumber = styled.ul `
+const StPageNumber = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  li{
+  li {
     padding: 20px;
   }
-`
+`;
