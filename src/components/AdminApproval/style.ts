@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const ApprovalWapper = styled.div`
+export const ApprovalWrapper = styled.div`
 
   width: 1308px;
   height: 882px;
@@ -29,5 +29,3 @@ export const SeleteTabArea = styled.div`
     margin-right: 50px;
   }
 `;
-
-
