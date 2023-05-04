@@ -2,7 +2,7 @@ import React from 'react'
 
 function AdminApprovalPage() {
   return (
-    <div>AdminApprovalPage</div>
+    <div className='content'>AdminApprovalPage</div>
   )
 }
 

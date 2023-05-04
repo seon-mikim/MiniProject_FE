@@ -2,14 +2,15 @@ import React from 'react'
 import Header from './Header'
 import Nav from './Nav'
 import { Outlet } from 'react-router-dom'
+import * as S from './styles'
 
 function Layout() {
   return (
-    <div>
+    <S.gridDiv>
       <Header/>
       <Nav/>
       <Outlet/>
-    </div>
+    </S.gridDiv>
   )
 }
 
