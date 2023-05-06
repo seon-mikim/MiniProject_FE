@@ -4,7 +4,7 @@ import AnnualSection from '../../components/MainForm/AnnualSection'
 
 function MainPage() {
   return (
-    <div>
+    <div className='content'>
       <AnnualSection/>
       <ApplySection/>
     </div>
