@@ -3,7 +3,6 @@ export interface User {
   userimg : string,
   username: string,
   email: string,
-  password: string,
   number: string,
   annual : number,
   role : string,
@@ -12,3 +11,17 @@ export interface User {
   updateAt : string
 }
 
+export enum Role {
+  ADMIN = "ADMIN",
+  USER = "USER",
+  UNDETERMINED = "UNDETERMINED"
+}
+
+export interface AuthUser {
+  id: number
+  username: string
+  img: string | null
+  email: string
+  role: string
+  createAt: string
+}
