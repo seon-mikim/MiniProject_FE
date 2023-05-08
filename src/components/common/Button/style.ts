@@ -6,13 +6,17 @@ interface ButtonProps {
   theme: any;
 }
 
+
 const ButtonComponent = styled.button<ButtonProps>`
-  padding: 10px 25px;
+  padding: 10px 35px;
   cursor: pointer;
   box-sizing: border-box;
   border-radius: 8px;
   border: none;
   transition: box-shadow 0.2s ease-in;
+  font-weight: ${(props) => props.theme.fontWeight.dark};
+  font-size: ${(props) => props.theme.fontSize.base};
+
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0 0 1px 1px ${(props) => {
       switch (props.variant) {
@@ -26,7 +30,7 @@ const ButtonComponent = styled.button<ButtonProps>`
       }
     }
   };
-  font-weight: ${(props) => props.theme.fontWeight.dark};
+
   background-color: ${(props) => {
     switch (props.variant) {
       case 'lightBrown':
