@@ -12,15 +12,15 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
 function Routers() {
   return (
     <Routes>
+      <Route index element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route path="/" element={<Layout />}>
-        <Route index element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
         <Route path="/main" element={<MainPage/>}/>
         <Route path="/mypage" element={<Mypage/>} />
         <Route path="/adminApproval" element={<AdminApprovalPage/>} />
         <Route path="/adminAuth" element={<AdminAuthPage/>} />
-        <Route path="*" element={<ErrorPage/>}/>
       </Route>
+      <Route path="*" element={<ErrorPage/>}/>
     </Routes>
   );
 }

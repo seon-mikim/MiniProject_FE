@@ -1,9 +1,26 @@
-import React from 'react'
-
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useMutation } from 'react-query';
+import { login } from '../../api/authService';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import { AxiosError } from 'axios';
+import { setCookie } from '../../utils/cookies';
 function LoginPage() {
-  return (
-    <div>LoginPage</div>
-  )
+  const navigate = useNavigate();
+  const { mutate } = useMutation(login, {
+    onSuccess: (data) => {
+      console.log(data);
+      if (data) {
+        setCookie('accessToken', data.accessToken);
+        navigate('/mypage');
+      }
+    },
+    onError: (err: AxiosError) => {
+      console.error(err);
+    },
+  });
+  console.log(mutate);
+  return <LoginForm mutate={mutate} />;
 }
 
-export default LoginPage
+export default LoginPage;

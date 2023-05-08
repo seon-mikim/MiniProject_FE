@@ -1,8 +1,11 @@
 import React from 'react'
+import MypageForm from '../../components/MypageForm'
 
 function Mypage() {
   return (
-    <div>Mypage</div>
+    <div className='content'>
+      <MypageForm />
+    </div>
   )
 }
 
