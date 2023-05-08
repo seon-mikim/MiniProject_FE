@@ -14,11 +14,11 @@ export interface LoginFormProps {
 
 const schema = yup.object().shape({
   email: yup.string().email('이메일형식이 적합하지 않습니다.').required('이메일 입력해주세요'),
-  pw: yup
+  password: yup
     .string()
     .min(8, '비밀번호는 최소 8자리입니다!')
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W)(?!.*\s).{8,}$/,
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*\W)(?!.*\s).{8,}$/,
       '대소문자, 특수문자, 숫자를 모두 포함한 8자리 이상 입력해주세요',
     )
     .required('비밀번호를 입력해주세요'),
@@ -43,8 +43,8 @@ function LoginForm({ mutate }: LoginFormProps) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <S.Input top="401px" type="text" placeholder="email" {...register('email')} />
         {errors.email && <p className="error">{errors.email.message}</p>}
-        <S.Input top="507px" type="password" placeholder="password" {...register('pw')} />
-        {errors.pw && <p className="error">{errors.pw.message}</p>}
+        <S.Input top="507px" type="password" placeholder="password" {...register('password')} />
+        {errors.password && <p className="error">{errors.password.message}</p>}
         <S.Button top="687px" background="#856e5f" type="submit">
           로그인
         </S.Button>

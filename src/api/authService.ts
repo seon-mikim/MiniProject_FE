@@ -4,6 +4,7 @@ import { axiosFormInstance, axiosJsonInstance } from './axios';
 
 export const login = async (user: LoginRequest) => {
   try {
+    console.log(user);
     const { data } = await axiosJsonInstance.post<AuthResponse>('/api/login', user);
     return data;
   } catch (error) {
