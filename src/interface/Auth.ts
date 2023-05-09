@@ -1,6 +1,6 @@
 export interface LoginRequest {
   email: string;
-  pw: string;
+  password: string;
 }
 
 export interface RegisterRequest extends LoginRequest {

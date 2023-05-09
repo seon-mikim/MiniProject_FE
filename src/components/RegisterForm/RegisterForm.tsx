@@ -14,17 +14,17 @@ export interface RegisterFormProps {
 const schema = yup.object().shape({
   name: yup.string().min(2, '2자 이상 입력해주세요!').required('이름을 입력해주세요'),
   email: yup.string().email('이메일형식이 적합하지 않습니다.').required('이메일 입력해주세요'),
-  pw: yup
+  password: yup
     .string()
     .min(8, '비밀번호는 최소 8자리입니다!')
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W)(?!.*\s).{8,}$/,
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*\W)(?!.*\s).{8,}$/,
       '대소문자, 특수문자, 숫자를 모두 포함한 8자리 이상 입력해주세요',
     )
     .required('비밀번호를 입력해주세요'),
   checkpw: yup
     .string()
-    .oneOf([yup.ref('pw')], '비밀번호가 일치하지 않습니다')
+    .oneOf([yup.ref('password')], '비밀번호가 일치하지 않습니다')
     .required('비밀번호를 한번 더 입력해주세요'),
   phone: yup
     .string()
@@ -48,8 +48,8 @@ function RegisterForm({ mutate }: RegisterFormProps) {
       {errors.name && <p className="error">{errors.name.message}</p>}
       <S.Input top="494px" type="text" placeholder="email" {...register('email')} />
       {errors.email && <p className="error">{errors.email.message}</p>}
-      <S.Input top="567px" type="password" placeholder="********" {...register('pw')} />
-      {errors.pw && <p className="error">{errors.pw.message}</p>}
+      <S.Input top="567px" type="password" placeholder="********" {...register('password')} />
+      {errors.password && <p className="error">{errors.password.message}</p>}
       <S.Input top="640px" type="password" placeholder="********" {...register('checkpw')} />
       <S.Input top="713px" placeholder="010-****-****" {...register('phone')} />
       {errors.phone && <p className="error">{errors.phone.message}</p>}
