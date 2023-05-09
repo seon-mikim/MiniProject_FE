@@ -1,8 +1,16 @@
-import React from 'react'
+import ProfileSection from "./ProfileSection"
+import ButtonSection from "./ButtonSection"
+import * as S from "./style"
 
 function Header() {
+
   return (
-    <header>Header</header>
+    <header>
+      <div>
+        <ProfileSection />
+        <ButtonSection />
+      </div>
+    </header>
   )
 }
 
