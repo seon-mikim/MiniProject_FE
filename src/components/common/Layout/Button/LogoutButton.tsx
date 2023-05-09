@@ -4,7 +4,7 @@ import { Button } from '../../Button/style'
 function LogoutButton() {
   return (
     <>
-      <button>로그아웃</button>
+      <Button>로그아웃</Button>
     </>
   )
 }
