@@ -1,11 +1,12 @@
 import { AxiosError } from 'axios';
 import { AuthResponse, LoginRequest, RegisterRequest } from '../interface/Auth';
 import { axiosFormInstance, axiosJsonInstance } from './axios';
+import { setCookie } from '../utils/cookies';
 
 export const login = async (user: LoginRequest) => {
   try {
-    console.log(user);
-    const { data } = await axiosJsonInstance.post<AuthResponse>('/api/login', user);
+    const {data, headers} = await axiosJsonInstance.post<AuthResponse>('/api/login', user);
+    headers.authorization&&setCookie('accessToken', headers.authorization.split(' ')[1]);
     return data;
   } catch (error) {
     if (error instanceof AxiosError && error.response?.status === 400) {

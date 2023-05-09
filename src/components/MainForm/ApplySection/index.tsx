@@ -4,16 +4,16 @@ import ko from 'date-fns/locale/ko';
 
 function ApplySection() {
   const [type, setType] = useState('annual');
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState<Date|null>(new Date());
+  const [endDate, setEndDate] = useState<Date|null>(new Date());
   const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const { innerText } = e.target as HTMLButtonElement;
     setType(innerText === '연차' ? 'annual' : 'work');
   };
-  const onChange = (dates: Date[]) => {
+  const onChange = (dates: [Date|null, Date|null]) => {
     const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
+      setStartDate(start);
+      setEndDate(end);
   };
   const getFormattedDate = (date: Date) => {
     const year = date.getFullYear();
@@ -41,7 +41,7 @@ function ApplySection() {
             inline
           />
         ) : (
-          <S.StyledDatePicker selected={startDate} onChange={setStartDate} locale={ko} inline />
+          <S.StyledDatePicker selected={startDate} onChange={(date: Date|null)=>setStartDate(date)} locale={ko} inline />
         )}
         <div>
           <S.Label>신청일</S.Label>
