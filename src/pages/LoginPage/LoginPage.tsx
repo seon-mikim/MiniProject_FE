@@ -4,15 +4,12 @@ import { useMutation } from 'react-query';
 import { login } from '../../api/authService';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { AxiosError } from 'axios';
-import { setCookie } from '../../utils/cookies';
 function LoginPage() {
   const navigate = useNavigate();
   const { mutate } = useMutation(login, {
     onSuccess: (data) => {
-      console.log(data);
       if (data) {
-        setCookie('accessToken', data.accessToken);
-        navigate('/mypage');
+        navigate('/main');
       }
     },
     onError: (err: AxiosError) => {
