@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { pageSeparationData } from './pageSeparationData';
 import User from './Menu/User'
 import Admin from './Menu/Admin';
 import Logo from '../../../../pantry_logo.svg'
-import { AiFillGithub } from 'react-icons/ai'
+import { AiFillGithub, AiOutlineMenu } from 'react-icons/ai'
 import { RiTeamLine } from 'react-icons/ri'
+import * as S from './style'
+import { MdArrowBackIosNew } from 'react-icons/md'
+import LogoutButton from '../Button/LogoutButton';
 
 function Nav() {
   const location = useLocation();
@@ -13,22 +16,34 @@ function Nav() {
   const currentPage = pageSeparationData.filter((e) => e.name === location.pathname)
   console.log(currentPage)
 
+  const [opacity, setOpacity] = useState(1)
+
+  const changeOpacity = (opacity: number) => {
+    const answer = opacity === 1 ? 0 : 1
+    setOpacity(answer)
+  }
+  console.log(opacity)
+
   return (
     <nav>
-      <div>
+      <S.navDiv opacity={opacity}>
         <div>
-          <span>{currentPage[0].title}</span>
+          <S.flexDiv opacity={opacity}>
+            <S.menuButtonDiv onClick={() => {changeOpacity(opacity)}}><AiOutlineMenu color='white'/></S.menuButtonDiv>
+            <S.titleSpan opacity={opacity}>{currentPage[0].title}</S.titleSpan>
+            <S.arrowDiv opacity={opacity} onClick={() => setOpacity(0)}><MdArrowBackIosNew/></S.arrowDiv>
+          </S.flexDiv>
+          {currentPage[0].isUser ? <User opacity={opacity} /> : <Admin opacity={opacity} />}
         </div>
-        {currentPage[0].isUser ? <User /> : <Admin />}
-      </div>
-      <div>
-        <img src={Logo} />
-        <button>로그아웃</button>
-        <div>
-          <a href='https://github.com/MiniTeam6' target='_blank'><AiFillGithub /></a>
-          <button><RiTeamLine /></button>
-        </div>
-      </div>
+        <S.flexColumnDiv opacity={opacity}>
+          <img src={Logo} />
+          <LogoutButton />
+          <S.flexButtonDiv>
+            <a href='https://github.com/MiniTeam6' target='_blank'><AiFillGithub size='3rem' color='white'/></a>
+            <S.introButton><RiTeamLine size='2rem' color='#452E27'/></S.introButton>
+          </S.flexButtonDiv>
+        </S.flexColumnDiv>
+      </S.navDiv>
     </nav>
   )
 }

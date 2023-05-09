@@ -9,7 +9,7 @@ function DateType({eventDay}: {eventDay: Date}) {
     (date<10 ? '0'+String(date): String(date))
 
   return (
-    <span>{eventDayStr}</span>
+    <S.smallSpan>{eventDayStr}</S.smallSpan>
   )
 }
 
