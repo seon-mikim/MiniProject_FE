@@ -16,7 +16,7 @@ function Nav() {
   const currentPage = pageSeparationData.filter((e) => e.name === location.pathname)
   console.log(currentPage)
 
-  const [opacity, setOpacity] = useState(1)
+  const [opacity, setOpacity] = useState(0)
 
   const changeOpacity = (opacity: number) => {
     const answer = opacity === 1 ? 0 : 1
