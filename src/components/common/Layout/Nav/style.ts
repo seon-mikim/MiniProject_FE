@@ -20,6 +20,7 @@ export const navDiv = styled.div<opacityProps>`
   height: 100vh;
   background-color: ${theme.color.darkBrown};
   transition: all 1s ease;
+  filter: drop-shadow(0 2px 3px #3E1B11);
 `
 export const flexDiv = styled.div<opacityProps>`
   display: flex;

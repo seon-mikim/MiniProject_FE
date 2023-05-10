@@ -9,20 +9,24 @@ function User({opacity}: {opacity: number}) {
 
   return (
     <S.flexDiv opacity={opacity}>
-      <S.menuDiv opacity={opacity}>
-        <Link to='/main' className='userLink'>
-          <S.gridSpan>연차</S.gridSpan>
-          <DDay eventDay={holiday}/>
-          <DateType eventDay={holiday}/>
-        </Link>
-      </S.menuDiv>
-      <S.menuDiv opacity={opacity}>
-        <Link to='/main' className='userLink'>
-          <S.gridSpan>당직</S.gridSpan>
-          <DDay eventDay={night}/>
-          <DateType eventDay={night}/>
-        </Link>
-      </S.menuDiv>
+      <S.shadowDiv>
+        <S.menuDiv opacity={opacity}>
+          <Link to='/main' className='userLink'>
+            <S.gridSpan>연차</S.gridSpan>
+            <DDay eventDay={holiday}/>
+            <DateType eventDay={holiday}/>
+          </Link>
+        </S.menuDiv>
+      </S.shadowDiv>
+      <S.shadowDiv>
+        <S.menuDiv opacity={opacity}>
+          <Link to='/main' className='userLink'>
+            <S.gridSpan>당직</S.gridSpan>
+            <DDay eventDay={night}/>
+            <DateType eventDay={night}/>
+          </Link>
+        </S.menuDiv>
+      </S.shadowDiv>
     </S.flexDiv>
   )
 }
