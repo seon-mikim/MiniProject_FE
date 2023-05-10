@@ -10,4 +10,5 @@ export const headerDiv = styled.div`
   flex-direction: column;
   background-color: ${theme.color.darkBrown};
   border-radius: 15px;
+  transition: all 1s ease;
 `

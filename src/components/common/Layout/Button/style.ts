@@ -9,6 +9,9 @@ export const logoutButton = styled.button`
   width: 100%;
   font-weight: ${theme.fontWeight.bold};
   cursor: pointer;
+  &:hover {
+    opacity: 0.9;
+  }
 `
 
 export const mypageButton = styled.button`
@@ -19,4 +22,7 @@ export const mypageButton = styled.button`
   width: 100%;
   font-weight: ${theme.fontWeight.bold};
   cursor: pointer;
+  &:hover {
+    opacity: 0.9;
+  }
 `

@@ -2,6 +2,7 @@ import ProfileSection from "./ProfileSection"
 import ButtonSection from "./ButtonSection"
 import * as S from "./style"
 import { User, UserHeaderProfile } from "../../../../interface/User"
+import { useState } from "react"
 
 const userData: User = {
   id: 1,
@@ -17,6 +18,13 @@ const userData: User = {
 }
 
 function Header() {
+  const [opacity, setOpacity] = useState(0)
+
+  const changeOpacity = (opacity: number) => {
+    const answer = opacity === 1 ? 0 : 1
+    setOpacity(answer)
+  }
+
   const userHeaderData: UserHeaderProfile = {
     username: userData.username,
     email: userData.email,
@@ -25,8 +33,11 @@ function Header() {
   return (
     <header>
       <S.headerDiv>
-        <ProfileSection userData={userHeaderData} />
-        <ButtonSection />
+        <div onClick={() => changeOpacity(opacity)}>
+          <ProfileSection userData={userHeaderData} />
+        </div>
+        
+        <ButtonSection opacity={opacity}/>
       </S.headerDiv>
     </header>
   )

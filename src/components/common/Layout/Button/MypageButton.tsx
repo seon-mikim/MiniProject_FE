@@ -3,7 +3,9 @@ import * as S from './style'
 
 function MypageButton() {
   return (
-    <S.mypageButton>마이페이지</S.mypageButton>
+    <S.mypageButton>
+      마이페이지
+    </S.mypageButton>
   )
 }
 

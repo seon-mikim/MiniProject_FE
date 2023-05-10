@@ -53,6 +53,9 @@ export const flexColumnDiv = styled.div<opacityProps>`
   transition: all 1s ease;
   white-space: nowrap;
   padding-right: 1rem;
+  .logout {
+    width: 6rem;
+  }
 `
 export const flexButtonDiv = styled.div`
   display: flex;

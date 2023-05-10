@@ -12,6 +12,7 @@ export const gridDiv = styled.div`
     justify-self: end;
   }
   gap: 0.5rem;
+  cursor: pointer;
 `
 export const nameSpan = styled.span`
   color: ${theme.color.white};
