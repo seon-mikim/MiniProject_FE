@@ -6,10 +6,10 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router';
-import { AuthResponse, LoginRequest } from '../../interface/Auth';
+import { LoginResponse, LoginRequest } from '../../interface/Auth';
 
 export interface LoginFormProps {
-  mutate: UseMutateFunction<AuthResponse | undefined, AxiosError<unknown, any>, LoginRequest>;
+  mutate: UseMutateFunction<LoginResponse | undefined, AxiosError<unknown, any>, LoginRequest>;
 }
 
 const schema = yup.object().shape({
@@ -34,7 +34,6 @@ function LoginForm({ mutate }: LoginFormProps) {
     navigate('/register');
   };
   const onSubmit: SubmitHandler<LoginRequest> = (data) => {
-    console.log(data);
     mutate(data);
   };
 
