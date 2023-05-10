@@ -11,4 +11,5 @@ export const headerDiv = styled.div`
   background-color: ${theme.color.darkBrown};
   border-radius: 15px;
   transition: all 1s ease;
+  filter: drop-shadow(1px 1px 3px #3E1B11);
 `
