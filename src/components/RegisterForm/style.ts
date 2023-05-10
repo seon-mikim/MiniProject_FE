@@ -22,3 +22,14 @@ export const Input = styled.input<{ top: string }>`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 `;
+
+export const ImgStyle = styled.img`
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  left: 910px;
+  top: 207px;
+  background: #fffcfc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+`;
