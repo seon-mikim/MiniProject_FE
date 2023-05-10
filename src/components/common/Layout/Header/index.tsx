@@ -24,10 +24,10 @@ function Header() {
   }
   return (
     <header>
-      <div>
+      <S.headerDiv>
         <ProfileSection userData={userHeaderData} />
         <ButtonSection />
-      </div>
+      </S.headerDiv>
     </header>
   )
 }

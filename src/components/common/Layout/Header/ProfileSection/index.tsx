@@ -6,9 +6,9 @@ function ProfileSection({userData}: {userData: UserHeaderProfile}) {
 
   return (
     <S.gridDiv>
-      <span>{userData.username}</span>
-      <span>{userData.email}</span>
-      <div><img src={userData.email}/></div>
+      <S.nameSpan>{userData.username}</S.nameSpan>
+      <S.emailSpan>{userData.email}</S.emailSpan>
+      <S.wrapperDiv><img src='https://picsum.photos/200'/></S.wrapperDiv>
     </S.gridDiv>
   )
 }
