@@ -34,7 +34,7 @@ export const wrapperDiv = styled.div`
   padding: 1px;
   align-self: center;
   justify-self: center;
-  img {
+  .profileImg {
     width: 100%;
     height: 100%;
     object-fit: cover;

@@ -28,7 +28,7 @@ function Header() {
   const userHeaderData: UserHeaderProfile = {
     username: userData.username,
     email: userData.email,
-    thumbnailUri: userData.thumbnailUri
+    thumbnailUri: 'https://picsum.photos/200' //userData.thumbnailUri
   }
   return (
     <header>
