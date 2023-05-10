@@ -1,8 +1,9 @@
 import React from 'react'
+import * as S from './style'
 
 function MypageButton() {
   return (
-    <div>MypageButton</div>
+    <S.mypageButton>마이페이지</S.mypageButton>
   )
 }
 

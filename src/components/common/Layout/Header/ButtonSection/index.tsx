@@ -1,8 +1,13 @@
+import LogoutButton from "../../Button/LogoutButton"
+import MypageButton from "../../Button/mypageButton"
 import * as S from "./style"
 
 function ButtonSection() {
   return (
-    <div>ButtonSection</div>
+    <S.flexColumnDiv>
+      <MypageButton />
+      <LogoutButton />
+    </S.flexColumnDiv>
   )
 }
 

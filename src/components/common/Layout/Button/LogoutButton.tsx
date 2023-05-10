@@ -1,11 +1,9 @@
 import React from 'react'
-import { Button } from '../../Button/style'
+import * as S from './style'
 
 function LogoutButton() {
   return (
-    <>
-      <Button>로그아웃</Button>
-    </>
+      <S.logoutButton>로그아웃</S.logoutButton>
   )
 }
 
