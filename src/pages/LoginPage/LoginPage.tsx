@@ -16,7 +16,7 @@ function LoginPage() {
       console.error(err);
     },
   });
-  console.log(mutate);
+
   return <LoginForm mutate={mutate} />;
 }
 
