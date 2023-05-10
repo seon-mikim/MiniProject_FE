@@ -5,8 +5,8 @@ import { setCookie } from '../utils/cookies';
 
 export const login = async (user: LoginRequest) => {
   try {
-    const {data, headers} = await axiosJsonInstance.post<AuthResponse>('/api/login', user);
-    headers.authorization&&setCookie('accessToken', headers.authorization.split(' ')[1]);
+    const { data, headers } = await axiosJsonInstance.post<AuthResponse>('/api/login', user);
+    headers.authorization && setCookie('accessToken', headers.authorization.split(' ')[1]);
     return data;
   } catch (error) {
     if (error instanceof AxiosError && error.response?.status === 400) {
@@ -18,8 +18,14 @@ export const login = async (user: LoginRequest) => {
 };
 
 export const register = async (user: RegisterRequest) => {
+  const formData = new FormData();
+  //const data = JSON.stringify(user.signupInDTO);
+  const blob = new Blob([JSON.stringify(user.signupInDTO)], { type: 'application/json' });
+  formData.append('image', user.image as File);
+  formData.append('signupInDTO', blob);
+  console.log(formData);
   try {
-    const { data } = await axiosFormInstance.post<AuthResponse>('/api/signup', user);
+    const { data } = await axiosFormInstance.post<AuthResponse>('/api/signup', formData);
     return data;
   } catch (error) {
     if (error instanceof AxiosError && error.response?.status === 400) {
