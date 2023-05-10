@@ -16,4 +16,7 @@ export const flexColumnDiv = styled.div<opacityProps>`
   opacity: ${(props) => props.opacity};
   height: ${(props) => props.opacity === 0 ? '0' : 'max-content'};
   transition: all 0.3s ease;
+  a {
+    width: 100%;
+  }
 `
