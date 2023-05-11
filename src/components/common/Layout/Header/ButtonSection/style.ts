@@ -9,9 +9,9 @@ export const flexColumnDiv = styled.div<opacityProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: ${(props) => props.opacity === 0 ? '0' : '1rem'};
+  padding: ${(props) => props.opacity === 0 ? '0' : '0.7rem'};
   box-sizing: border-box;
-  gap: 0.5rem;
+  gap: 0.3rem;
   padding-top: 0;
   opacity: ${(props) => props.opacity};
   height: ${(props) => props.opacity === 0 ? '0' : 'max-content'};
