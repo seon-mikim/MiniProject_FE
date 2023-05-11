@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router';
 import { LoginResponse, LoginRequest } from '../../interface/Auth';
-
+import Logo from '../../pantry_logo.svg';
 export interface LoginFormProps {
   mutate: UseMutateFunction<LoginResponse | undefined, AxiosError<unknown, any>, LoginRequest>;
 }
@@ -39,18 +39,18 @@ function LoginForm({ mutate }: LoginFormProps) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <S.Input top="401px" type="text" placeholder="email" {...register('email')} />
-        {errors.email && <p className="error">{errors.email.message}</p>}
-        <S.Input top="507px" type="password" placeholder="password" {...register('password')} />
-        {errors.password && <p className="error">{errors.password.message}</p>}
-        <S.Button top="687px" background="#856e5f" type="submit">
-          로그인
-        </S.Button>
-      </form>
-      <S.Button top="786px" background="#5e463c" onClick={onClick}>
-        회원가입
-      </S.Button>
+      <S.LoginPageContainer>
+        <S.LogoContainer src={Logo} />
+        <S.LoginForm onSubmit={handleSubmit(onSubmit)}>
+          <S.LoginTag>Login</S.LoginTag>
+          <S.emailInput /*top="401px"*/ type="text" placeholder="email" {...register('email')} />
+          {errors.email && <p className="error">{errors.email.message}</p>}
+          <S.passwordInput /*top="507px"*/ type="password" placeholder="password" {...register('password')} />
+          {errors.password && <p className="error">{errors.password.message}</p>}
+          <S.LoginButton /*top="687px"*/ type="submit">Login</S.LoginButton>
+          <S.JoinButton /*top="786px"*/ onClick={onClick}>SignUp</S.JoinButton>
+        </S.LoginForm>
+      </S.LoginPageContainer>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import * as S from './style';
 import { AxiosError } from 'axios';
 import { RegisterResponse, RegisterRequest } from '../../interface/Auth';
+import Logo from '../../pantry_logo.svg';
 export interface RegisterFormProps {
   mutate: UseMutateFunction<RegisterResponse | undefined, AxiosError<unknown, any>, RegisterRequest>;
 }
@@ -82,22 +83,28 @@ function RegisterForm({ mutate }: RegisterFormProps) {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmitHandler)}>
-      <S.ImgStyle src={previewImgUrl} />
-      <S.Input top="421px" type="text" placeholder="name" {...register('username')} />
-      {errors.username && <p className="error">{errors.username.message}</p>}
-      <S.Input top="494px" type="text" placeholder="email" {...register('email')} />
-      {errors.email && <p className="error">{errors.email.message}</p>}
-      <S.Input top="567px" type="password" placeholder="********" {...register('password')} />
-      {errors.password && <p className="error">{errors.password.message}</p>}
-      <S.Input top="640px" type="password" placeholder="********" {...register('checkpw')} />
-      <S.Input top="713px" placeholder="010-****-****" {...register('phone')} />
-      {errors.phone && <p className="error">{errors.phone.message}</p>}
-      <S.Input top="770px" type="file" {...register('image')} onChange={handleFileChange} />
-      {/* 에러 메시지 추가 했습니다. */}
-      {errors.image && <p className="error">{errors.image.message}</p>}
-      <S.signUpButton type="submit">회원가입</S.signUpButton>
-    </form>
+    <div>
+      <S.RegisterPageContainer>
+        <S.LogoContainer src={Logo} />
+        <S.RegisterForm onSubmit={handleSubmit(onSubmitHandler)}>
+          <S.RegisterTag>Sign Up</S.RegisterTag>
+          <S.ImgStyle src={previewImgUrl} />
+          <S.Input /*top="421px"*/ type="text" placeholder="name" {...register('username')} />
+          {errors.username && <p className="error">{errors.username.message}</p>}
+          <S.Input /*top="494px"*/ type="text" placeholder="email" {...register('email')} />
+          {errors.email && <p className="error">{errors.email.message}</p>}
+          <S.Input /*top="567px"*/ type="password" placeholder="********" {...register('password')} />
+          {errors.password && <p className="error">{errors.password.message}</p>}
+          <S.Input /*top="640px"*/ type="password" placeholder="********" {...register('checkpw')} />
+          <S.Input /*top="713px"*/ placeholder="010-****-****" {...register('phone')} />
+          {errors.phone && <p className="error">{errors.phone.message}</p>}
+          <S.ImgSelection /*top="770px"*/ type="file" {...register('image')} onChange={handleFileChange} />
+          {/* 에러 메시지 추가 했습니다. */}
+          {errors.image && <p className="error">{errors.image.message}</p>}
+          <S.signUpButton type="submit">SignUp</S.signUpButton>
+        </S.RegisterForm>
+      </S.RegisterPageContainer>
+    </div>
   );
 }
 export default RegisterForm;
