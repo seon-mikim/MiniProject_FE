@@ -11,25 +11,18 @@ import { MdArrowBackIosNew } from 'react-icons/md'
 import LogoutButton from '../Button/LogoutButton';
 
 function Nav() {
-  const location = useLocation();
-  console.log(location.pathname)
+  const location = useLocation()
+ 
   const currentPage = pageSeparationData.filter((e) => e.name === location.pathname)
-  console.log(currentPage)
 
   const [opacity, setOpacity] = useState(0)
-
-  const changeOpacity = (opacity: number) => {
-    const answer = opacity === 1 ? 0 : 1
-    setOpacity(answer)
-  }
-  console.log(opacity)
 
   return (
     <nav>
       <S.navDiv opacity={opacity}>
         <div>
           <S.flexDiv opacity={opacity}>
-            <S.menuButtonDiv onClick={() => {changeOpacity(opacity)}}><AiOutlineMenu color='white'/></S.menuButtonDiv>
+            <S.menuButtonDiv opacity={opacity} onClick={() => setOpacity(1)}><AiOutlineMenu color='white' size='2rem' /></S.menuButtonDiv>
             <S.titleSpan opacity={opacity}>{currentPage[0].title}</S.titleSpan>
             <S.arrowDiv opacity={opacity} onClick={() => setOpacity(0)}><MdArrowBackIosNew/></S.arrowDiv>
           </S.flexDiv>

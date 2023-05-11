@@ -35,7 +35,7 @@ export const menuDiv = styled.div<opacityProps>`
     white-space: nowrap;
   }
   .userLink {
-    display: ${(props) => props.opacity === 0 ? 'none' : 'grid'};;
+    display: ${(props) => props.opacity === 0 ? 'none' : 'grid'};
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr 1fr;
     text-decoration: none;

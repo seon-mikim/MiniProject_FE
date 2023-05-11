@@ -25,6 +25,7 @@ export const navDiv = styled.div<opacityProps>`
 export const flexDiv = styled.div<opacityProps>`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
   width: ${(props) => props.opacity === 0 ? '1rem' : '11rem'};
   height: 1rem;
@@ -33,7 +34,7 @@ export const flexDiv = styled.div<opacityProps>`
 export const titleSpan = styled.span<opacityProps>`
   color: ${theme.color.white};
   opacity: ${(props) => props.opacity};
-  transition: all 1s ease;
+  transition: all 0.3s ease;
   white-space: nowrap;
   height: 1rem;
   pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
@@ -58,6 +59,9 @@ export const flexColumnDiv = styled.div<opacityProps>`
   .logout {
     width: 6rem;
   }
+  img {
+    width: 8rem;
+  }
 `
 export const flexButtonDiv = styled.div<opacityProps>`
   display: flex;
@@ -74,7 +78,8 @@ export const introButton = styled.button<opacityProps>`
   cursor: pointer;
   pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
 `
-export const menuButtonDiv = styled.div`
-  padding-left: 1rem;
+export const menuButtonDiv = styled.div<opacityProps>`
+  margin-top: 0.5rem;
   cursor: pointer;
+  display: ${(props) => props.opacity === 1 ? 'none' : 'block'};
 `
