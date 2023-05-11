@@ -1,14 +1,20 @@
 export interface User {
   id : number,
-  userimg : string,
-  username: string,
+  username : string,
   email: string,
-  number: string,
-  annual : number,
+  phone: string,
+  imageUri?: string,
+  thumbnailUri?: string,
   role : string,
   status: boolean,
-  createAt : string,
-  updateAt : string
+  createdAt : string,
+  updatedAt : string
+}
+
+export interface UserHeaderProfile {
+  username: string,
+  email: string,
+  thumbnailUri?: string
 }
 
 export enum Role {
