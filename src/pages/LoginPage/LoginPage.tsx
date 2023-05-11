@@ -7,9 +7,12 @@ import { AxiosError } from 'axios';
 function LoginPage() {
   const navigate = useNavigate();
   const { mutate } = useMutation(login, {
-    onSuccess: (data) => {
-      if (data) {
-        navigate('/main');
+    onSuccess: (res) => {
+      console.log(res);
+      if (res && res.data.role === 'USER') {
+        navigate('/mypage');
+      } else if (res && res.data.role === 'ADMIN') {
+        navigate('/adminApproval');
       }
     },
     onError: (err: AxiosError) => {
