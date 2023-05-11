@@ -18,5 +18,6 @@ export const flexColumnDiv = styled.div<opacityProps>`
   transition: all 0.3s ease;
   a {
     width: 100%;
+    text-decoration: none;
   }
 `

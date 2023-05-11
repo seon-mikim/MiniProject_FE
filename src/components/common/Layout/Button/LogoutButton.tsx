@@ -1,9 +1,9 @@
 import React from 'react'
 import * as S from './style'
 
-function LogoutButton() {
+function LogoutButton({opacity}: {opacity: number}) {
   return (
-      <S.logoutButton className='logout'>로그아웃</S.logoutButton>
+      <S.logoutButton className='logout' opacity={opacity}>로그아웃</S.logoutButton>
   )
 }
 
