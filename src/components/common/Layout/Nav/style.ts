@@ -36,10 +36,12 @@ export const titleSpan = styled.span<opacityProps>`
   transition: all 1s ease;
   white-space: nowrap;
   height: 1rem;
+  pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
 `
 export const arrowDiv = styled.div<opacityProps>`
   color: ${theme.color.white};
   cursor: pointer;
+  pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
   opacity: ${(props) => props.opacity};
   transition: all 1s ease;
 `
@@ -57,16 +59,20 @@ export const flexColumnDiv = styled.div<opacityProps>`
     width: 6rem;
   }
 `
-export const flexButtonDiv = styled.div`
+export const flexButtonDiv = styled.div<opacityProps>`
   display: flex;
   gap: 0.5rem;
+  a {
+    pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
+  }
 `
-export const introButton = styled.button`
+export const introButton = styled.button<opacityProps>`
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   background-color: ${theme.color.white};
   cursor: pointer;
+  pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
 `
 export const menuButtonDiv = styled.div`
   padding-left: 1rem;

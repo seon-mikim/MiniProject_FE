@@ -37,10 +37,10 @@ function Nav() {
         </div>
         <S.flexColumnDiv opacity={opacity}>
           <img src={Logo} />
-          <LogoutButton />
-          <S.flexButtonDiv>
+          <LogoutButton opacity={opacity}/>
+          <S.flexButtonDiv opacity={opacity}>
             <a href='https://github.com/MiniTeam6' target='_blank'><AiFillGithub size='3rem' color='white'/></a>
-            <S.introButton><RiTeamLine size='2rem' color='#452E27'/></S.introButton>
+            <S.introButton opacity={opacity}><RiTeamLine size='2rem' color='#452E27'/></S.introButton>
           </S.flexButtonDiv>
         </S.flexColumnDiv>
       </S.navDiv>
