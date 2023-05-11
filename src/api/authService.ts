@@ -1,11 +1,11 @@
 import { AxiosError } from 'axios';
-import { AuthResponse, LoginRequest, RegisterRequest } from '../interface/Auth';
+import { LoginResponse, RegisterResponse, LoginRequest, RegisterRequest } from '../interface/Auth';
 import { axiosFormInstance, axiosJsonInstance } from './axios';
 import { setCookie } from '../utils/cookies';
 
 export const login = async (user: LoginRequest) => {
   try {
-    const { data, headers } = await axiosJsonInstance.post<AuthResponse>('/api/login', user);
+    const { data, headers } = await axiosJsonInstance.post<LoginResponse>('/api/login', user);
     headers.authorization && setCookie('accessToken', headers.authorization.split(' ')[1]);
     return data;
   } catch (error) {
@@ -25,7 +25,7 @@ export const register = async (user: RegisterRequest) => {
   formData.append('signupInDTO', blob);
   console.log(formData);
   try {
-    const { data } = await axiosFormInstance.post<AuthResponse>('/api/signup', formData);
+    const { data } = await axiosFormInstance.post<RegisterResponse>('/api/signup', formData);
     return data;
   } catch (error) {
     if (error instanceof AxiosError && error.response?.status === 400) {

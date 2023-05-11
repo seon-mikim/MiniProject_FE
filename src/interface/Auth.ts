@@ -2,12 +2,7 @@ export interface LoginRequest {
   email: string;
   password: string;
 }
-/*interface SignupDTO {
-  username: string;
-  password: string;
-  email: string;
-  phone: string;
-}*/
+
 export interface RegisterRequest {
   image: File | null;
   signupInDTO: {
@@ -20,18 +15,28 @@ export interface RegisterRequest {
 }
 
 export interface RegisterResponse {
-  email: string;
-  password: string;
+  status: number;
+  msg: string;
+  data: {
+    id: number;
+    username: string;
+    email: string;
+    phone: string;
+    imageUri: string;
+    thumbnailUri: string;
+  };
 }
-
-export interface UserPayload {
-  id: number;
-  username: string;
-  email: string;
-}
-
-export interface AuthResponse extends UserPayload {
-  iat: number;
-  exp: number;
-  accessToken: string;
+export interface LoginResponse {
+  status: number;
+  msg: string;
+  data: {
+    id: number;
+    username: string;
+    email: string;
+    phone: string;
+    role: string;
+    status: boolean;
+    imageUri: string;
+    thumbnailUri: string;
+  };
 }

@@ -1,9 +1,27 @@
+export interface User {
+  id : number,
+  username : string,
+  email: string,
+  phone: string,
+  imageUri?: string,
+  thumbnailUri?: string,
+  role : string,
+  status: boolean,
+  createdAt : string,
+  updatedAt : string
+}
+
+export interface UserHeaderProfile {
+  username: string,
+  email: string,
+  thumbnailUri?: string
+}
+
 /**
  * Defines Role of User
  *
  * @readonly
  * @enum { string } ADMIN, USER, UNDETERMINED
- */
 export enum Role {
   /**
    * User's role is an admin
@@ -21,13 +39,13 @@ export enum Role {
 
 /**
  * Default user interface.
- * @interface User
+ * @interface AdminUser
  *
  * @property { id } number
  * @property { username} string
  * @property { email } string
  */
-interface User {
+interface AdminUser {
   /**
    * id: number
    */
@@ -47,7 +65,7 @@ interface User {
  *
  * {@link Role}
  */
-export interface MyUser extends User {
+export interface MyUser extends AdminUser {
   role: Role;
 }
 
