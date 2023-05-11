@@ -1,34 +1,68 @@
 import * as S from './style';
 import React, { useState } from 'react';
-import { useQuery } from 'react-query';
-import { myGetUsers } from './data';
+import { useQuery, useQueryClient } from 'react-query';
 import SearchResultList from './SearchResultList';
-import SearchArea, { searchParameters } from './SearchArea';
+import SearchArea from './SearchArea';
 import { AuthUser } from '../../../interface/User';
-import Pagination from './Pagination';
+import { searchUser } from '../../../api/Admin/SearchUser';
+import ReactPaginate from 'react-paginate';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { SearchType, SearchUserParams } from '../../../interface/Search';
+import { SkeletonUI } from '../../common/SkeletonUI/style';
+
+const initialValue: SearchUserParams = {
+  type: SearchType.USERNAME,
+  keyword: '',
+};
+
+const PAGE_SIZE = 10
 
 function SearchUser() {
   const [filteredList, setFilteredList] = useState<AuthUser[]>([]);
+  const [searchParams, setSearchParams] = useState(initialValue);
+  const [page, setPage] = useState<number>(0);
+  const queryClient = useQueryClient();
+
   // useQuery로 데이터 페칭 및 케싱
-  const { data: userList, isLoading, isError } = useQuery(['admin', 'users'], () => myGetUsers(), {
+  const { status, data, isPreviousData } = useQuery({
+    queryKey: ['admin', 'search', searchParams, page],
+    queryFn: () => searchUser({ size: PAGE_SIZE, type: searchParams.type, keyword: searchParams.keyword, page }),
+    keepPreviousData: true,
     onSuccess: (data) => {
-      setFilteredList(data)
-    }
+      setFilteredList(data.content);
+      // console.log(data.content);
+      // console.log(queryClient.getQueriesData(['admin', 'search']));
+    },
   });
 
-
-  const onSearchClick = ({ filter, keyword }: searchParameters) => {
-    if (keyword && userList) {
-      // 저장된 userList에서 검색어에 일치하는 user 분류
-      const filteredUsers = userList.filter((user: AuthUser) =>
-        filter === 'name'
-          ? user.username.toLowerCase().includes(keyword.toLowerCase())
-          : user.email.toLowerCase().includes(keyword.toLowerCase()),
-      );
-      setFilteredList(filteredUsers);
-    } else {
-      setFilteredList([]);
+  React.useEffect(() => {
+    if (data) {
+      setFilteredList(data.content);
     }
+  }, [page, data]);
+
+  React.useEffect(() => {
+    if (!isPreviousData && data?.last !== true) {
+      queryClient.prefetchQuery({
+        queryKey: ['admin', 'search', searchParams,  page + 1],
+        queryFn: () => searchUser({ size: PAGE_SIZE, type: searchParams.type, keyword: searchParams.keyword, page: page + 1 }),
+      });
+    }
+  }, [page, queryClient, isPreviousData, data]);
+
+  const onSearchClick = ({ type, keyword }: SearchUserParams) => {
+    console.log(type, keyword)
+    setSearchParams({ type, keyword });
+    
+  };
+
+
+  type PageChangeEventData = {
+    selected: number;
+  };
+
+  const handlePageClick = (event: PageChangeEventData) => {
+    setPage(event.selected);
   };
 
   return (
@@ -38,13 +72,13 @@ function SearchUser() {
       <S.Divider />
       {/* search input area */}
 
-      <SearchArea userList={userList ? userList : []} onSearchClick={onSearchClick} />
+      <SearchArea onSearchClick={onSearchClick} />
       <S.Divider />
 
       {/* search result area */}
       <S.SearchResultContainer>
-        {isLoading && <S.SkeletonUI />}
-        {!isLoading && (filteredList?.length === 0 || !filteredList) ? (
+        {status === 'loading' && <SkeletonUI />}
+        {!(status === 'loading') && (filteredList?.length === 0 || !filteredList) ? (
           <S.SearchNotFound>
             <span>검색 결과가 없습니다.</span>
           </S.SearchNotFound>
@@ -52,13 +86,22 @@ function SearchUser() {
           <SearchResultList isPreview={false} searchResult={filteredList} />
         )}
       </S.SearchResultContainer>
-      <S.PaginationContainer>
-        {/* 일단 페이지네이션 보류 */}
-        {/* <Pagination  /> */}
+
+      <S.PaginationContainer style={{ width: '100%' }}>
+        <ReactPaginate
+          pageCount={data?.totalPages}
+          pageRangeDisplayed={10}
+          previousLabel={<HiChevronLeft />}
+          nextLabel={<HiChevronRight />}
+          onPageChange={handlePageClick}
+          containerClassName={'pagination-ul'}
+          activeClassName={'currentPage'}
+          previousClassName={'pageLabel-btn'}
+          nextClassName={'pageLabel-btn'}
+        />
       </S.PaginationContainer>
     </S.Section>
   );
 }
 
-const memoizedSearchUser = React.memo(SearchUser);
-export default memoizedSearchUser
+export default SearchUser;
