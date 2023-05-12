@@ -44,9 +44,9 @@ function LoginForm({ mutate }: LoginFormProps) {
         <S.LoginForm onSubmit={handleSubmit(onSubmit)}>
           <S.LoginTag>Login</S.LoginTag>
           <S.emailInput /*top="401px"*/ type="text" placeholder="email" {...register('email')} />
-          {errors.email && <p className="error">{errors.email.message}</p>}
+          {errors.email && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
           <S.passwordInput /*top="507px"*/ type="password" placeholder="password" {...register('password')} />
-          {errors.password && <p className="error">{errors.password.message}</p>}
+          {errors.password && <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>}
           <S.LoginButton /*top="687px"*/ type="submit">Login</S.LoginButton>
           <S.JoinButton /*top="786px"*/ onClick={onClick}>SignUp</S.JoinButton>
         </S.LoginForm>

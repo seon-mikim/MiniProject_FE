@@ -90,17 +90,16 @@ function RegisterForm({ mutate }: RegisterFormProps) {
           <S.RegisterTag>Sign Up</S.RegisterTag>
           <S.ImgStyle src={previewImgUrl} />
           <S.Input /*top="421px"*/ type="text" placeholder="name" {...register('username')} />
-          {errors.username && <p className="error">{errors.username.message}</p>}
+          {errors.username && <S.ErrorMessage>{errors.username.message}</S.ErrorMessage>}
           <S.Input /*top="494px"*/ type="text" placeholder="email" {...register('email')} />
-          {errors.email && <p className="error">{errors.email.message}</p>}
+          {errors.email && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
           <S.Input /*top="567px"*/ type="password" placeholder="********" {...register('password')} />
-          {errors.password && <p className="error">{errors.password.message}</p>}
+          {errors.password && <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>}
           <S.Input /*top="640px"*/ type="password" placeholder="********" {...register('checkpw')} />
           <S.Input /*top="713px"*/ placeholder="010-****-****" {...register('phone')} />
-          {errors.phone && <p className="error">{errors.phone.message}</p>}
+          {errors.phone && <S.ErrorMessage>{errors.phone.message}</S.ErrorMessage>}
           <S.ImgSelection /*top="770px"*/ type="file" {...register('image')} onChange={handleFileChange} />
-          {/* 에러 메시지 추가 했습니다. */}
-          {errors.image && <p className="error">{errors.image.message}</p>}
+          {errors.image && <S.ErrorMessage>{errors.image.message}</S.ErrorMessage>}
           <S.signUpButton type="submit">SignUp</S.signUpButton>
         </S.RegisterForm>
       </S.RegisterPageContainer>

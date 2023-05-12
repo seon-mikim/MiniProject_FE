@@ -56,3 +56,9 @@ export const JoinButton = styled(Button)`
   margin-top: 40px;
   background: ${theme.color.brown};
 `;
+
+export const ErrorMessage = styled.p`
+  margin-top: 15px;
+  font-size: 15px;
+  color: red;
+`;
