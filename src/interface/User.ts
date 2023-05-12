@@ -31,3 +31,15 @@ export interface AuthUser {
   role: string
   createAt: string
 }
+
+export interface EventOrderRequest {
+  eventType: string,
+  startDate: Date,
+  endDate: Date | null,
+  count: number
+}
+
+export interface EventGetRequest {
+  eventType: string,
+  yearMonth: string
+}
