@@ -24,7 +24,7 @@ export const menuDiv = styled.div<opacityProps>`
   transition: all 1s ease;
   white-space: nowrap;
   .adminLink {
-    display: flex;
+    display: ${(props) => props.opacity === 0 ? 'none' : 'flex'};;
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
@@ -35,7 +35,7 @@ export const menuDiv = styled.div<opacityProps>`
     white-space: nowrap;
   }
   .userLink {
-    display: grid;
+    display: ${(props) => props.opacity === 0 ? 'none' : 'grid'};
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr 1fr;
     text-decoration: none;
@@ -65,6 +65,7 @@ export const linkSpan = styled.span<opacityProps>`
     transition: all 1s ease;
     white-space: nowrap;
     padding-left: 3rem;
+    pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
   }
 `
 export const countSpan = styled.span`

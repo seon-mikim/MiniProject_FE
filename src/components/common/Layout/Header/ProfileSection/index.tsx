@@ -1,5 +1,5 @@
 import * as S from "./style"
-import { User, UserHeaderProfile } from "../../../../../interface/User"
+import { UserHeaderProfile } from "../../../../../interface/User"
 import { CgProfile } from "react-icons/cg"
 
 function ProfileSection({userData}: {userData: UserHeaderProfile}) {
