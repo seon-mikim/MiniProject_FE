@@ -1,13 +1,12 @@
-import MyAnnualList from './MyAnnualList'
-import MyDutyList from './MyDutyList'
+import MyList from './MyList'
 import MyInfo from './MyInfo'
 
 function index() {
   return (
     <>
       <MyInfo />
-      <MyAnnualList />
-      <MyDutyList />
+      <MyList title={'나의 연차내역'}/>
+      <MyList title={'나의 당직내역'}/>
     </>  
   )
 }
