@@ -13,4 +13,12 @@ export const GlobalStyled = createGlobalStyle`
     color:#452E27;
     background-color:#EBE4DE;
   }
+  .rbc-overlay{
+    background-color:skyblue;
+    z-index: 100;
+    .rbc-event{
+      background-color: #fff;
+      color:#000;
+    }
+  }
 `;
