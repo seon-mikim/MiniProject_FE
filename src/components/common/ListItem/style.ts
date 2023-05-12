@@ -1,18 +1,24 @@
-import styled from "styled-components";
-export const Container = styled.div`
-  width: auto;
-  /* width: fit-content; */
+
+import styled from 'styled-components';
+interface ContainerProps {
+  gridColRatio?: string;
+}
+
+export const Container = styled.div<ContainerProps>`
+  background-color: ${({ theme }) => theme.color.white};
+  width: inherit;
+
   display: grid;
-  background-color: #fff;
-  border-radius: 8px;
   align-items: center;
-  grid-template-columns: 50px 170px auto;
+  grid-template-columns: ${({ gridColRatio }) => (gridColRatio ? gridColRatio : '70px 150px auto')};
   grid-template-areas:
-    'thumbnail userinfo textcontent buttons buttons';
-  height: 80px;
-  padding: 15px;
-  border-bottom: 1px solid #e0e0e0;
+  'thumbnail userinfo textcontent buttons';
+  
   gap: 15px;
+  border-radius: 8px;
+  padding: 15px;
+
+  box-sizing: border-box;
 `;
 
 export const ProfileThumbnail = styled.img`
@@ -31,27 +37,37 @@ export const UserInfo = styled.div`
 `;
 
 export const Username = styled.div`
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSize.large};
   font-weight: 600;
 `;
 
 export const Email = styled.div`
-  font-size: 14px;
-  color: #888;
+  font-size: ${({ theme }) => theme.fontSize.small};
+  color: ${({ theme }) => theme.color.beige};
 `;
 
 export const TextContent = styled.div`
   grid-area: textcontent;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 5px;
+  align-items: center;
+  font-size: ${({ theme }) => theme.fontSize.base};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  color: ${({ theme }) => theme.color.darkBrown};
+
+  & > * {
+    max-width: 220px;
+    max-height: 82px;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+    word-wrap: break-word;
+    white-space: normal;
+  }
 `;
 
 export const ButtonsContainer = styled.div`
   grid-area: buttons;
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 20px;
 `;
-

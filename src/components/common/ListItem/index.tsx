@@ -1,32 +1,44 @@
+import { emailSeparator } from '../../../utils/helpers';
 import { Button } from '../Button/style';
 import * as S from './style';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface ListItemProps {
-  imageURI: string;
+  gridColRatio?: string
+  imageUri: string;
   username: string;
   email: string;
-  textContent: Array<string>;
+  textContent: Array<ReactNode>;
   buttons?: Array<{ label: string; onClick: () => void }>;
 }
 
-const ListItem = ({ imageURI, username, email, textContent, buttons }: ListItemProps) => {
+
+
+const ListItem = ({ gridColRatio, imageUri, username, email, textContent, buttons }: ListItemProps) => {
+  const destructedEmailString = emailSeparator(email);
   return (
-    <S.Container>
-      <S.ProfileThumbnail src={imageURI} />
+    <S.Container gridColRatio={gridColRatio}>
+      {/* grid1: profileThumnail */}
+      <S.ProfileThumbnail src={imageUri} />
+      {/* grid2: userInfo */}
       <S.UserInfo>
         <S.Username>{username}</S.Username>
-        <S.Email>{email}</S.Email>
+        <S.Email>
+          <p>{destructedEmailString.emailId}</p>
+          <span>{'@' + destructedEmailString.emailDomain}</span>
+        </S.Email>
       </S.UserInfo>
+      {/* grid3: textContent */}
       <S.TextContent>
-        {textContent.map((span, index) => (
-          <span key={index}>{span}</span>
+        {textContent.map((node, index) => (
+          <React.Fragment key={index}>{node}</React.Fragment>
         ))}
       </S.TextContent>
+      {/* grid4: buttonsContainer */}
       {buttons && (
         <S.ButtonsContainer>
           {buttons.map((button, index) => (
-            <Button size={"sm"} key={index} onClick={button.onClick}>
+            <Button size={'sm'} key={index} onClick={button.onClick}>
               {button.label}
             </Button>
           ))}
@@ -37,3 +49,5 @@ const ListItem = ({ imageURI, username, email, textContent, buttons }: ListItemP
 };
 
 export default ListItem;
+
+
