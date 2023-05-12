@@ -8,6 +8,8 @@ import AdminAuthPage from '../pages/AdminAuthPage';
 import Mypage from '../pages/MyPage/MyPage';
 import MainPage from '../pages/MainPage/MainPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
+import AdminAccApprovalPage from '../pages/AdminAccApprovalPage';
+
 
 function Routers() {
   return (
@@ -19,6 +21,7 @@ function Routers() {
         <Route path="/mypage" element={<Mypage/>} />
         <Route path="/adminApproval" element={<AdminApprovalPage/>} />
         <Route path="/adminAuth" element={<AdminAuthPage/>} />
+        <Route path="/accApproval" element={<AdminAccApprovalPage />} />
       </Route>
       <Route path="*" element={<ErrorPage/>}/>
     </Routes>

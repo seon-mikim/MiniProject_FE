@@ -1,4 +1,4 @@
-import { useContext,useEffect, useCallback } from 'react';
+import { useContext, useCallback } from 'react';
 
 import * as S from './style';
 import { AuthUser, Role } from '../../../../interface/User';
@@ -13,15 +13,24 @@ interface SearchResultListProps {
 function SearchResultList({ searchResult, isPreview }: SearchResultListProps) {
   const context = useContext(SelectUserContext)
   
-  const handleClick = useCallback(
-    (user: AuthUser) => {
-      context && context.setSelectedUser(user);
-    },
-    [context]
-  );
-  useEffect(() => {
-    console.log('SearchUser 리렌더링');
-  });
+  // const handleClick = useCallback(
+  //   (user: AuthUser) => {
+  //     context && context.setSelectedUser(user);
+  //   },
+  //   [context]
+  // );
+
+  const  handleClick = (user: AuthUser) => {
+    if (context) {
+      context.setSelectedUser(user)
+      // console.log(user)
+    }
+  }
+  const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    event.currentTarget.onerror = null;
+    event.currentTarget.src = './default_profile.png';
+  };
+
   return (
     <S.SearchResultList>
       {searchResult &&
@@ -31,7 +40,7 @@ function SearchResultList({ searchResult, isPreview }: SearchResultListProps) {
           const emailDomain = emailParts[1];
           return (
             <S.SearchResultListItem key={user.id} onClick={() => handleClick(user)}>
-              <img src={user.img ?? ""} alt="사용자 프로필 사진" />
+              <img src={user.imageUri ? user.imageUri : "./default_profile.png"} alt="사용자 프로필 사진" onError={handleImageError}/>
               <span>
                 <span>{user.username}</span>
                 <br />
@@ -40,7 +49,7 @@ function SearchResultList({ searchResult, isPreview }: SearchResultListProps) {
                 <span>{'@' + emailDomain}</span>
               </span>
               <span>{user.role === Role.ADMIN ? "관리자" : "사원"}</span>
-              {!isPreview && <span>회사 입사일: {user.createAt}</span>}
+              {!isPreview && <span>입사일: {formatDate(user.createAt)}</span>}
             </S.SearchResultListItem>
           );
         })}
@@ -49,3 +58,8 @@ function SearchResultList({ searchResult, isPreview }: SearchResultListProps) {
 }
 
 export default SearchResultList;
+
+function formatDate(date: string) {
+  const dateObj = new Date(date)
+  return dateObj.toLocaleDateString()
+}
