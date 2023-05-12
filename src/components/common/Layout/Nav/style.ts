@@ -25,6 +25,7 @@ export const navDiv = styled.div<opacityProps>`
 export const flexDiv = styled.div<opacityProps>`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
   width: ${(props) => props.opacity === 0 ? '1rem' : '11rem'};
   height: 1rem;
@@ -33,13 +34,15 @@ export const flexDiv = styled.div<opacityProps>`
 export const titleSpan = styled.span<opacityProps>`
   color: ${theme.color.white};
   opacity: ${(props) => props.opacity};
-  transition: all 1s ease;
+  transition: all 0.3s ease;
   white-space: nowrap;
   height: 1rem;
+  pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
 `
 export const arrowDiv = styled.div<opacityProps>`
   color: ${theme.color.white};
   cursor: pointer;
+  pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
   opacity: ${(props) => props.opacity};
   transition: all 1s ease;
 `
@@ -56,19 +59,27 @@ export const flexColumnDiv = styled.div<opacityProps>`
   .logout {
     width: 6rem;
   }
+  img {
+    width: 8rem;
+  }
 `
-export const flexButtonDiv = styled.div`
+export const flexButtonDiv = styled.div<opacityProps>`
   display: flex;
   gap: 0.5rem;
+  a {
+    pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
+  }
 `
-export const introButton = styled.button`
+export const introButton = styled.button<opacityProps>`
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   background-color: ${theme.color.white};
   cursor: pointer;
+  pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
 `
-export const menuButtonDiv = styled.div`
-  padding-left: 1rem;
+export const menuButtonDiv = styled.div<opacityProps>`
+  margin-top: 0.5rem;
   cursor: pointer;
+  display: ${(props) => props.opacity === 1 ? 'none' : 'block'};
 `
