@@ -30,7 +30,7 @@ export const SearchArea = styled.div`
 `;
 
 export const SearchResultContainer = styled.div`
-  height: 500px;
+  height: 60vh;
   overflow-y: hidden;
   & ul {
     display: flex;
@@ -45,30 +45,6 @@ export const SearchResultContainer = styled.div`
   }
 `;
 
-const loadingAnimation = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: -400% 50%;
-  }
-`;
-
-export const SkeletonUI = styled.div`
-  width: inherit;
-  height: inherit;
-  border-radius: 8px;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.color.lightBrown} 35%,
-    ${({ theme }) => theme.color.lightBeige} 50%,
-    ${({ theme }) => theme.color.lightBrown} 85%
-  );
-  background-size: 400% 100%;
-  filter: opacity(15%);
-  animation: ${loadingAnimation} 3s infinite;
-`;
-
 export const SearchNotFound = styled.div`
   width: inherit;
   height: inherit;
@@ -76,5 +52,25 @@ export const SearchNotFound = styled.div`
 `;
 
 export const PaginationContainer = styled.div`
-  text-align: center;
+  & .pagination-ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    & li {
+      color: ${({ theme }) => theme.color.lightBrown};
+      cursor: pointer;
+
+    }
+    & li.currentPage {
+      color: ${({ theme }) => theme.color.darkBrown};
+      border-bottom: 1px solid ${({ theme }) => theme.color.darkBrown};
+    }
+    & li.pageLabel-btn.disabled {
+      color: ${({ theme }) => theme.color.lightBrown};
+    }
+    & li.pageLabel-btn {
+      color: ${({ theme }) => theme.color.darkBrown};
+    }
+  }
 `
+

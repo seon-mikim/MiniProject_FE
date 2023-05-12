@@ -4,25 +4,26 @@ import * as S from './style';
 import { AuthUser, Role } from '../../../interface/User';
 import SelectUserContext, { INITIAL_VALUE } from '../../../contexts/SelectUserContext';
 import { useMutation, useQueryClient } from 'react-query';
-import { updateRole } from '../SearchUser/data';
+
 import AlertModal from '../../common/AlertModal';
 import ConfirmModal from '../../common/ConfirmModal';
 import { CircularLoadingProgress } from '../../common/CircularLoadingProgress/style';
+import { updateRole } from '../../../api/Admin/AuthEdit';
 
 /**
- * 관리자 권한 수정 컴포넌트 
+ * 관리자 권한 수정 컴포넌트
  * SearchUser에서 SearchResultList의 ListItem 클릭 시 contextAPI의 selectedUser를 구독하여
- * 변경 시 마다 editProfile의 상태를 변경합니다. 
- * 
- * 권한 변경 시에 mutate를 사용하여 변경 요청을 하고 SearchUser의 리스트를 invalidate시킵니다. 
- * 
+ * 변경 시 마다 editProfile의 상태를 변경합니다.
+ *
+ * 권한 변경 시에 mutate를 사용하여 변경 요청을 하고 SearchUser의 리스트를 invalidate시킵니다.
+ *
  * @useState editProfile contextAPI에서 구독하는 setSelectedUser를 통해 렌더링 후 상태변경 관리
  * @useState isAdmin contextAPI에서 구독하는 selectedUser를 통해 렌더링 후 상태변경 관리
  * @useState isConfirmModalOpen 권한 변경 저장하기 버튼 클릭 시 확인할 모달창 상태변경 관리
  * @useState isAlertModalOpen editProfile의 상태가 INITIAL_VALUE 일 때 사용자 미선택 알림
- * 
+ *
  * @mutate updateRole ['admin', 'users'] invalidate
- * 
+ *
  */
 function AuthEdit() {
   const context = useContext(SelectUserContext);
@@ -41,9 +42,9 @@ function AuthEdit() {
       }
       queryClient.invalidateQueries(['admin', 'users']);
       alert(`변경 사항이 저장되었습니다\n
-       이름: ${response.username}\n
-       이메일: ${response.email}\n
-       변경된 권한: ${response.role === Role.ADMIN ? '관리자' : '사원'}\n
+       이름: ${response.data.username}\n
+       이메일: ${response.data.email}\n
+       변경된 권한: ${response.data.role === Role.ADMIN ? '관리자' : '사원'}\n
        수정된 날짜: ${new Date().toDateString()}\n
        `);
     },
@@ -64,10 +65,13 @@ function AuthEdit() {
     setIsConfirmModalOpen(true);
   };
   const handleSave = () => {
-    mutate({ auth: 'ADMIN', userId: editProfile.id, newRole: isAdmin ? Role.ADMIN : Role.USER });
+    mutate({ email: editProfile.email, role: isAdmin ? Role.ADMIN : Role.USER });
     setIsConfirmModalOpen(false);
   };
-
+  const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    event.currentTarget.onerror = null;
+    event.currentTarget.src = './default_profile.png';
+  };
   useEffect(() => {
     if (context) {
       setEditProfile(context.selectedUser);
@@ -86,14 +90,17 @@ function AuthEdit() {
           onCancel={() => setIsConfirmModalOpen(false)}
         />
       )}
-      {isAlertModalOpen && <AlertModal onComfirmClick={() => setIsAlertModalOpen(false)} title="" message="사용자를 선택해주세요" />}
+      {isAlertModalOpen && (
+        <AlertModal onComfirmClick={() => setIsAlertModalOpen(false)} title="" message="사용자를 선택해주세요" />
+      )}
       {/* <AlertModal isOpen title='' message='회원 가입시 관리자의 승인이 필요합니다.'/> */}
       {/* header */}
       <S.AuthEditHeader>관리자 권한 수정</S.AuthEditHeader>
       {/* profile img */}
       <S.SelectedUserImg
-        src={editProfile.img ? editProfile.img : '/default_profile.png'}
-        alt="선택된 권한 수정 프로필 사진"
+        src={editProfile.imageUri ? editProfile.imageUri : './default_profile.png'}
+        alt="사용자 프로필 사진"
+        onError={handleImageError}
       />
 
       {/* info wrapper subheader > textcontent */}
