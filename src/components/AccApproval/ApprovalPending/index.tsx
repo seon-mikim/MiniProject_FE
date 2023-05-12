@@ -5,6 +5,8 @@ import { AccPendingResponse, approveAcc, approveAccParams, getAccPending } from 
 import { Role } from '../../../interface/User';
 import { SkeletonUI } from '../../common/SkeletonUI/style';
 
+import { formatDate } from '../../../utils/helpers';
+
 function ApprovalPending() {
   const [pendingList, setPendingList] = useState<AccPendingResponse[]>([]);
   const queryClient = useQueryClient();
@@ -32,10 +34,10 @@ function ApprovalPending() {
         pendingList.map((listItem: AccPendingResponse, index: number) => (
           <ListItem
             key={index}
-            imageURI="./default_profile.png"
+            imageUri="./default_profile.png"
             username={listItem.username}
             email={listItem.email}
-            textContent={[`${listItem.role === Role.ADMIN ? '관리자' : '사원'}`, `입사일: ${new Date(listItem.createAt).toLocaleDateString()}`]}
+            textContent={[<span>{listItem.role === Role.ADMIN ? '관리자' : '사원'}</span>, <span>{"입사일: "+ formatDate(listItem.createAt)}</span>]}
             buttons={[
               { label: '승인', onClick: () => handleApprove({ username: listItem.username, email: listItem.email }) },
             ]}

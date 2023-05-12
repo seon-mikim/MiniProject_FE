@@ -22,6 +22,8 @@ export interface UserHeaderProfile {
  *
  * @readonly
  * @enum { string } ADMIN, USER, UNDETERMINED
+*/
+
 export enum Role {
   /**
    * User's role is an admin
