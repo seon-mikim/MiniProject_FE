@@ -1,35 +1,21 @@
 import styled from 'styled-components';
 
 export const SearchResultList = styled.ul`
-  height: inherit;
-  max-height: inherit;
-  overflow-y: scroll;
-  & > li > span:nth-child(2) {
-    flex: 1.5;
-  }
-
-  & > li > span:nth-child(3) {
-    flex: 1;
-    text-align: center;
-  }
-
-  & > li > span:nth-child(4) {
-    flex: 1;
-  }
-
-  & > li > span:nth-child(5) {
-    flex: 1.5;
-  }
-
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
   &::-webkit-scrollbar {
     width: 5px;
+    height: 10px;
     background-color: ${({ theme }) => theme.color.lightBeige};
   }
   &::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.color.lightBrown};
     border-radius: 5px;
-  }
+  } 
 `;
 
 export const SearchResultListItem = styled.li`

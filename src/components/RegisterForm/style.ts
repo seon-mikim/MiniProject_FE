@@ -1,35 +1,77 @@
 import styled from 'styled-components';
-
-export const signUpButton = styled.button`
-  position: absolute;
-  width: 400px;
-  height: 64px;
-  left: 795px;
-  top: 842px;
-
-  background: #5e463c;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
+import theme from '../../styles/theme';
+export const RegisterPageContainer = styled.div`
+  display: flex;
+  height: 100vh;
 `;
-
-export const Input = styled.input<{ top: string }>`
-  position: absolute;
-  width: 400px;
-  height: 49px;
-  left: 795px;
-  top: ${(props) => props.top};
-  background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
+export const LogoContainer = styled.img`
+  width: 480px;
+  background: ${theme.color.brown};
+  padding: 140px;
+  box-sizing: border-box;
 `;
-
+export const RegisterForm = styled.form`
+  width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const RegisterTag = styled.h1`
+  margin-top: 80px;
+  font-size: 40px;
+  text-align: center;
+  font-weight: ${theme.fontWeight.bold};
+  color: ${theme.color.brown};
+`;
 export const ImgStyle = styled.img`
-  position: absolute;
   width: 170px;
   height: 170px;
-  left: 910px;
-  top: 207px;
-  background: #fffcfc;
+  margin-top: 45px;
+  background: ${theme.color.white};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
+`;
+
+export const Input = styled.input`
+  width: 400px;
+  height: 49px;
+  margin-top: 25px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  font-weight: ${theme.fontWeight.bold};
+  font-size: 18px;
+  border: none;
+  padding-left: 10px;
+  &:focus {
+    outline: none;
+  }
+`;
+export const ImgSelection = styled.input`
+  margin-top: 25px;
+  font-size: 18px;
+  padding-left: 100px;
+  color: ${theme.color.lightBrown};
+  border: none;
+  padding-left: 10px;
+  &:focus {
+    outline: none;
+  }
+`;
+export const signUpButton = styled.button`
+  width: 400px;
+  height: 64px;
+  margin-top: 25px;
+  background: ${theme.color.brown};
+  color: ${theme.color.white};
+  font-weight: ${theme.fontWeight.bold};
+  font-size: 24px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  border: none;
+`;
+
+export const ErrorMessage = styled.p`
+  margin-top: 15px;
+  color: red;
+  font-size: 15px;
 `;

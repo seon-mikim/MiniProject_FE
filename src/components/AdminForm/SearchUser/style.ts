@@ -1,7 +1,7 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const Section = styled.section`
-  max-width: 600px;
+  height: 70vh;
   background-color: ${(props) => props.theme.color.beige};
   display: flex;
   flex-direction: column;
@@ -21,6 +21,11 @@ export const Divider = styled.div`
   margin: 2px 0;
 `;
 
+export const TabContainer = styled.div`
+  display: flex;
+  gap: 10px;
+`
+
 export const SearchArea = styled.div`
   display: flex;
   align-items: center;
@@ -29,52 +34,36 @@ export const SearchArea = styled.div`
   font-size: ${({ theme }) => theme.fontSize.small};
 `;
 
-export const SearchResultContainer = styled.div`
-  height: 500px;
-  overflow-y: hidden;
-  & ul {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
 
-    & > li {
-      display: flex;
-      align-items: center;
-      border-radius: 8px;
-    }
-  }
-`;
-
-const loadingAnimation = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: -400% 50%;
-  }
-`;
-
-export const SkeletonUI = styled.div`
-  width: inherit;
-  height: inherit;
-  border-radius: 8px;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.color.lightBrown} 35%,
-    ${({ theme }) => theme.color.lightBeige} 50%,
-    ${({ theme }) => theme.color.lightBrown} 85%
-  );
-  background-size: 400% 100%;
-  filter: opacity(15%);
-  animation: ${loadingAnimation} 3s infinite;
-`;
 
 export const SearchNotFound = styled.div`
   width: inherit;
   height: inherit;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const PaginationContainer = styled.div`
-  text-align: center;
+  & .pagination-ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    & li {
+      color: ${({ theme }) => theme.color.lightBrown};
+      cursor: pointer;
+
+    }
+    & li.currentPage {
+      color: ${({ theme }) => theme.color.darkBrown};
+      border-bottom: 1px solid ${({ theme }) => theme.color.darkBrown};
+    }
+    & li.pageLabel-btn.disabled {
+      color: ${({ theme }) => theme.color.lightBrown};
+    }
+    & li.pageLabel-btn {
+      color: ${({ theme }) => theme.color.darkBrown};
+    }
+  }
 `
+

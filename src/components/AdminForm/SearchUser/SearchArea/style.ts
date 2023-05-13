@@ -18,6 +18,7 @@ export const SearchFilter = styled.select`
   border-radius: 5px;
   font-weight: inherit;
   text-align: center;
+  filter: drop-shadow(0 0 1px grey);
 
   & > option {
     text-align: start;
@@ -41,6 +42,7 @@ export const SearchInput = styled.input.attrs<SearchInputProps>((props) => ({
   border: none;
   font-weight: inherit;
   font-size: inherit;
+  filter: drop-shadow(0 0 1px grey);
   &:focus {
     outline: unset;
   }
@@ -92,7 +94,7 @@ export const filteredPreviewContainer = styled.div`
   right: 0;
   font-size: inherit;
   min-width: 300px;
-
+  filter: drop-shadow(0 0 1px grey);
   & > ul > li:last-child {
     border-bottom: none;
   

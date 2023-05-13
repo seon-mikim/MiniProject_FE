@@ -5,7 +5,7 @@ import { AuthUser, Role } from '../interface/User';
 export const INITIAL_VALUE: AuthUser = {
   id: 0,
   username: '',
-  img: '',
+  imageUri: '',
   email: '',
   role: Role.UNDETERMINED,
   createAt: ''
