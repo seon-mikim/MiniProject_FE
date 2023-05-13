@@ -67,11 +67,13 @@ function MyInfo({username, email, phone, imageUri, role}:
   }
   
   return (
-    <div>
-      <span>My Info</span>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <img src={src.current ? URL.createObjectURL(src.current) : imageUri} />
+    <S.backgroundDiv>
+      <S.titleSpan>My Info</S.titleSpan>
+      <S.flexForm onSubmit={handleSubmit(onSubmit)}>
+        <S.imgSectionDiv>
+          <S.wrapperDiv>
+            <img src={src.current ? URL.createObjectURL(src.current) : imageUri} />
+          </S.wrapperDiv>
           <label htmlFor='imageChange'>이미지 변경</label>
           <input type='file' 
             accept='image/*' 
@@ -81,16 +83,16 @@ function MyInfo({username, email, phone, imageUri, role}:
                 onChange: (e: any) => isImage(e.target.value),
               }
             )}/>
-        </div>
-        <div>
-          <div>
-            <span>직급</span>
+        </S.imgSectionDiv>
+        <S.formDiv>
+          <S.formListDiv>
+            <label>직급</label>
             <span>{role === 'USER' ? '사원':'관리자'}</span>
-          </div>
-          <div>
-            <span>이메일</span><span>{email}</span>
-          </div>
-          <div>
+          </S.formListDiv>
+          <S.formListDiv>
+            <label>이메일</label><span>{email}</span>
+          </S.formListDiv>
+          <S.formListDiv>
             <label>이름</label>
             <input {...register('username', {
               required: true,
@@ -100,8 +102,8 @@ function MyInfo({username, email, phone, imageUri, role}:
               && <p>이름을 입력해주세요!</p>}
             {errors.username && errors.username.type === 'minLength'
               && <p>2자 이상 입력해주세요!</p>}
-          </div>
-          <div>
+          </S.formListDiv>
+          <S.formListDiv>
             <label>연락처</label>
             <input placeholder='010-****-****'{...register('phone', {
               required: 'true',
@@ -111,8 +113,8 @@ function MyInfo({username, email, phone, imageUri, role}:
               && <p>연락처를 입력해주세요!</p>}
             {errors.phone && errors.phone.type === 'pattern'
               && <p>010-****-**** 형식으로 입력해주세요!</p>}
-          </div>
-          <div>
+          </S.formListDiv>
+          <S.formListDiv>
             <label>비밀번호</label>
             <input type='password' placeholder='문자, 숫자, 기호를 모두 포함 8자 이상'
             {...register('password', {
@@ -126,10 +128,11 @@ function MyInfo({username, email, phone, imageUri, role}:
               && <p>8자 이상 입력해주세요!</p>}
             {errors.password && errors.password.type === 'pattern'
               && <p>문자, 숫자, 기호를 모두 포함하여 입력해주세요!</p>}
-          </div>
-          <div>
+          </S.formListDiv>
+          <S.formListDiv>
             <label>비밀번호 확인</label>
-            <input type='password' {...register('passwordCheck', {
+            <input type='password' placeholder='문자, 숫자, 기호를 모두 포함 8자 이상'
+            {...register('passwordCheck', {
               required: 'true',
               minLength: 8,
               pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*\W)(?!.*\s).{8,}$/,
@@ -143,11 +146,11 @@ function MyInfo({username, email, phone, imageUri, role}:
               && <p>문자, 숫자, 기호를 모두 포함하여 입력해주세요!</p>}
             {errors.passwordCheck && errors.passwordCheck.type === 'validate'
               && <p>비밀번호가 일치하지 않습니다!</p>}
-          </div>
-        </div>  
-        <button type='submit'>정보 수정</button>
-      </form>
-    </div>
+          </S.formListDiv>
+        </S.formDiv>  
+        <S.changeButton type='submit'>정보 수정</S.changeButton>
+      </S.flexForm>
+    </S.backgroundDiv>
   )
 }
 
