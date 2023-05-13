@@ -1,5 +1,6 @@
 // import theme from "../../../../../styles/theme";
 import styled from "styled-components";
+import theme from "../../../../../styles/theme";
 
 interface opacityProps {
   opacity: number
@@ -20,4 +21,9 @@ export const flexColumnDiv = styled.div<opacityProps>`
     width: 100%;
     text-decoration: none;
   }
+`
+export const annualCountSpan = styled.span<opacityProps>`
+  color: ${theme.color.white};
+  margin-bottom: 0.3rem;
+  pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
 `

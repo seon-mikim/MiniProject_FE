@@ -13,9 +13,9 @@ export interface User {
 }
 
 export interface UserHeaderProfile {
-  username: string,
-  email: string,
-  thumbnailUri?: string
+  username: string | undefined,
+  email: string | undefined,
+  thumbnailUri?: string | undefined
 }
 
 export interface UserMyInfo {
