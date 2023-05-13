@@ -1,7 +1,6 @@
 import { Button } from '../Button/style';
 import * as S from './style';
 
-
 interface ConfirmModalProps {
   title: string;
   subTitle: string;
@@ -20,19 +19,21 @@ function ConfirmModal({ title, subTitle, textContent, onConfirm, onCancel }: Con
   };
 
   return (
-    <S.ConfirmModalContainer>
-      <S.ConfirmModalTitle>{title}</S.ConfirmModalTitle>
-      <S.ConfirmModalSubTitle>{subTitle}</S.ConfirmModalSubTitle>
-      <S.ConfirmModalText>{textContent}</S.ConfirmModalText>
-      <S.ConfirmModalButtonContainer>
-        <Button size="md" variant="darkBrown" onClick={handleConfirm}>
-          확인
-        </Button>
-        <Button size="md" variant="lightBrown" onClick={handleCancel}>
-          취소
-        </Button>
-      </S.ConfirmModalButtonContainer>
-    </S.ConfirmModalContainer>
+    <S.ConfirmModalOuter>
+      <S.ConfirmModalContainer>
+        <S.ConfirmModalTitle>{title}</S.ConfirmModalTitle>
+        <S.ConfirmModalSubTitle>{subTitle}</S.ConfirmModalSubTitle>
+        <S.ConfirmModalText>{textContent}</S.ConfirmModalText>
+        <S.ConfirmModalButtonContainer>
+          <Button size="md" variant="darkBrown" onClick={handleConfirm}>
+            확인
+          </Button>
+          <Button size="md" variant="lightBrown" onClick={handleCancel}>
+            취소
+          </Button>
+        </S.ConfirmModalButtonContainer>
+      </S.ConfirmModalContainer>
+    </S.ConfirmModalOuter>
   );
 }
 

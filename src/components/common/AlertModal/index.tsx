@@ -1,16 +1,17 @@
+import { ReactNode } from 'react';
 import { Button } from '../Button/style';
 import * as S from './style';
 
 
 interface AlertModalProps {
-  onComfirmClick: () => void;
-  title: string;
-  message: string;
+  onConfirmClick: () => void;
+  title?: string;
+  message?: ReactNode;
 }
 
-function AlertModal({ title, message, onComfirmClick }: AlertModalProps) {
+function AlertModal({ title, message, onConfirmClick }: AlertModalProps) {
   const handleClick = () => {
-    onComfirmClick();
+    onConfirmClick();
   };
 
   return (

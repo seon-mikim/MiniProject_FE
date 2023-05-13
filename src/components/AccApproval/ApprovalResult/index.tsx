@@ -1,61 +1,69 @@
-import React, { useState } from 'react'
-import { useQuery } from 'react-query'
-import { searchUser } from '../../../api/Admin/SearchUser'
-import { AuthUser } from '../../../interface/User'
-import ListItem from '../../common/ListItem'
+import { useState } from 'react';
+import { AuthUser, Role } from '../../../interface/User';
+import ListItem from '../../common/ListItem';
+import { useQuery } from 'react-query';
+import { getApprovedAcc } from '../../../api/Admin/accApproval';
+import ReactPaginate from 'react-paginate';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { SkeletonUI } from '../../common/SkeletonUI/style';
+import * as S from '../style';
+import { formatDate } from '../../../utils/helpers';
 
 function ApprovalResult() {
-  const [approvedList, setApprovedList] = useState<AuthUser[]>([])
-  // const { status } = useQuery(['admin','auth','users'], searchUser, {
-  //   onSuccess: (data) => {
-  //     setApprovedList(data)
-  //   }
-  // })
+  const [approvedList, setApprovedList] = useState<AuthUser[]>([]);
+  const [page, setPage] = useState<number>(0);
 
-  // if (status === 'loading') return <>로딩중</>;
-  // if (status === 'error') return <>요청 실패</>;
+  const { status, data } = useQuery({
+    queryKey: ['admin', 'approvedAcc', page],
+    queryFn: () => getApprovedAcc(page),
+    keepPreviousData: true,
+    onSuccess: (response) => {
+      setApprovedList(response.content);
+      console.log(response);
+    },
+  });
+
+  type PageChangeEventData = {
+    selected: number;
+  };
+
+  const handlePageClick = (event: PageChangeEventData) => {
+    setPage(event.selected);
+  };
 
   return (
-    <div>
-    {approvedList &&
-      approvedList.map((listItem: AuthUser, index: number) => (
-        <ListItem
-          key={index}
-          imageURI="./default_profile.png"
-          username={listItem.username}
-          email={listItem.email}
-          textContent={[`${listItem.role}`, `${listItem.createAt}`]}
+    <>
+      <S.ListContainer>
+        {status === 'loading' && <SkeletonUI />}
+        {approvedList &&
+          approvedList.map((listItem: AuthUser, index: number) => (
+            <ListItem
+              key={index}
+              imageUri={listItem.imageUri}
+              username={listItem.username}
+              email={listItem.email}
+              textContent={[
+                <span>{listItem.role === Role.ADMIN ? '관리자' : '사원'}</span>,
+                <span>입사일: {formatDate(listItem.createAt)}</span>,
+              ]}
+            />
+          ))}
+      </S.ListContainer>
+      <S.PaginationContainer>
+        <ReactPaginate
+          pageCount={data?.totalPages}
+          pageRangeDisplayed={10}
+          previousLabel={<HiChevronLeft />}
+          nextLabel={<HiChevronRight />}
+          onPageChange={handlePageClick}
+          containerClassName={'pagination-ul'}
+          activeClassName={'currentPage'}
+          previousClassName={'pageLabel-btn'}
+          nextClassName={'pageLabel-btn'}
         />
-      ))}
-  </div>
-  )
+      </S.PaginationContainer>
+    </>
+  );
 }
 
-export default ApprovalResult
-
-// const {
-//   data,
-//   fetchNextPage,
-//   hasNextPage,
-//   isFetching,
-//   isFetchingNextPage,
-//   isError,
-// } = useInfiniteQuery('myData', fetchData, {
-//   getNextPageParam: (lastPage, allPages) => lastPage.nextPage,
-// });
-
-// const handleScroll = () => {
-//   if (
-//     window.innerHeight + window.scrollY >=
-//       document.body.scrollHeight - 10 &&
-//     hasNextPage &&
-//     !isFetchingNextPage
-//   ) {
-//     fetchNextPage();
-//   }
-// };
-
-// useEffect(() => {
-//   window.addEventListener('scroll', handleScroll);
-//   return () => window.removeEventListener('scroll', handleScroll);
-// }, [handleScroll]);
+export default ApprovalResult;

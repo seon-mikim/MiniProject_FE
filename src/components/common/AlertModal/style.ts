@@ -31,5 +31,9 @@ export const AlertModalTitle = styled.span`
 
 `;
 export const AlertModalMessage = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   font-size: ${({ theme }) => theme.fontSize.base};
 `;

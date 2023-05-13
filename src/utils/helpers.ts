@@ -13,3 +13,8 @@ export function formatDate(date: string) {
   const dateObj = new Date(date);
   return dateObj.toLocaleDateString();
 }
+
+export function handleImageError(event: React.SyntheticEvent<HTMLImageElement>) {
+  event.currentTarget.onerror = null;
+  event.currentTarget.src = './default_profile.png';
+}
