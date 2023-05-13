@@ -9,6 +9,7 @@ export const SearchResultList = styled.ul`
 
   &::-webkit-scrollbar {
     width: 5px;
+    height: 10px;
     background-color: ${({ theme }) => theme.color.lightBeige};
   }
   &::-webkit-scrollbar-thumb {

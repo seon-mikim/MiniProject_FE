@@ -10,9 +10,10 @@ const loadingAnimation = keyframes`
 `;
 
 export const SkeletonUI = styled.div`
-  width: inherit;
-  height: inherit;
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
+  flex-grow: 1;
   background: linear-gradient(
     135deg,
     ${({ theme }) => theme.color.lightBrown} 35%,
