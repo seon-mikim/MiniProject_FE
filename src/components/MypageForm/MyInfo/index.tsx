@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
-import { User } from '../../../interface/User'
+import { User, setMyinfoData } from '../../../interface/User'
 import * as S from './style'
 import { useForm } from 'react-hook-form'
+import { modifyInDTOType } from '../../../interface/User'
+import { useMutation, useQueryClient } from 'react-query'
+import { setMyInfo } from '../../../api/mypage'
 
 interface mypageForm {
   username: string,
@@ -13,7 +16,13 @@ interface mypageForm {
 
 function MyInfo({username, email, phone, imageUri, role}: 
   {username: string | undefined, email: string | undefined, phone: string | undefined, imageUri: string | undefined, role: string | undefined}) {
-  
+  const queryClient = useQueryClient()
+  const { mutate, isLoading, error } = useMutation(setMyInfo, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('myinfo')
+    }
+  })
+
   const { register, watch, handleSubmit, resetField, formState: { errors} } = useForm({
     defaultValues: {
       username: username,
@@ -27,12 +36,13 @@ function MyInfo({username, email, phone, imageUri, role}:
   const src = useRef<any>()
   src.current = watch('imageChange')[0]
 
-  const onValid = (data: any) => console.log(data, 'onValid')
-  const onInvalid = (data: any) => console.log(data, 'onInvalid')
+  // const onValid = (data: any) => console.log(data, 'onValid')
+  // const onInvalid = (data: any) => console.log(data, 'onInvalid')
 
   const isImage = (filetype: string) => {
+    console.log(typeof(filetype))
     const form = /(.*?)\.(jpg|jpeg|gif|bmp|png)$/
-    if(!filetype.match(form)){
+    if(!filetype.match(form) && filetype !== ''){
       window.alert('이미지 파일만 업로드 가능합니다!')
       resetField('imageChange')
     }
@@ -40,11 +50,26 @@ function MyInfo({username, email, phone, imageUri, role}:
 
   const password = useRef<any>()
   password.current = watch('password')
+
+  const onSubmit = (data: any) => {
+    console.log(data)
+    
+    const modifyInDTO: modifyInDTOType = {
+      username: data.username,
+      password: data.password,
+      phone: data.phone
+    }
+    const setMyInfoData: setMyinfoData = {
+      image: data.imageChange === '' ? null : data.imageChange[0],
+      modifyInDTO
+    }
+    mutate(setMyInfoData)
+  }
   
   return (
     <div>
       <span>My Info</span>
-      <form onSubmit={handleSubmit(onValid, onInvalid)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <img src={src.current ? URL.createObjectURL(src.current) : imageUri} />
           <label htmlFor='imageChange'>이미지 변경</label>
@@ -55,7 +80,7 @@ function MyInfo({username, email, phone, imageUri, role}:
               {
                 onChange: (e: any) => isImage(e.target.value),
               }
-              )}/>
+            )}/>
         </div>
         <div>
           <div>

@@ -26,6 +26,17 @@ export interface UserMyInfo {
   role : string,
 }
 
+export interface modifyInDTOType {
+  username: string,
+  phone: string,
+  password: string
+}
+
+export interface setMyinfoData {
+  image?: File,
+  modifyInDTO: modifyInDTOType
+}
+
 /**
  * Defines Role of User
  *
