@@ -8,13 +8,22 @@ export interface User {
   role : string,
   status: boolean,
   createdAt : string,
-  updatedAt : string
+  updatedAt : string,
+  annualCount: number
 }
 
 export interface UserHeaderProfile {
   username: string,
   email: string,
   thumbnailUri?: string
+}
+
+export interface UserMyInfo {
+  username : string,
+  email: string,
+  phone: string,
+  imageUri?: string,
+  role : string,
 }
 
 export enum Role {
