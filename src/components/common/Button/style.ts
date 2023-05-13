@@ -63,7 +63,31 @@ const ButtonComponent = styled.button<ButtonProps>`
       case 'lg':
         return '100%';
       default:
-        return 'auto';
+        return 'fit-content';
+    }
+  }};
+  padding: ${(props) => {
+    switch (props.size) {
+      case 'sm':
+        return '5px 20px';
+      // case 'md':
+      //   return '50%';
+      // case 'lg':
+      //   return '100%';
+      default:
+        return '10px 35px';
+    }
+  }};
+  font-size: ${(props) => {
+    switch (props.size) {
+      case 'sm':
+        return props.theme.fontSize.small;
+      // case 'md':
+      //   return '50%';
+      // case 'lg':
+      //   return '100%';
+      default:
+        return props.theme.fontSize.base;
     }
   }};
 

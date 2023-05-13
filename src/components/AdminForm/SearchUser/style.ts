@@ -21,6 +21,11 @@ export const Divider = styled.div`
   margin: 2px 0;
 `;
 
+export const TabContainer = styled.div`
+  display: flex;
+  gap: 10px;
+`
+
 export const SearchArea = styled.div`
   display: flex;
   align-items: center;

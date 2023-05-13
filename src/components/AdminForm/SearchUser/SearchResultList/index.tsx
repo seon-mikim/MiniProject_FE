@@ -1,4 +1,4 @@
-import { useContext, useCallback } from 'react';
+import { useContext } from 'react';
 
 import * as S from './style';
 import { AuthUser, Role } from '../../../../interface/User';

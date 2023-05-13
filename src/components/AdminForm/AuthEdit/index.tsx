@@ -173,7 +173,7 @@ function AuthEdit() {
         </S.AuthControlContainer>
 
         {/* 저장 누르면 useMutate=> invalidateuqery로 userList 업데이트 */}
-        <Button onClick={handleSaveClick}>{isLoading ? <CircularLoadingProgress /> : '저장하기'}</Button>
+        <Button size="lg" onClick={handleSaveClick}>{isLoading ? <CircularLoadingProgress /> : '저장하기'}</Button>
         {/* <Button onClick={handleSaveClick}> <S.CircularLoadingProgress /> </Button> */}
       </S.AuthEditSection>
     </>
