@@ -13,7 +13,7 @@ const ButtonComponent = styled.button<ButtonProps>`
   box-sizing: border-box;
   border-radius: 8px;
   border: none;
-  transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.1s ease-in;
   font-weight: ${(props) => props.theme.fontWeight.dark};
   font-size: ${(props) => props.theme.fontSize.base};
 

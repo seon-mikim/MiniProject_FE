@@ -28,7 +28,7 @@ export const AnnualSection = styled.div`
   font-size: ${({ theme }) => theme.fontSize.large};
   position: relative;
   margin-left:20px;
-  padding: 40px;
+  padding: 30px;
   .active{
     background-color:${({ theme }) => theme.color.beige};
   }
@@ -44,7 +44,7 @@ export const WorkTab = styled.button`
   left: 100px;
 `;
 
-export const Form = styled.form`
+export const Form = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -74,46 +74,6 @@ export const Form = styled.form`
     background-color:${({ theme }) => theme.color.beige};
   }
 `;
-
-export const Label = styled.label`
-  color: ${({ theme }) => theme.color.darkBrown};
-  font-weight:700;
-`
-
-export const StyledDatePicker = styled(DatePicker)`
-  box-sizing: border-box;
-  height: 40px;
-  border: none;
-  line-height: 100%;
-  background-color: #fff;
-  margin: 10px 0 20px 0;
-  padding: 0 15px;
-  font-size: ${({ theme }) => theme.fontSize.large};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  color: ${({ theme }) => theme.color.darkBrown};
-  font-weight: 400;
-  &:focus{
-    outline:none;
-  }
-`;
-
-export const Input = styled.input`
-  box-sizing:border-box;
-  width:100%;
-  height: 40px;
-  border: none;
-  padding: 0 15px;
-  font-size: ${({ theme }) => theme.fontSize.large};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  color: ${({ theme }) => theme.color.darkBrown};
-  font-weight: 400;
-  margin:10px 0 20px 0;
-  &:focus{
-    outline:none;
-  }
-`
 
 export const FormBtn = styled.button`
   width:100%;
