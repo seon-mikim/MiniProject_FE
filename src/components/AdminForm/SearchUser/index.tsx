@@ -15,7 +15,7 @@ const initialValue: SearchUserParams = {
   keyword: '',
 };
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 10;
 
 function SearchUser() {
   const [filteredList, setFilteredList] = useState<AuthUser[]>([]);
@@ -42,17 +42,17 @@ function SearchUser() {
   React.useEffect(() => {
     if (!isPreviousData && data?.last !== true) {
       queryClient.prefetchQuery({
-        queryKey: ['admin', 'search', searchParams,  page + 1],
-        queryFn: () => searchUser({ size: PAGE_SIZE, type: searchParams.type, keyword: searchParams.keyword, page: page + 1 }),
+        queryKey: ['admin', 'search', searchParams, page + 1],
+        queryFn: () =>
+          searchUser({ size: PAGE_SIZE, type: searchParams.type, keyword: searchParams.keyword, page: page + 1 }),
       });
     }
   }, [page, queryClient, isPreviousData, data]);
 
   const onSearchClick = ({ type, keyword }: SearchUserParams) => {
     setSearchParams({ type, keyword });
-    
+    setPage(0);
   };
-
 
   type PageChangeEventData = {
     selected: number;
@@ -74,15 +74,15 @@ function SearchUser() {
 
       {/* search result area */}
 
-        {status === 'loading' && <SkeletonUI />}
-        {!(status === 'loading') && (filteredList?.length === 0 || !filteredList) ? (
-          <S.SearchNotFound>
-            <span>검색 결과가 없습니다.</span>
-          </S.SearchNotFound>
-        ) : (
-          <SearchResultList isPreview={false} searchResult={filteredList} />
-        )}
-  
+      {status === 'loading' && <SkeletonUI />}
+      {status === 'success' && filteredList.length === 0 && (
+        <S.SearchNotFound>
+          <span>검색 결과가 없습니다.</span>
+        </S.SearchNotFound>
+      )}
+      {status === 'success' && filteredList.length > 0 && (
+        <SearchResultList isPreview={false} searchResult={filteredList} />
+      )}
 
       <S.PaginationContainer style={{ width: '100%' }}>
         <ReactPaginate

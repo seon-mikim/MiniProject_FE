@@ -64,12 +64,12 @@ export const TextContent = styled.div<TextContentProps>`
   font-size: ${({ theme }) => theme.fontSize.base};
 
   & > * {
-    max-width: 220px;
+    max-width: 280px;
     max-height: 82px;
     text-overflow: ellipsis;
     overflow-y: hidden;
     word-wrap: break-word;
-    white-space: normal;
+    white-space: nowrap;
   }
 `;
 

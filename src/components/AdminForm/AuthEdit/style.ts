@@ -40,12 +40,13 @@ export const TextContent = styled.p`
 `;
 
 export const SelectedUserImg = styled.img`
-  width: 80px;
+  width: 110px;
   aspect-ratio: 1/1;
   right: 20px;
   top: 20px;
   position: absolute;
   border-radius: 50%;
+  object-fit: cover;
 `;
 
 export const AuthControlContainer = styled.div`

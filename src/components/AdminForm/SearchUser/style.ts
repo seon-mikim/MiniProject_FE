@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const Section = styled.section`
   height: 70vh;
@@ -34,7 +34,9 @@ export const SearchArea = styled.div`
 export const SearchNotFound = styled.div`
   width: inherit;
   height: inherit;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const PaginationContainer = styled.div`

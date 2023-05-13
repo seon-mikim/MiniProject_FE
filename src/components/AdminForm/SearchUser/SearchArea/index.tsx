@@ -32,6 +32,7 @@ function SearchArea({ onSearchClick }: searchInputProps) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setSearchParameters((prev) => ({ ...prev, [name]: value }));
+    console.log(searchParameters)
   };
 
   const handleSearchIconBtnClick = () => {
@@ -90,7 +91,7 @@ function SearchArea({ onSearchClick }: searchInputProps) {
   return (
     <S.SearchInputArea onChange={handleChange}>
       {/* search options */}
-      <S.SearchFilter name="filter">
+      <S.SearchFilter name="type">
         <option value={SearchType.USERNAME} defaultChecked>
           이름
         </option>
