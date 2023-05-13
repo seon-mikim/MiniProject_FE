@@ -16,18 +16,20 @@ function AdminAccApprovalPage() {
   };
   return (
     <>
-      <S.Section className='content'>
-        <S.SectionHeader>계정 승인 현황</S.SectionHeader>
-        <S.Divider />
-        <S.TapMenus>
-          <Button variant={tapToPending ? 'lightBrown' : 'darkBrown'} onClick={handleToPending}>
-            대기
-          </Button>
-          <Button variant={!tapToPending ? 'lightBrown' : 'darkBrown'} onClick={handleToResult}>
-            승인
-          </Button>
-        </S.TapMenus>
-        <S.ListContainer>{tapToPending ? <ApprovalPending /> : <ApprovalResult />}</S.ListContainer>
+      <S.Section className="content">
+        <S.SectionHeaderWrapper>
+          <S.SectionHeader>계정 승인 현황</S.SectionHeader>
+          <S.Divider />
+          <S.TapMenus>
+            <Button variant={tapToPending ? 'lightBrown' : 'darkBrown'} onClick={handleToPending}>
+              대기
+            </Button>
+            <Button variant={!tapToPending ? 'lightBrown' : 'darkBrown'} onClick={handleToResult}>
+              승인
+            </Button>
+          </S.TapMenus>
+        </S.SectionHeaderWrapper>
+        {tapToPending ? <ApprovalPending /> : <ApprovalResult />}
       </S.Section>
     </>
   );

@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  width: 80vw;
-  height: 80vh;
-  flex-direction: column;
+  width: 65vw;
+  height: 70vh;
   background-color: ${({ theme }) => theme.color.beige};
   border-radius: 8px;
+
+  box-sizing: border-box;
+`;
+
+export const SectionHeaderWrapper = styled.div`
+  width: 100%;
 `;
 
 export const SectionHeader = styled.h2`
@@ -27,9 +32,3 @@ export const TapMenus = styled.div`
   }
 `;
 
-export const ListContainer = styled.div`
-  padding: 20px 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;

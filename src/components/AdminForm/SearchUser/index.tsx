@@ -30,8 +30,6 @@ function SearchUser() {
     keepPreviousData: true,
     onSuccess: (data) => {
       setFilteredList(data.content);
-      // console.log(data.content);
-      // console.log(queryClient.getQueriesData(['admin', 'search']));
     },
   });
 
@@ -51,7 +49,6 @@ function SearchUser() {
   }, [page, queryClient, isPreviousData, data]);
 
   const onSearchClick = ({ type, keyword }: SearchUserParams) => {
-    console.log(type, keyword)
     setSearchParams({ type, keyword });
     
   };
@@ -73,10 +70,10 @@ function SearchUser() {
       {/* search input area */}
 
       <SearchArea onSearchClick={onSearchClick} />
-      <S.Divider />
+      {/* <S.Divider /> */}
 
       {/* search result area */}
-      <S.SearchResultContainer>
+
         {status === 'loading' && <SkeletonUI />}
         {!(status === 'loading') && (filteredList?.length === 0 || !filteredList) ? (
           <S.SearchNotFound>
@@ -85,7 +82,7 @@ function SearchUser() {
         ) : (
           <SearchResultList isPreview={false} searchResult={filteredList} />
         )}
-      </S.SearchResultContainer>
+  
 
       <S.PaginationContainer style={{ width: '100%' }}>
         <ReactPaginate
