@@ -2,23 +2,22 @@ import styled from 'styled-components';
 import theme from '../../styles/theme';
 export const RegisterPageContainer = styled.div`
   display: flex;
-  width: 1440px;
-  height: 1024px;
+  height: 100vh;
 `;
 export const LogoContainer = styled.img`
   width: 480px;
-  height: 1024px;
   background: ${theme.color.brown};
+  padding: 140px;
+  box-sizing: border-box;
 `;
 export const RegisterForm = styled.form`
+  width: 100%; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 960px;
-  height: 1024px;
 `;
 export const RegisterTag = styled.h1`
-  margin-top: 120px;
+  margin-top: 80px;
   font-size: 40px;
   text-align: center;
   font-weight: ${theme.fontWeight.bold};
@@ -41,12 +40,22 @@ export const Input = styled.input`
   border-radius: 8px;
   font-weight: ${theme.fontWeight.bold};
   font-size: 18px;
+  border: none;
+  padding-left: 10px;
+  &:focus {
+    outline: none;
+  }
 `;
 export const ImgSelection = styled.input`
   margin-top: 25px;
   font-size: 18px;
   padding-left: 100px;
   color: ${theme.color.lightBrown};
+  border: none;
+  padding-left: 10px;
+  &:focus {
+    outline: none;
+  }
 `;
 export const signUpButton = styled.button`
   width: 400px;
@@ -58,6 +67,7 @@ export const signUpButton = styled.button`
   font-size: 24px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+  border: none;
 `;
 
 export const ErrorMessage = styled.p`

@@ -3,20 +3,19 @@ import theme from '../../styles/theme';
 
 export const ErrorPageContainer = styled.div`
   display: flex;
-  width: 1440px;
-  height: 1024px;
+  height: 100vh;
 `;
 export const LogoContainer = styled.img`
   width: 480px;
-  height: 1024px;
   background: ${theme.color.brown};
+  padding: 140px;
+  box-sizing: border-box;
 `;
 export const ErrorForm = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 960px;
-  height: 1024px;
 `;
 export const ErrorTag = styled.h1`
   margin-top: 300px;
