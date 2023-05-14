@@ -23,6 +23,13 @@ export const gridDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
 
+    align-content: center;
+    justify-content: center;
+
     padding: 1rem;
+  }
+
+  .mypage {
+    gap: 1rem;
   }
 `

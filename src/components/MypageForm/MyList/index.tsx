@@ -6,14 +6,14 @@ function MyList({title, myList}: {title: string, myList: listContent[] | []}) {
 
 
   return (
-    <div>
-      <span>{title}</span>
+    <S.backgroundDiv>
+      <S.titleSpan>{title}</S.titleSpan>
       <div>
         {myList ? myList.map((data: listContent)=>(
           <MyListElement key={data.eventId} myElement={data}/>
           )) : <span>{title}이 없습니다</span>}
       </div>
-    </div>
+    </S.backgroundDiv>
   )
 }
 
