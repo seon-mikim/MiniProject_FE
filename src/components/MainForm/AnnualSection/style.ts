@@ -73,6 +73,15 @@ export const ListWrap = styled.ul`
   }
 `
 
+export const EventBox = styled.div`
+  background-color: ${({ theme }) => theme.color.darkBrown};
+  border-radius: 8px;
+  padding: 8px 20px;
+  color: ${({ theme }) => theme.color.white};
+  font-size: ${({ theme }) => theme.fontSize.base};
+  font-weight: ${({ theme }) => theme.fontWeight.dark};
+`
+
 export const ModalBackground = styled.div`
   position:absolute;
   top:0;
@@ -85,7 +94,7 @@ export const ModalBackground = styled.div`
     position: absolute;
     background-color: #CAB3A3;
     z-index: 99;
-    top:55px;
+    top:20px;
     left:55px;
     right:0;
     bottom:0;

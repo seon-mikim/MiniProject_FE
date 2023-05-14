@@ -14,10 +14,13 @@ export const GlobalStyled = createGlobalStyle`
     background-color:#EBE4DE;
   }
   .rbc-overlay{
-    background-color:skyblue;
+    background-color:#fff;
     z-index: 100;
     .rbc-event{
-      background-color: #fff;
+      background-color: transparent;
+    }
+    .rbc-background-event{
+      background-color: transparent;
       color:#000;
     }
   }

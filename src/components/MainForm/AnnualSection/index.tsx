@@ -1,15 +1,36 @@
-import AnnualList from './AnnualCard';
 import BigCalendar from '../../common/BigCalendar';
 import * as S from './style';
 import { useState } from 'react';
 import moment from 'moment';
+import 'moment/locale/ko';
 import { useQuery } from 'react-query';
 import { getEventList } from '../../../api/mainService';
 import ListItem from '../../common/ListItem';
 
+interface DataItem {
+  eventId: number;
+  eventType: string;
+  startDate: string;
+  endDate: string;
+  userName: string;
+  userEmail: string;
+  userImageUri: string;
+}
+const Day:{[key:string]:string} = {
+  Sunday:'일',
+  Monday:'월',
+  Tuesday:'화',
+  Wednesday:'수',
+  Thursday:'목',
+  Friday:'금',
+  Saturday:'토',
+}
+
 function AnnualSection() {
+  moment.locale('ko');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [type, setType] = useState('ANNUAL');
+
   const today = moment();
   const { data } = useQuery(['eventList', type, today.format('YYYY-MM')], () =>
     getEventList(type, today.format('YYYY-MM')),
@@ -24,6 +45,18 @@ function AnnualSection() {
   const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const { innerText } = e.target as HTMLButtonElement;
     setType(innerText === '연차' ? 'ANNUAL' : 'DUTY');
+  };
+
+  const getDayDiff = (startDate:string, endDate:string) => {
+    const start = moment(startDate);
+    const end = moment(endDate);
+    return end.diff(start, 'days')+1;
+  };
+
+  const getStartAndEndDayOfWeek = (Date:string) => {
+    const DayOfWeek = Day[moment(Date).format('dddd')];
+
+    return DayOfWeek;
   };
 
   return (
@@ -49,17 +82,21 @@ function AnnualSection() {
             당직
           </S.NavButton>
         </S.ButtonWrap>
-        <S.ListWrap >
+        <S.ListWrap>
           {data && data.length !== 0 ? (
-            data.map((item: any) => (
+            data.map((item:DataItem) => (
               <ListItem
                 key={item.eventId}
-                imageUri={item.userImageUri ? item.userImageUri :'./default_profile.png'}
+                gridColRatio="50px 85px auto"
+                imageUri={item.userImageUri}
                 username={item.userName}
                 email={item.userEmail}
                 textContent={[
+                  <S.EventBox>{item.eventType === 'ANNUAL' ? '연차' : '당직'}</S.EventBox>,
+                  <p>{getDayDiff(item.startDate, item.endDate) + '일'}</p>,
                   <p>
-                    {item.startDate} ~ {item.endDate}
+                    {item.startDate} ({getStartAndEndDayOfWeek(item.startDate)}) ~ {item.endDate} (
+                    {getStartAndEndDayOfWeek(item.endDate)})
                   </p>,
                 ]}
               />
