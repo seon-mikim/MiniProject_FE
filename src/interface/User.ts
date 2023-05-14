@@ -37,6 +37,27 @@ export interface setMyinfoData {
   modifyInDTO: modifyInDTOType
 }
 
+export interface listContent {
+  eventId: number,
+  eventType: string,
+  startDate: string,
+  endDate: string,
+  createdAt: string,
+  updatedAt: string | null,
+  orderState: string
+}
+
+export interface eventState {
+  eventId: number,
+  eventType: string,
+  startDate: string,
+  orderState: string
+}
+
+export interface cancelEventType {
+  eventId: number,
+  eventType: string
+}
 /**
  * Defines Role of User
  *
