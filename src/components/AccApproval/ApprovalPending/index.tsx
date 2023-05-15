@@ -22,7 +22,7 @@ function ApprovalPending() {
     queryFn: () => getAccPending(page),
     keepPreviousData: true,
     onSuccess: (response) => {
-      setPendingList(response);
+      setPendingList(response.content);
       setTotalPages(response.totalPages);
     },
   });
