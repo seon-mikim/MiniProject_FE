@@ -2,9 +2,9 @@ import { useContext } from 'react';
 
 import * as S from './style';
 import { AuthUser, Role } from '../../../../interface/User';
-import SelectUserContext from '../../../../contexts/SelectUserContext';
 import ListItem from '../../../common/ListItem';
-
+import { SelectUserDispatchContext } from '../../../../pages/AdminAuthPage';
+import { SET_SELECTED_USER } from '../../../../contexts/selectUserReducer';
 
 interface SearchResultListProps {
   searchResult: AuthUser[];
@@ -12,27 +12,18 @@ interface SearchResultListProps {
 }
 
 function SearchResultList({ searchResult }: SearchResultListProps) {
-  const context = useContext(SelectUserContext)
-  
-  // const handleClick = useCallback(
-  //   (user: AuthUser) => {
-  //     context && context.setSelectedUser(user);
-  //   },
-  //   [context]
-  // );
 
-  const  handleClick = (user: AuthUser) => {
-    if (context) {
-      context.setSelectedUser(user)
-      // console.log(user)
+  const dispatch = useContext(SelectUserDispatchContext);
+  const handleClick = (user: AuthUser) => {
+    if (dispatch) {
+      dispatch({ type: SET_SELECTED_USER, payload: user });
     }
-  }
+  };
 
   return (
     <S.SearchResultList>
       {searchResult &&
         searchResult.map((user, index) => {
-   
           return (
             <ListItem
               key={index}
@@ -54,6 +45,6 @@ function SearchResultList({ searchResult }: SearchResultListProps) {
 export default SearchResultList;
 
 function formatDate(date: string) {
-  const dateObj = new Date(date)
-  return dateObj.toLocaleDateString()
+  const dateObj = new Date(date);
+  return dateObj.toLocaleDateString();
 }

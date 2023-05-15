@@ -1,4 +1,4 @@
-import { EventGetRequest, EventOrderRequest } from "../interface/User";
+import { EventOrderRequest } from "../interface/User";
 import { axiosJsonInstance } from "./axios";
 
 export const eventOrder = async (event: EventOrderRequest) => {

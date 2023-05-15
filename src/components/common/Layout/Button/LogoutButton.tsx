@@ -1,6 +1,6 @@
+import * as S from './style'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
-import * as S from './style'
 
 function LogoutButton({opacity}: {opacity: number}) {
   const [, , removeCookie ] = useCookies(['accessToken'])

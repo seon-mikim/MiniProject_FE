@@ -39,3 +39,9 @@ export const ListContainer = styled.div`
     border-radius: 5px;
   }
 `;
+export const TapMenus = styled.div`
+  padding: 20px 0 0 30px;
+  & button {
+    margin-right: 15px;
+  }
+`;
