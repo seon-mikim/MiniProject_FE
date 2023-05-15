@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const ConfirmModalOuter = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.25);
+`;
+
 export const ConfirmModalContainer = styled.div`
   position: fixed;
   top: 50%;
@@ -30,8 +40,7 @@ export const ConfirmModalTitle = styled.span`
   font-weight: ${({ theme }) => theme.fontWeight.dark};
 `;
 
-export const ConfirmModalSubTitle = styled.span`
-`;
+export const ConfirmModalSubTitle = styled.span``;
 
 export const ConfirmModalText = styled.p`
   font-weight: ${({ theme }) => theme.fontWeight.bold};

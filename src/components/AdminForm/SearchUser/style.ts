@@ -1,7 +1,7 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const Section = styled.section`
-  max-width: 600px;
+  height: 70vh;
   background-color: ${(props) => props.theme.color.beige};
   display: flex;
   flex-direction: column;
@@ -21,6 +21,11 @@ export const Divider = styled.div`
   margin: 2px 0;
 `;
 
+export const TabContainer = styled.div`
+  display: flex;
+  gap: 10px;
+`
+
 export const SearchArea = styled.div`
   display: flex;
   align-items: center;
@@ -29,26 +34,14 @@ export const SearchArea = styled.div`
   font-size: ${({ theme }) => theme.fontSize.small};
 `;
 
-export const SearchResultContainer = styled.div`
-  height: 60vh;
-  overflow-y: hidden;
-  & ul {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
 
-    & > li {
-      display: flex;
-      align-items: center;
-      border-radius: 8px;
-    }
-  }
-`;
 
 export const SearchNotFound = styled.div`
   width: inherit;
   height: inherit;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const PaginationContainer = styled.div`

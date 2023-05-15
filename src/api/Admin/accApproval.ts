@@ -15,8 +15,8 @@ export interface approveAccParams {
   email: string;
 }
 
-export const getAccPending = async () => {
-  const { data } = await axiosJsonInstance.get('/api/admin/signup/list', {
+export const getAccPending = async (page: number) => {
+  const { data } = await axiosJsonInstance.get(`/api/admin/signup/list?size=10&page=${page}`, {
     headers: {
       Authorization: `Bearer ${getCookie('authorization')}`,
     },
@@ -24,16 +24,6 @@ export const getAccPending = async () => {
   const content = data.data.content;
   return content;
 };
-
-// export const getAccApproved = async () => {
-//   const { data } = await axiosJsonInstance.get('/api/admin/signup/list', {
-//     headers: {
-//       Authorization: `Bearer ${getCookie('authorization')}`,
-//     },
-//   });
-//   const content = data.data.content;
-//   return content;
-// };
 
 export const approveAcc = async ({ username, email }: approveAccParams) => {
   const response = await axiosJsonInstance.post(
@@ -46,4 +36,15 @@ export const approveAcc = async ({ username, email }: approveAccParams) => {
   );
   
   return response;
+};
+export const getApprovedAcc = async (page: number) => {
+  const response = await axiosJsonInstance.get(
+    `/api/admin/role/list/sort?size=10&page=${page}`,
+    { headers: {
+        Authorization: `Bearer ${getCookie('accessToken')}`,
+      },
+    },
+  );
+  const data = response.data.data
+  return data;
 };

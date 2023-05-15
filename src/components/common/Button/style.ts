@@ -13,7 +13,7 @@ const ButtonComponent = styled.button<ButtonProps>`
   box-sizing: border-box;
   border-radius: 8px;
   border: none;
-  transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.1s ease-in;
   font-weight: ${(props) => props.theme.fontWeight.dark};
   font-size: ${(props) => props.theme.fontSize.base};
 
@@ -63,7 +63,31 @@ const ButtonComponent = styled.button<ButtonProps>`
       case 'lg':
         return '100%';
       default:
-        return 'auto';
+        return 'fit-content';
+    }
+  }};
+  padding: ${(props) => {
+    switch (props.size) {
+      case 'sm':
+        return '5px 20px';
+      // case 'md':
+      //   return '50%';
+      // case 'lg':
+      //   return '100%';
+      default:
+        return '10px 35px';
+    }
+  }};
+  font-size: ${(props) => {
+    switch (props.size) {
+      case 'sm':
+        return props.theme.fontSize.small;
+      // case 'md':
+      //   return '50%';
+      // case 'lg':
+      //   return '100%';
+      default:
+        return props.theme.fontSize.base;
     }
   }};
 

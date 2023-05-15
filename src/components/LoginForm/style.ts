@@ -2,23 +2,23 @@ import styled from 'styled-components';
 import theme from '../../styles/theme';
 export const LoginPageContainer = styled.div`
   display: flex;
-  width: 1440px;
-  height: 1024px;
+  height: 100vh;
 `;
 export const LogoContainer = styled.img`
   width: 480px;
-  height: 1024px;
+  height: 100%;
+  padding: 140px;
+  box-sizing: border-box;
   background: ${theme.color.brown};
 `;
 export const LoginForm = styled.form`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 960px;
-  height: 1024px;
-`;
+  `;
 export const LoginTag = styled.h1`
-  margin-top: 240px;
+  margin-top: 120px;
   font-size: 40px;
   text-align: center;
   font-weight: ${theme.fontWeight.bold};
@@ -34,9 +34,21 @@ const Input = styled.input`
 `;
 export const emailInput = styled(Input)`
   margin-top: 120px;
+  border:none;
+  padding-left: 10px;
+  box-sizing: border-box;
+  &:focus{
+    outline:none;
+  }
 `;
 export const passwordInput = styled(Input)`
   margin-top: 40px;
+  border:none;
+  padding-left: 10px;
+  box-sizing: border-box;
+  &:focus{
+    outline:none;
+  }
 `;
 const Button = styled.button`
   width: 400px;
@@ -46,6 +58,7 @@ const Button = styled.button`
   color: ${theme.color.white};
   font-weight: ${theme.fontWeight.bold};
   font-size: 24px;
+  border: none;
 `;
 export const LoginButton = styled(Button)`
   margin-top: 120px;

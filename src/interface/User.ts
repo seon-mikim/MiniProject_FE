@@ -92,3 +92,15 @@ export interface AuthUser extends MyUser {
   createAt: string;
   imageUri: string;
 }
+
+export interface EventOrderRequest {
+  eventType: string,
+  startDate: Date,
+  endDate: Date | null,
+  count: number
+}
+
+export interface EventGetRequest {
+  eventType: string,
+  yearMonth: string
+}
