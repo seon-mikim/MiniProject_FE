@@ -7,6 +7,7 @@ export const login = async (user: LoginRequest) => {
   try {
     const { data, headers } = await axiosJsonInstance.post<LoginResponse>('/api/login', user);
     headers.authorization && setCookie('accessToken', headers.authorization.split(' ')[1]);
+    console.log(data)
     return data;
   } catch (error) {
     if (error instanceof AxiosError && error.response?.status === 400) {

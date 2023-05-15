@@ -3,7 +3,7 @@ import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
 const getAxiosInstance = (ContentType: string) => {
   const config: AxiosRequestConfig = {
-    baseURL: '/',
+    baseURL: import.meta.env.VITE_SERVER_URL,
     headers: {
       'Content-type': ContentType,
     },
