@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
 
 function LogoutButton({opacity}: {opacity: number}) {
-  const [,, removeCookie] = useCookies(['accessToken'])
+  const [, , removeCookie ] = useCookies(['accessToken'])
   const navigate = useNavigate()
   const handleClick = () => {
     removeCookie('accessToken')

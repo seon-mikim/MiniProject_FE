@@ -8,15 +8,56 @@ export interface User {
   role : string,
   status: boolean,
   createdAt : string,
-  updatedAt : string
+  updatedAt : string,
+  annualCount: number
 }
 
 export interface UserHeaderProfile {
-  username: string,
-  email: string,
-  thumbnailUri?: string
+  username: string | undefined,
+  email: string | undefined,
+  thumbnailUri?: string | undefined
 }
 
+export interface UserMyInfo {
+  username : string,
+  email: string,
+  phone: string,
+  imageUri?: string,
+  role : string,
+}
+
+export interface modifyInDTOType {
+  username: string,
+  phone: string,
+  password: string
+}
+
+export interface setMyinfoData {
+  image?: File,
+  modifyInDTO: modifyInDTOType
+}
+
+export interface listContent {
+  eventId: number,
+  eventType: string,
+  startDate: string,
+  endDate: string,
+  createdAt: string,
+  updatedAt: string | null,
+  orderState: string
+}
+
+export interface eventState {
+  eventId: number,
+  eventType: string,
+  startDate: string,
+  orderState: string
+}
+
+export interface cancelEventType {
+  eventId: number,
+  eventType: string
+}
 /**
  * Defines Role of User
  *
