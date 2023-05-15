@@ -29,10 +29,10 @@ import { INITIAL_VALUE, RESET_SELECTED_USER } from '../../../reducers/selectUser
  */
 function AuthEdit() {
   // AdminForm 내에서 사용하는 contextAPI, useReducer로 만듬
-  const selectedUserState = useContext(SelectUserStateContext)
-  const selectedUserDispatch = useContext(SelectUserDispatchContext)
+  const selectedUserState = useContext(SelectUserStateContext);
+  const selectedUserDispatch = useContext(SelectUserDispatchContext);
 
-  // search result에서 선택된 유저 상태 관리 
+  // search result에서 선택된 유저 상태 관리
   const [editProfile, setEditProfile] = useState<AuthUser>(INITIAL_VALUE);
 
   // 선택된 유저의 직급 상태 관리
@@ -44,12 +44,10 @@ function AuthEdit() {
   // 알림 및 경고에 사용할 모달의 상태 관리
   const [isAlertModalOpen, setIsAlertModalOpen] = useState<boolean>(false);
 
-
   // 권한 변경사항 저장 응답에 대한 알림 모달 상태 관리
   const [isResponseModalOpen, setIsResponseModalOpen] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<ReactNode>(<></>);
 
-  
   /**
    * mutate 응답 성공 시 -> 선택된 유저 초기화, 검색 결과 캐싱 staleTime 초기화, 응답 알림 모달 메시지 변경
    * mutate 응답 실패 시 -> 응답 알림 모달 메시지 변경
@@ -58,7 +56,7 @@ function AuthEdit() {
   const { mutate, isLoading } = useMutation(updateRole, {
     onSuccess: (response) => {
       if (selectedUserDispatch) {
-        selectedUserDispatch({type: RESET_SELECTED_USER})
+        selectedUserDispatch({ type: RESET_SELECTED_USER });
       }
       queryClient.invalidateQueries(['admin', 'search']);
       setResponseMessage(
@@ -91,7 +89,7 @@ function AuthEdit() {
       return;
     }
     // 저장하고자 하는 권한이 선택된 유저 직급에 영향이 없을 경우 동작 X
-    if ((editProfile.role === Role.ADMIN) === isAdmin){
+    if ((editProfile.role === Role.ADMIN) === isAdmin) {
       return;
     }
 
@@ -108,8 +106,8 @@ function AuthEdit() {
   // 렌더링 후 선택된 유저 변경 감지 및 상태 변경
   useEffect(() => {
     if (selectedUserState) {
-      setEditProfile(selectedUserState)
-      setIsAdmin(selectedUserState.role === Role.ADMIN)
+      setEditProfile(selectedUserState);
+      setIsAdmin(selectedUserState.role === Role.ADMIN);
     }
   }, [selectedUserState]);
 
@@ -131,7 +129,6 @@ function AuthEdit() {
         <AlertModal onConfirmClick={() => setIsResponseModalOpen(false)} message={responseMessage} />
       )}
       <S.AuthEditSection style={{ position: 'relative' }}>
-
         {/* header */}
         <S.AuthEditHeader>관리자 권한 수정</S.AuthEditHeader>
         {/* profile img */}
@@ -142,31 +139,33 @@ function AuthEdit() {
         />
 
         {/* info wrapper subheader > textcontent */}
-        <S.SubHeader>
-          이름 <S.TextContent>{editProfile.username}</S.TextContent>
-        </S.SubHeader>
+        <S.InfoWrapper>
+          <S.SubHeader>
+            이름 <S.TextContent>{editProfile.username}</S.TextContent>
+          </S.SubHeader>
 
-        <S.SubHeader>
-          이메일 <S.TextContent>{editProfile.email}</S.TextContent>
-        </S.SubHeader>
+          <S.SubHeader>
+            이메일 <S.TextContent>{editProfile.email}</S.TextContent>
+          </S.SubHeader>
 
-        <S.SubHeader>
-          권한
-          <S.TextContent>
-            {(() => {
-              switch (editProfile.role) {
-                case Role.ADMIN:
-                  return '관리자';
-                case Role.USER:
-                  return '사원';
-                case Role.UNDETERMINED:
-                  return '';
-                default:
-                  throw new Error('Invalid Role');
-              }
-            })()}
-          </S.TextContent>
-        </S.SubHeader>
+          <S.SubHeader>
+            권한
+            <S.TextContent>
+              {(() => {
+                switch (editProfile.role) {
+                  case Role.ADMIN:
+                    return '관리자';
+                  case Role.USER:
+                    return '사원';
+                  case Role.UNDETERMINED:
+                    return '';
+                  default:
+                    throw new Error('Invalid Role');
+                }
+              })()}
+            </S.TextContent>
+          </S.SubHeader>
+        </S.InfoWrapper>
 
         {/* subheader > radio input 2e */}
         <S.SubHeader>권한 수정 선택</S.SubHeader>
@@ -197,7 +196,9 @@ function AuthEdit() {
         </S.AuthControlContainer>
 
         {/* 저장 누르면 useMutate=> invalidateuqery로 userList 업데이트 */}
-        <Button size="lg" onClick={handleSaveClick}>{isLoading ? <CircularLoadingProgress /> : '저장하기'}</Button>
+        <Button size="lg" onClick={handleSaveClick}>
+          {isLoading ? <CircularLoadingProgress /> : '저장하기'}
+        </Button>
         {/* <Button onClick={handleSaveClick}> <S.CircularLoadingProgress /> </Button> */}
       </S.AuthEditSection>
     </>

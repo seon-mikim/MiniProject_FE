@@ -42,6 +42,8 @@ export const gridDiv = styled.div`
     'nav header'
     'nav content';
 
+  box-sizing:border-box;
+
   nav {
     grid-area: nav;
 
@@ -56,12 +58,6 @@ export const gridDiv = styled.div`
 
   .content {
     grid-area: content;
-    /* display: flex;
-    justify-content: center; */
     padding: 30px 190px;
-    
-    & > * {
-      width: 100%;
-    }
   }
 `;

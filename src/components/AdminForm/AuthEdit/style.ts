@@ -22,6 +22,12 @@ export const AuthEditHeader = styled.span`
   }
 `;
 
+export const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction:column;
+  gap: 25px;
+`
+
 export const SubHeader = styled.h1`
   font-weight: ${({ theme }) => theme.fontWeight.dark};
   `;
@@ -47,6 +53,7 @@ export const SelectedUserImg = styled.img`
   position: absolute;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px dotted rgba(255,255,255,0.5);
 `;
 
 export const AuthControlContainer = styled.div`

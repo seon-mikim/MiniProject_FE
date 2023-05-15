@@ -75,7 +75,6 @@ function SearchUser() {
     <S.Section>
       {/* search area header */}
       <S.SearchHeader>사원 검색</S.SearchHeader>
-      <S.Divider />
       {/* search input area */}
 
       <SearchArea onSearchClick={onSearchClick} />

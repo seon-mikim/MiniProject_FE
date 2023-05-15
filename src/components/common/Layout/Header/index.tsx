@@ -1,7 +1,7 @@
 import ProfileSection from "./ProfileSection copy"
 import ButtonSection from "./ButtonSection"
 import * as S from "./style"
-import { User, UserHeaderProfile } from "../../../../interface/User"
+import { UserHeaderProfile } from "../../../../interface/User"
 import { useState } from "react"
 import { useQuery } from "react-query"
 import { getMyInfo } from "../../../../api/mypage"
