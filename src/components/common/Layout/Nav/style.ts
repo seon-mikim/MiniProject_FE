@@ -28,23 +28,26 @@ export const flexDiv = styled.div<opacityProps>`
   align-items: center;
   margin-bottom: 2rem;
   width: ${(props) => props.opacity === 0 ? '1rem' : '11rem'};
-  height: 1rem;
-  transition: all 1s ease;
+  height: 1.23rem;
+  line-height: 1.23rem;
+  transition: all 0.8s ease;
 `
 export const titleSpan = styled.span<opacityProps>`
+  font-size: 22px;
   color: ${theme.color.white};
   opacity: ${(props) => props.opacity};
   transition: all 0.3s ease;
   white-space: nowrap;
-  height: 1rem;
+  height: 1.23rem;
   pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
 `
 export const arrowDiv = styled.div<opacityProps>`
+  font-size: 22px;
   color: ${theme.color.white};
   cursor: pointer;
   pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
   opacity: ${(props) => props.opacity};
-  transition: all 1s ease;
+  transition: all 0.2s ease;
 `
 export const flexColumnDiv = styled.div<opacityProps>`
   display: flex;
@@ -53,7 +56,7 @@ export const flexColumnDiv = styled.div<opacityProps>`
   width: ${(props) => props.opacity === 0 ? '2rem' : '11rem'};
   gap: 1rem;
   opacity: ${(props) => props.opacity};
-  transition: all 1s ease;
+  transition: all 0.8s ease;
   white-space: nowrap;
   padding-right: 1rem;
   .logout {
