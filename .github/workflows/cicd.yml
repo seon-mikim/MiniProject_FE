@@ -8,7 +8,7 @@ env:
 
 on:
   push: # main 브랜치에 push 되면 아래 작업 실행
-    branches: [ develop ]
+    branches: [ main ]
 
 jobs:
   build:
