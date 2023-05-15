@@ -4,15 +4,24 @@ import theme from '../../styles/theme';
 export const ErrorPageContainer = styled.div`
   display: flex;
   height: 100vh;
+  weight: 100vw;
 `;
-export const LogoContainer = styled.img`
-  width: 480px;
-  background: ${theme.color.brown};
-  padding: 140px;
+export const LogoContainer = styled.div`
+  width: 33%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
+  background: ${theme.color.brown};
+`;
+export const LogoImg = styled.img`
+  height: 15%;
+  width: 50%;
 `;
 export const ErrorForm = styled.div`
-  width: 100%;
+  width: 67%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,17 +35,13 @@ export const ErrorTag = styled.h1`
 `;
 
 export const ErrorContent = styled.div`
-  margin-top: 30px;
   width: 340px;
   height: 315px;
 `;
-const h2 = styled.h2`
+export const h2 = styled.h2`
   font-size: 30px;
+  margin-top: 50px;
   font-weight: ${theme.fontWeight.bold};
   text-align: center;
   color: ${theme.color.brown};
-`;
-export const topic = styled(h2)``;
-export const main = styled(h2)`
-  margin-top: 30px;
 `;

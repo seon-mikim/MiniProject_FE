@@ -2,23 +2,31 @@ import styled from 'styled-components';
 import theme from '../../styles/theme';
 export const RegisterPageContainer = styled.div`
   display: flex;
-  height: 100vh;
+  height: 120vh;
+  weight: 100vw;
 `;
-export const LogoContainer = styled.img`
-  width: 480px;
-  background: ${theme.color.brown};
-  padding: 140px;
+export const LogoContainer = styled.div`
+  width: 33%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
+  background: ${theme.color.brown};
 `;
-
+export const LogoImg = styled.img`
+  height: 15%;
+  width: 50%;
+`;
 export const RegisterForm = styled.form`
-  width: 100%;
+  width: 67%;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 export const RegisterTag = styled.h1`
-  margin-top: 80px;
+  margin-top: 100px;
   font-size: 40px;
   text-align: center;
   font-weight: ${theme.fontWeight.bold};
@@ -27,17 +35,29 @@ export const RegisterTag = styled.h1`
 export const ImgStyle = styled.img`
   width: 150px;
   height: 150px;
-  margin-top: 40px;
+  margin: 25px 0;
   background: ${theme.color.white};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
   object-fit: cover;
 `;
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  height: 75px;
+  width: 450px;
+`;
+export const fileInputContainer = styled(InputContainer)`
+  height: 50px;
+`;
 
 export const Input = styled.input`
   width: 400px;
-  height: 40px;
-  margin-top: 25px;
+  height: 45px;
+  box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   font-weight: ${theme.fontWeight.bold};
@@ -49,12 +69,9 @@ export const Input = styled.input`
   }
 `;
 export const ImgSelection = styled.input`
-  margin-top: 25px;
   font-size: 15px;
-  padding-left: 100px;
   color: ${theme.color.lightBrown};
   border: none;
-  padding-left: 10px;
   &:focus {
     outline: none;
   }
@@ -62,7 +79,6 @@ export const ImgSelection = styled.input`
 export const signUpButton = styled.button`
   width: 400px;
   height: 60px;
-  margin-top: 25px;
   background: ${theme.color.brown};
   color: ${theme.color.white};
   font-weight: ${theme.fontWeight.bold};
@@ -70,10 +86,11 @@ export const signUpButton = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   border: none;
+  cursor: pointer;
 `;
 
 export const ErrorMessage = styled.p`
   margin-top: 15px;
   color: red;
-  font-size: 15px;
+  font-size: 14px;
 `;
