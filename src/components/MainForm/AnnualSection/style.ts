@@ -3,18 +3,16 @@ import styled from "styled-components";
 
 export const Section = styled.div`
   box-sizing:border-box;
-  min-width:540px;
-  width:780px;
-  height:720px;
+  width: 100%;
   background-color: ${({ theme }) => theme.color.beige};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  flex:1;
+  
 `
 export const H2 = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.xlarge};
+  font-size: ${({ theme }) => theme.fontSize.large};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  padding: 30px 0 20px 30px;
+  padding: 15px;
 `
 
 export const SectionHeader = styled.div`
@@ -29,9 +27,9 @@ export const HeaderRight = styled.div`
 
 export const CalendarIcon = styled(BsCalendarCheck)`
   cursor: pointer;
-  font-size: ${({ theme }) => theme.fontSize.xlarge};
+  font-size: ${({ theme }) => theme.fontSize.large};
   margin-left:20px;
-  padding: 30px 30px 20px 0;
+  padding: 15px;
 `
 
 export const NavButton = styled.button`
@@ -47,7 +45,7 @@ export const NavButton = styled.button`
 `
 
 export const ButtonWrap = styled.div`
-  padding: 20px 30px 20px;
+  padding: 15px;
   .active {
     background-color: ${({ theme }) => theme.color.darkBrown};
     color: ${({ theme }) => theme.color.white};
@@ -56,8 +54,8 @@ export const ButtonWrap = styled.div`
 
 export const ListWrap = styled.ul`
   height:552px;
-  padding: 0 30px;
-  overflow: auto;
+  padding: 0 15px;
+  overflow-y: auto;
   font-size: ${({ theme }) => theme.fontSize.base};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   & > * {
