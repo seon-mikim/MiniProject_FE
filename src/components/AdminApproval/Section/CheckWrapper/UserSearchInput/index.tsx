@@ -1,8 +1,10 @@
-import React from 'react'
+import * as S from './style'
 
 function UserSearchInput() {
   return (
-    <div>UserSearchInput</div>
+    <S.InputWapper>
+      <input type="text" />
+    </S.InputWapper>
   )
 }
 

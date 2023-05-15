@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 export const Month = styled.div`
   margin-left: 37.5px;
   border-radius: 8px;

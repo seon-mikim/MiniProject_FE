@@ -24,7 +24,7 @@ function SearchArea({ onSearchClick }: searchInputProps) {
   // [검색]
   // 검색어랑 필터 상태 관리
   const [searchParameters, setSearchParameters] = useState<SearchUserParams>(initialValue);
-  const debounceTimer = useRef(0);
+  const debounceTimer = useRef<any>(null);
   // 검색어 상태 초기화 관리
   const searchInputEl = useRef<HTMLInputElement>(null);
 
@@ -73,7 +73,7 @@ function SearchArea({ onSearchClick }: searchInputProps) {
     if (searchParameters.keyword !== '') {
       if (debounceTimer.current) clearTimeout(debounceTimer.current); // 마지막에 호출한 것만 유효하도록 이전 디바운스 클리어
 
-      debounceTimer.current = setTimeout(async () => {
+        debounceTimer.current = setTimeout(async () => {
         const result = await searchUser({type: searchParameters.type, keyword:searchParameters.keyword}); // 검색 호출
         setFilteredPreviewList(result.content);
 
