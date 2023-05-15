@@ -37,7 +37,7 @@ jobs:
         run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x '*.git*' './node_modules/*' './src/*'
 
       - name: Configure AWS credentials # aws 인증 정보 설정
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.aws_access_key_id }}
           aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
