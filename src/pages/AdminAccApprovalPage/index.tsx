@@ -7,10 +7,8 @@ function AdminAccApprovalPage() {
   return (
     <S.MainContainer className="content">
       <S.Section>
-        <S.SectionHeaderWrapper>
           <S.SectionHeader>계정 승인 현황</S.SectionHeader>
-          
-        </S.SectionHeaderWrapper>
+    
         <ListSection />
       </S.Section>
     </S.MainContainer>

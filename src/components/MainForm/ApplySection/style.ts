@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+
 const Tab = css`
   width: 75px;
   height: 45px;
@@ -21,11 +21,10 @@ const Tab = css`
 export const AnnualSection = styled.div`
   box-sizing: border-box;
   width: 400px;
-  height: 720px;
   background-color: ${({ theme }) => theme.color.beige};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  font-size: ${({ theme }) => theme.fontSize.large};
+  font-size: ${({ theme }) => theme.fontSize.xlarge};
   position: relative;
   margin-left:20px;
   padding: 30px;

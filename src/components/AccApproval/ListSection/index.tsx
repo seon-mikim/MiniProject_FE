@@ -1,9 +1,24 @@
-import * as S from '../style'
+import * as S from '../style';
 import { useState } from 'react';
 import ApprovalPending from '../ApprovalPending';
 import ApprovalResult from '../ApprovalResult';
 import { Button } from '../../common/Button/style';
+import { NavButton } from '../../MainForm/AnnualSection/style';
+import theme from '../../../styles/theme';
 
+function toggleColor(isSelected: boolean) {
+  if (isSelected) {
+    return {
+      backgroundColor: `${theme.color.darkBrown}`,
+      color: `${theme.color.white}`,
+    };
+  } else {
+    return {
+      backgroundColor: `${theme.color.whiteBeige}`,
+      color: `${theme.color.darkBrown}`,
+    };
+  }
+}
 
 function ListSection() {
   const [tapToPending, setTapToPending] = useState<boolean>(true);
@@ -18,12 +33,12 @@ function ListSection() {
   return (
     <>
       <S.TapMenus>
-        <Button variant={tapToPending ? 'lightBrown' : 'darkBrown'} onClick={handleToPending}>
+        <NavButton style={{ ...toggleColor(tapToPending) }} onClick={handleToPending}>
           대기
-        </Button>
-        <Button variant={!tapToPending ? 'lightBrown' : 'darkBrown'} onClick={handleToResult}>
+        </NavButton>
+        <NavButton style={{ ...toggleColor(!tapToPending) }} onClick={handleToResult}>
           승인
-        </Button>
+        </NavButton>
       </S.TapMenus>
       {tapToPending ? <ApprovalPending /> : <ApprovalResult />}
     </>
