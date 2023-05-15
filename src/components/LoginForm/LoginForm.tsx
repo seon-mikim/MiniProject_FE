@@ -41,13 +41,19 @@ function LoginForm({ mutate }: LoginFormProps) {
   return (
     <div>
       <S.LoginPageContainer>
-        <S.LogoContainer src={Logo} />
+        <S.LogoContainer>
+          <S.LogoImg src={Logo} />
+        </S.LogoContainer>
         <S.LoginForm onSubmit={handleSubmit(onSubmit)}>
           <S.LoginTag>Login</S.LoginTag>
-          <S.emailInput /*top="401px"*/ type="text" placeholder="email" {...register('email')} />
-          {errors.email && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
-          <S.passwordInput /*top="507px"*/ type="password" placeholder="password" {...register('password')} />
-          {errors.password && <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>}
+          <S.InputContainer>
+            <S.Input /*top="401px"*/ type="text" placeholder="email" {...register('email')} />
+            {errors.email && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
+          </S.InputContainer>
+          <S.InputContainer>
+            <S.Input /*top="507px"*/ type="password" placeholder="password" {...register('password')} />
+            {errors.password && <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>}
+          </S.InputContainer>
           <S.LoginButton /*top="687px"*/ type="submit">Login</S.LoginButton>
           <S.JoinButton /*top="786px"*/ onClick={onClick}>SignUp</S.JoinButton>
         </S.LoginForm>

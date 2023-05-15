@@ -10,7 +10,7 @@ function LoginPage() {
     onSuccess: (res) => {
       console.log(res);
       if (res && res.data.role === 'USER') {
-        navigate('/mypage');
+        navigate('/mainpage');
       } else if (res && res.data.role === 'ADMIN') {
         navigate('/adminApproval');
       }

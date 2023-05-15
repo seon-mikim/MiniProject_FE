@@ -11,7 +11,8 @@ const showToastError = (message: string) => {
     position: toast.POSITION.TOP_CENTER,
     autoClose: 3000,
     hideProgressBar: true,
-    style: { width: '450px', color: `${theme.color.brown}`, background: `${theme.color.lightBeige}` },
+    icon: false,
+    style: { width: '400px', color: `${theme.color.brown}`, background: `${theme.color.lightBeige}` },
   });
 };
 
@@ -19,11 +20,13 @@ export const login = async (user: LoginRequest) => {
   try {
     const { data, headers } = await axiosJsonInstance.post<LoginResponse>('/api/login', user);
     headers.authorization && setCookie('accessToken', headers.authorization.split(' ')[1]);
-    console.log(data)
+    console.log(data);
     return data;
   } catch (error) {
     if (error instanceof AxiosError && error.response?.data.status === 401) {
       showToastError('아이디 또는 비밀번호를 확인하세요');
+    } else if (error instanceof AxiosError && error.response?.data.status === 500) {
+      showToastError('서버 에러');
     } else {
       console.error(error);
     }
@@ -42,6 +45,8 @@ export const register = async (user: RegisterRequest) => {
   } catch (error) {
     if (error instanceof AxiosError && error.response?.data.status === 400) {
       showToastError('이메일 또는 유저이름이 중복되었습니다.');
+    } else if (error instanceof AxiosError && error.response?.data.status === 500) {
+      showToastError('서버 에러');
     } else {
       console.error(error);
     }
