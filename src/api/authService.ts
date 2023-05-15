@@ -23,7 +23,7 @@ export const register = async (user: RegisterRequest) => {
   const blob = new Blob([JSON.stringify(user.signupInDTO)], { type: 'application/json' });
   formData.append('image', user.image as File);
   formData.append('signupInDTO', blob);
-  console.log(formData);
+
   try {
     const { data } = await axiosFormInstance.post<RegisterResponse>('/api/signup', formData);
     return data;

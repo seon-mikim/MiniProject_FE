@@ -1,5 +1,5 @@
 import * as S from './style';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 import SearchResultList from './SearchResultList';
 import SearchArea from './SearchArea';
@@ -114,4 +114,5 @@ function SearchUser() {
   );
 }
 
-export default SearchUser;
+const memoizedSearchUser = memo(SearchUser)
+export default memoizedSearchUser;

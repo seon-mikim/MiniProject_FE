@@ -21,7 +21,6 @@ function ApprovalPending() {
     keepPreviousData: true,
     onSuccess: (response) => {
       setPendingList(response);
-      console.log(response);
     },
   });
 

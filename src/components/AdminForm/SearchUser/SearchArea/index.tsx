@@ -32,11 +32,9 @@ function SearchArea({ onSearchClick }: searchInputProps) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setSearchParameters((prev) => ({ ...prev, [name]: value }));
-    console.log(searchParameters)
   };
 
   const handleSearchIconBtnClick = () => {
-    // console.log(searchParameters.keyword)
     if (!searchParameters.keyword) return; // 검색어가 없을 경우 작동 안함
     
     onSearchClick(searchParameters); // 검색 호출
@@ -85,9 +83,6 @@ function SearchArea({ onSearchClick }: searchInputProps) {
     // 변할 때 마다 체크해서 실시간으로 리렌더링이 되도록 구독
   }, [searchParameters.keyword]);
 
-  useEffect(() => {
-    // console.log(filteredPreviewList)
-  },[filteredPreviewList])
   return (
     <S.SearchInputArea onChange={handleChange}>
       {/* search options */}
