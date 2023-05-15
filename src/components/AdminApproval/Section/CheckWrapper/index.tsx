@@ -4,11 +4,14 @@ import UserSelect from './UserSelect';
 import UserSearchInput from './UserSearchInput';
 import MonthCheck from './MonthCheck';
 import CheckApproval from './CheckApproval';
+import {Props} from '../index'
 
-function CheckWrapper() {
+export type RequestProps = Pick<Props, 'handleRequestSelect'>
+
+function CheckWrapper({ handleRequestSelect}:RequestProps) {
   return (
     <S.CheckWrapper>
-      <CheckApproval />
+      <CheckApproval handleRequestSelect={handleRequestSelect} />
       <MonthCheck />
       <UserSelect />
       <UserSearchInput />
