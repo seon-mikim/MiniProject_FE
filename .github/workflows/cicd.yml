@@ -42,8 +42,8 @@ jobs:
       - name: Configure AWS credentials # aws 인증 정보 설정
         uses: aws-actions/configure-aws-credentials@master
         with:
-          aws-access-key-id: ${{ secrets.aws_access_key_id }}
-          aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION_NAME }}
 
       - name: Copying file to S3 # s3 에 압축한 파일 업로드
@@ -59,8 +59,8 @@ jobs:
       - name: Configure AWS credentials # aws 인증 정보 설정
         uses: aws-actions/configure-aws-credentials@master
         with:
-          aws-access-key-id: ${{ secrets.aws_access_key_id }}
-          aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION_NAME }}
 
       - name: Create new EBL app ver # eb 에 새로운 app 버전 (s3 파일 활용) 생성
