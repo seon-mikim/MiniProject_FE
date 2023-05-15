@@ -19,7 +19,6 @@ function ApprovalResult() {
     keepPreviousData: true,
     onSuccess: (response) => {
       setApprovedList(response.content);
-      console.log(response);
     },
   });
 

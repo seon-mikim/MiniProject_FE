@@ -26,9 +26,9 @@ function Admin({opacity}: {opacity: number}) {
       <S.linkSpan opacity={opacity}>
         <Link to='/adminAuth'>관리자 권한 설정</Link>
       </S.linkSpan>
-      {/* <span>
-        <Link to=''>계정 승인 설정</Link>
-      </span> */}
+      <S.linkSpan opacity={opacity}>
+        <Link to='/accApproval'>계정 승인 설정</Link>
+      </S.linkSpan>
     </S.flexDiv>
   )
 }
