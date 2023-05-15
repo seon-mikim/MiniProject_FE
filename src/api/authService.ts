@@ -2,25 +2,42 @@ import { AxiosError } from 'axios';
 import { LoginResponse, RegisterResponse, LoginRequest, RegisterRequest } from '../interface/Auth';
 import { axiosFormInstance, axiosJsonInstance } from './axios';
 import { setCookie } from '../utils/cookies';
-import { toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import theme from '../styles/theme';
 
+export const ERROR_TOAST_ID = 'ERROR_TOAST';
+let toastId: string | null | number = null;
+
 const showToastError = (message: string) => {
-  toast.error(message, {
+  if (toastId === null || !toast.isActive(toastId)) {
+    toast.clearWaitingQueue({ containerId: ERROR_TOAST_ID }); // 큐에 있는 모든 토스트 메시지를 제거합니다.
+    toastId = toast.error(message, {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 800,
+      hideProgressBar: true,
+      icon: true,
+      style: { width: '400px', color: `${theme.color.brown}`, background: `${theme.color.lightBeige}` },
+      toastId: 'ERROR_TOAST',
+    });
+  }
+};
+const showToastSuccess = (message: string) => {
+  toast.success(message, {
     position: toast.POSITION.TOP_CENTER,
-    autoClose: 3000,
+    autoClose: 2000,
     hideProgressBar: true,
-    icon: false,
+    icon: true,
     style: { width: '400px', color: `${theme.color.brown}`, background: `${theme.color.lightBeige}` },
   });
-};
+}
 
 export const login = async (user: LoginRequest) => {
   try {
     const { data, headers } = await axiosJsonInstance.post<LoginResponse>('/api/login', user);
     headers.authorization && setCookie('accessToken', headers.authorization.split(' ')[1]);
     console.log(data);
+    showToastSuccess('로그인 성공');
     return data;
   } catch (error) {
     if (error instanceof AxiosError && error.response?.data.status === 401) {
