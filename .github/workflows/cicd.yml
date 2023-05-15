@@ -1,8 +1,8 @@
 name: CI-CD pipeline to AWS
 env:
   EB_S3_BUCKET_NAME: "elasticbeanstalk-ap-northeast-2-554789032142"
-  EB_APPLICATION_NAME: "Pantry"
-  EB_ENVIRONMENT_NAME: "Pantry-env"
+  EB_APPLICATION_NAME: "pantry1"
+  EB_ENVIRONMENT_NAME: "Pantry1-env"
   DEPLOY_PACKAGE_NAME: "node-app-${{ github.sha }}.zip"
   AWS_REGION_NAME: "ap-northeast-2"
 
