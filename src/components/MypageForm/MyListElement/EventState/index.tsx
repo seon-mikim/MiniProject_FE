@@ -35,9 +35,9 @@ function EventState({eventState}: {eventState: eventState}) {
 
   return (
     <S.stateDiv>
+      <S.stateSpan state={currentState}>{currentState}</S.stateSpan>
       {currentState === '승인대기' ? 
         <CancelButton eventEl={cancleEventEl} />:null}
-      <S.stateSpan state={currentState}>{currentState}</S.stateSpan>
     </S.stateDiv>
   )
 }

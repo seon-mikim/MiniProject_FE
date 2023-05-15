@@ -11,17 +11,16 @@ export const stateSpan = styled.span<stateProps>`
         return 1
       } else return 0.5
     }};
-  background-color: ${theme.color.lightBrown};
-  color: ${theme.color.white};
+  color: ${theme.color.lightBrown};
   padding: 0.4rem;
-  border-radius: 5px;
+  font-weight: ${theme.fontWeight.bold};
   width: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
 `
 export const stateDiv = styled.div`
   display: flex;
-  gap: 0.5rem;
+  justify-content: space-between;
+  width: 16rem;
 `

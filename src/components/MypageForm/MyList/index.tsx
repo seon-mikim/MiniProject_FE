@@ -9,7 +9,7 @@ function MyList({title, myList}: {title: string, myList: listContent[] | []}) {
     <S.backgroundDiv>
       <S.titleSpan>{title}</S.titleSpan>
       <S.contentBackgroundDiv>
-        {myList.length !== 0 ? myList.map((data: listContent)=>(
+        { myList && myList.length !== 0 ? myList.map((data: listContent)=>(
           <MyListElement key={data.eventId} myElement={data}/>
           )) : <S.emptySpan>{title}이 없습니다</S.emptySpan>}
       </S.contentBackgroundDiv>

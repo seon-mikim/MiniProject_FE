@@ -7,26 +7,37 @@ export const backgroundDiv = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  width: 100%;
 `
 export const titleSpan = styled.span`
   font-size: ${theme.fontSize.xlarge};
   font-weight: ${theme.fontWeight.bold};
   padding: 1rem 2rem;
-  border-bottom: 1px solid ${theme.color.brown}
+  border-bottom: 1px solid ${theme.color.brown};
 `
 export const flexForm = styled.form`
-  display: grid;
-  grid-template-columns: 13rem 23rem minmax(10rem, 23rem);
-  grid-template-rows: 1fr;
-  gap: 3rem;
-  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* display: grid;
+  grid-template-columns: 15rem 23rem minmax(10rem, 36rem);
+  grid-template-rows: 1fr; */
+  padding: 1rem 5rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
 `
 export const imgSectionDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
   padding: 1rem;
+  padding-top: 0;
+  padding-right: 0;
   input {
     display: none;
   }
@@ -47,8 +58,8 @@ export const imgSectionDiv = styled.div`
   }
 `
 export const wrapperDiv = styled.div`
-  width: 10rem;
-  height: 10rem;
+  width: 12rem;
+  height: 12rem;
   border-radius: 50%;
   border: 3px dashed ${theme.color.whiteBeige};
   padding: 2px;
