@@ -1,11 +1,7 @@
 import * as S from './style';
 import { UserHeaderProfile } from '../../../../../interface/User';
 import { handleImageError } from '../../../../../utils/helpers';
-// export interface UserHeaderProfile {
-//   username: string | undefined,
-//   email: string | undefined,
-//   thumbnailUri?: string | undefined
-// }
+
 function ProfileSection({ userData }: { userData: UserHeaderProfile }) {
   return (
     <S.CardContainer>

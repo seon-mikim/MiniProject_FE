@@ -18,5 +18,5 @@ export const headerDiv = styled.div`
   position: relative;
   z-index: 2;
   cursor: pointer;
-  
+
 `

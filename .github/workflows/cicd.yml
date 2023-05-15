@@ -1,8 +1,8 @@
 name: CI-CD pipeline to AWS
 env:
   EB_S3_BUCKET_NAME: "elasticbeanstalk-ap-northeast-2-554789032142"
-  EB_APPLICATION_NAME: "Pantry"
-  EB_ENVIRONMENT_NAME: "Pantry-env"
+  EB_APPLICATION_NAME: "pantry1"
+  EB_ENVIRONMENT_NAME: "Pantry1-env"
   DEPLOY_PACKAGE_NAME: "node-app-${{ github.sha }}.zip"
   AWS_REGION_NAME: "ap-northeast-2"
 
@@ -12,6 +12,9 @@ on:
 
 jobs:
   build:
+    permissions:
+        id-token: write # need this for OIDC
+        contents: read  
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -37,10 +40,10 @@ jobs:
         run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x '*.git*' './node_modules/*' './src/*'
 
       - name: Configure AWS credentials # aws 인증 정보 설정
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@master
         with:
-          aws-access-key-id: ${{ secrets.aws_access_key_id }}
-          aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION_NAME }}
 
       - name: Copying file to S3 # s3 에 압축한 파일 업로드
@@ -54,10 +57,10 @@ jobs:
     needs: [build]
     steps:
       - name: Configure AWS credentials # aws 인증 정보 설정
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@master
         with:
-          aws-access-key-id: ${{ secrets.aws_access_key_id }}
-          aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION_NAME }}
 
       - name: Create new EBL app ver # eb 에 새로운 app 버전 (s3 파일 활용) 생성

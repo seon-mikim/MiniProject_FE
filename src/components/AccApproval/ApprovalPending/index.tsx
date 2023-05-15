@@ -48,6 +48,7 @@ function ApprovalPending() {
   return (
     <>
       <S.ListContainer>
+
         {(() => {
           switch (status) {
             case 'loading':
@@ -83,6 +84,7 @@ function ApprovalPending() {
               return null;
           }
         })()}
+
       </S.ListContainer>
 
       <S.PaginationContainer>
