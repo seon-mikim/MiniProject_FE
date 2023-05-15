@@ -10,8 +10,9 @@ export const LogoContainer = styled.img`
   padding: 140px;
   box-sizing: border-box;
 `;
+
 export const RegisterForm = styled.form`
-  width: 100%; 
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,9 +25,9 @@ export const RegisterTag = styled.h1`
   color: ${theme.color.brown};
 `;
 export const ImgStyle = styled.img`
-  width: 170px;
-  height: 170px;
-  margin-top: 45px;
+  width: 150px;
+  height: 150px;
+  margin-top: 40px;
   background: ${theme.color.white};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
@@ -34,7 +35,7 @@ export const ImgStyle = styled.img`
 
 export const Input = styled.input`
   width: 400px;
-  height: 49px;
+  height: 40px;
   margin-top: 25px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
@@ -48,7 +49,7 @@ export const Input = styled.input`
 `;
 export const ImgSelection = styled.input`
   margin-top: 25px;
-  font-size: 18px;
+  font-size: 15px;
   padding-left: 100px;
   color: ${theme.color.lightBrown};
   border: none;
@@ -59,7 +60,7 @@ export const ImgSelection = styled.input`
 `;
 export const signUpButton = styled.button`
   width: 400px;
-  height: 64px;
+  height: 60px;
   margin-top: 25px;
   background: ${theme.color.brown};
   color: ${theme.color.white};
