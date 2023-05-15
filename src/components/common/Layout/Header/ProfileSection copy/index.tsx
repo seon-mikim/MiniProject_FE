@@ -1,6 +1,5 @@
 import * as S from './style';
 import { UserHeaderProfile } from '../../../../../interface/User';
-import { CgProfile } from 'react-icons/cg';
 import { handleImageError } from '../../../../../utils/helpers';
 // export interface UserHeaderProfile {
 //   username: string | undefined,
@@ -8,8 +7,6 @@ import { handleImageError } from '../../../../../utils/helpers';
 //   thumbnailUri?: string | undefined
 // }
 function ProfileSection({ userData }: { userData: UserHeaderProfile }) {
-  console.log(userData);
-
   return (
     <S.CardContainer>
       <S.TextContent>

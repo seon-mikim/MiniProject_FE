@@ -9,7 +9,6 @@ function AdminAccApprovalPage() {
       <S.Section>
         <S.SectionHeaderWrapper>
           <S.SectionHeader>계정 승인 현황</S.SectionHeader>
-          <S.Divider />
           
         </S.SectionHeaderWrapper>
         <ListSection />

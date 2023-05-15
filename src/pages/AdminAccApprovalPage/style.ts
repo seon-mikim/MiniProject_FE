@@ -1,32 +1,30 @@
 import styled from 'styled-components';
 
-export const MainContainer = styled.main`
-  height: 100%;
-`
+export const MainContainer = styled.main``;
 
 export const Section = styled.section`
-
+  height: 100%;
   background-color: ${({ theme }) => theme.color.beige};
   border-radius: 8px;
-
+  padding: 15px;
   box-sizing: border-box;
+  position: relative;
 `;
 
-export const SectionHeaderWrapper = styled.div`
-
-`;
+export const SectionHeaderWrapper = styled.div``;
 
 export const SectionHeader = styled.h2`
   color: ${({ theme }) => theme.color.darkBrown};
-  font-size: ${({ theme }) => theme.fontSize.xlarge};
+  font-size: ${({ theme }) => theme.fontSize.large};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  padding: 20px 30px;
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid ${({ theme }) => theme.color.darkBrown};
+    position: absolute;
+    top: 50px;
+    left:0;
+  }
 `;
-
-export const Divider = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.color.darkBrown};
-  margin: 2px 0;
-`;
-
-
 

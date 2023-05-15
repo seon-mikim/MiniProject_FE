@@ -49,6 +49,7 @@ export const SearchNotFound = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
 `;
 
 export const PaginationContainer = styled.div`
