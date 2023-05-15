@@ -3,21 +3,23 @@ import theme from "../../../styles/theme";
 
 export const backgroundDiv = styled.div`
   background-color: ${theme.color.beige};
-  padding: 1.5rem 3rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  box-sizing: border-box;
 `
 export const titleSpan = styled.span`
   font-size: ${theme.fontSize.xlarge};
   font-weight: ${theme.fontWeight.bold};
+  padding: 1rem 2rem;
+  border-bottom: 1px solid ${theme.color.brown}
 `
 export const flexForm = styled.form`
   display: grid;
-  grid-template-columns: 13rem 23rem minmax(10rem, 40rem);
+  grid-template-columns: 13rem 23rem minmax(10rem, 23rem);
   grid-template-rows: 1fr;
-  gap: 2rem;
+  gap: 3rem;
+  padding: 1rem 2rem;
 `
 export const imgSectionDiv = styled.div`
   display: flex;
@@ -45,8 +47,8 @@ export const imgSectionDiv = styled.div`
   }
 `
 export const wrapperDiv = styled.div`
-  width: 12rem;
-  height: 12rem;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
   border: 3px dashed ${theme.color.whiteBeige};
   padding: 2px;
@@ -65,8 +67,8 @@ export const formDiv = styled.div`
 `
 export const formListDiv = styled.div`
   display: grid;
-  grid-template-columns: 6rem 20rem;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 7rem 20rem;
+  grid-template-rows: 1fr 0.7fr;
   gap: 0.2rem;
   p {
     grid-column: 2/3;
@@ -83,6 +85,7 @@ export const formListDiv = styled.div`
   }
   label {
     font-weight: ${theme.fontWeight.bold};
+    align-self: center;
   }
 `
 export const changeButton = styled.button`

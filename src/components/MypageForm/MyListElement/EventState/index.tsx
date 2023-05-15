@@ -34,11 +34,11 @@ function EventState({eventState}: {eventState: eventState}) {
   // console.log(eventState)
 
   return (
-    <div>
+    <S.stateDiv>
       {currentState === '승인대기' ? 
         <CancelButton eventEl={cancleEventEl} />:null}
-      <span>{currentState}</span>
-    </div>
+      <S.stateSpan state={currentState}>{currentState}</S.stateSpan>
+    </S.stateDiv>
   )
 }
 
