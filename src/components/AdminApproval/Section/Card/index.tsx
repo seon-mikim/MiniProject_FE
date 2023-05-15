@@ -11,7 +11,8 @@ export interface eventProps {
 function Card({ eData, handleButtonClick, breakdownType }: eventProps) {
   const startDate = moment(eData.startDate);
   const endDate = moment(eData.endDate);
-
+ 
+ 
   return (
     <S.Card key={eData.eventId}>
       <S.CardContent>
