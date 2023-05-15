@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Tab = css`
-  width: 75px;
+  width: 80px;
   height: 45px;
   background-color: ${({ theme }) => theme.color.darkBrown};
   line-height: 45px;
@@ -11,11 +11,16 @@ const Tab = css`
   font-size: ${({ theme }) => theme.fontSize.large};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   border: none;
-  border-radius: 8px 8px 0 0;
   padding: 0;
   cursor: pointer;
   position:absolute;
-  top:-45px;
+  right:0;
+  transform:translateX(30px);
+  z-index: -1;
+  transition:transform 0.4s ease-in-out;
+  &:hover{
+    transform:translateX(70px);
+  }
 `;
 
 export const AnnualSection = styled.div`
@@ -30,17 +35,19 @@ export const AnnualSection = styled.div`
   padding: 30px;
   .active{
     background-color:${({ theme }) => theme.color.beige};
+    z-index:-1;
+    transform:translateX(70px);
   }
 `;
 
 export const AnnualTab = styled.button`
   ${Tab};
-  left: 20px;
+  top:25px;
 `;
 
 export const WorkTab = styled.button`
   ${Tab};
-  left: 100px;
+  top:75px;
 `;
 
 export const Form = styled.div`
@@ -74,6 +81,15 @@ export const Form = styled.div`
   }
 `;
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height:100%;
+  color: ${({ theme }) => theme.color.darkBrown};
+`
+
 export const FormBtn = styled.button`
   width:100%;
   height: 65px;
@@ -85,9 +101,5 @@ export const FormBtn = styled.button`
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   border-radius: 8px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  position: absolute;
-  bottom:0;
-  left: 0;
-  right: 0; 
 `;
 

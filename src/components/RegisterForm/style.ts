@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import theme from '../../styles/theme';
 export const RegisterPageContainer = styled.div`
   display: flex;
-  height: 120vh;
-  weight: 100vw;
-`;
-export const LogoContainer = styled.div`
-  width: 33%;
   height: 100%;
+`;
+
+export const LogoContainer = styled.div`
+  width: 30%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,13 +20,13 @@ export const LogoImg = styled.img`
   width: 50%;
 `;
 export const RegisterForm = styled.form`
-  width: 67%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 export const RegisterTag = styled.h1`
-  margin-top: 100px;
+  margin-top: 60px;
   font-size: 40px;
   text-align: center;
   font-weight: ${theme.fontWeight.bold};
