@@ -23,13 +23,14 @@ export const PaginationContainer = styled.div`
   }
 `;
 export const ListContainer = styled.div`
-  height: 40vh;
+
   display: flex;
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
   padding: 20px 30px;
-  width: 100%;
+
+
   &::-webkit-scrollbar {
     width: 5px;
     background-color: ${({ theme }) => theme.color.lightBeige};

@@ -5,8 +5,8 @@ import * as S from './style';
 function AdminAccApprovalPage() {
   
   return (
-    <>
-      <S.Section className="content">
+    <S.MainContainer className="content">
+      <S.Section>
         <S.SectionHeaderWrapper>
           <S.SectionHeader>계정 승인 현황</S.SectionHeader>
           <S.Divider />
@@ -14,7 +14,7 @@ function AdminAccApprovalPage() {
         </S.SectionHeaderWrapper>
         <ListSection />
       </S.Section>
-    </>
+    </S.MainContainer>
   );
 }
 

@@ -59,5 +59,7 @@ export const gridDiv = styled.div`
   .content {
     grid-area: content;
     padding: 30px 190px;
+    width: calc(100vw - 452px);
+    height: calc(100vh - 160px);
   }
 `;

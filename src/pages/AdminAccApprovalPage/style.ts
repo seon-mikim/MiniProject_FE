@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
+export const MainContainer = styled.main`
+  height: 100%;
+`
+
 export const Section = styled.section`
-  width: 65vw;
-  height: 70vh;
+
   background-color: ${({ theme }) => theme.color.beige};
   border-radius: 8px;
 
@@ -10,7 +13,7 @@ export const Section = styled.section`
 `;
 
 export const SectionHeaderWrapper = styled.div`
-  width: 100%;
+
 `;
 
 export const SectionHeader = styled.h2`
