@@ -12,13 +12,15 @@ import { formatDate } from '../../../utils/helpers';
 function ApprovalResult() {
   const [approvedList, setApprovedList] = useState<AuthUser[]>([]);
   const [page, setPage] = useState<number>(0);
+  const [totalPages, setTotalPages] = useState<number>(0);
 
-  const { status, data } = useQuery({
+  const { status } = useQuery({
     queryKey: ['admin', 'approvedAcc', page],
     queryFn: () => getApprovedAcc(page),
     keepPreviousData: true,
     onSuccess: (response) => {
       setApprovedList(response.content);
+      setTotalPages(response.totalPages);
     },
   });
 
@@ -49,17 +51,19 @@ function ApprovalResult() {
           ))}
       </S.ListContainer>
       <S.PaginationContainer>
-        <ReactPaginate
-          pageCount={data?.totalPages}
-          pageRangeDisplayed={10}
-          previousLabel={<HiChevronLeft />}
-          nextLabel={<HiChevronRight />}
-          onPageChange={handlePageClick}
-          containerClassName={'pagination-ul'}
-          activeClassName={'currentPage'}
-          previousClassName={'pageLabel-btn'}
-          nextClassName={'pageLabel-btn'}
-        />
+        {totalPages !== 0 && (
+          <ReactPaginate
+            pageCount={totalPages}
+            pageRangeDisplayed={10}
+            previousLabel={<HiChevronLeft />}
+            nextLabel={<HiChevronRight />}
+            onPageChange={handlePageClick}
+            containerClassName={'pagination-ul'}
+            activeClassName={'currentPage'}
+            previousClassName={'pageLabel-btn'}
+            nextClassName={'pageLabel-btn'}
+          />
+        )}
       </S.PaginationContainer>
     </>
   );

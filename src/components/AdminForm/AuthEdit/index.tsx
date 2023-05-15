@@ -10,7 +10,7 @@ import { CircularLoadingProgress } from '../../common/CircularLoadingProgress/st
 import { updateRole } from '../../../api/Admin/AuthEdit';
 import { formatDate, handleImageError } from '../../../utils/helpers';
 import { SelectUserDispatchContext, SelectUserStateContext } from '../../../pages/AdminAuthPage';
-import { INITIAL_VALUE, RESET_SELECTED_USER } from '../../../contexts/selectUserReducer';
+import { INITIAL_VALUE, RESET_SELECTED_USER } from '../../../reducers/selectUserReducer';
 
 /**
  * 관리자 권한 수정 컴포넌트

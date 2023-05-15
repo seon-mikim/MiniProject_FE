@@ -25,13 +25,15 @@ function SearchUser() {
   const [page, setPage] = useState<number>(0);
   const queryClient = useQueryClient();
 
+  const [totalPages, setTotalPages] = useState<number>(0)
   // useQuery로 데이터 페칭 및 케싱
   const { status, data, isPreviousData } = useQuery({
     queryKey: ['admin', 'search', searchParams, page],
     queryFn: () => searchUser({ size: PAGE_SIZE, type: searchParams.type, keyword: searchParams.keyword, page }),
     keepPreviousData: true,
-    onSuccess: (data) => {
-      setFilteredList(data.content);
+    onSuccess: (response) => {
+      setFilteredList(response.content);
+      setTotalPages(response.totalPages)
     },
   });
 
@@ -96,19 +98,21 @@ function SearchUser() {
       {status === 'success' && filteredList.length > 0 && (
         <SearchResultList isPreview={false} searchResult={filteredList} />
       )}
-
+  
       <S.PaginationContainer style={{ width: '100%' }}>
-        <ReactPaginate
-          pageCount={data?.totalPages}
-          pageRangeDisplayed={10}
-          previousLabel={<HiChevronLeft />}
-          nextLabel={<HiChevronRight />}
-          onPageChange={handlePageClick}
-          containerClassName={'pagination-ul'}
-          activeClassName={'currentPage'}
-          previousClassName={'pageLabel-btn'}
-          nextClassName={'pageLabel-btn'}
-        />
+      {totalPages > 0 && (
+          <ReactPaginate
+            pageCount={totalPages}
+            pageRangeDisplayed={10}
+            previousLabel={<HiChevronLeft />}
+            nextLabel={<HiChevronRight />}
+            onPageChange={handlePageClick}
+            containerClassName={'pagination-ul'}
+            activeClassName={'currentPage'}
+            previousClassName={'pageLabel-btn'}
+            nextClassName={'pageLabel-btn'}
+          />
+        )}
       </S.PaginationContainer>
     </S.Section>
   );
