@@ -8,8 +8,8 @@ import { AxiosError } from 'axios';
 function RegisterPage() {
   const navigate = useNavigate();
   const { mutate } = useMutation(register, {
-    onSuccess: () => {
-      navigate('/');
+    onSuccess: (res) => {
+      if (res) navigate('/');
     },
     onError: (err: AxiosError) => {
       console.error(err);
