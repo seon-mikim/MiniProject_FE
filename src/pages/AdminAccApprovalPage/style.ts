@@ -11,19 +11,20 @@ export const Section = styled.section`
   position: relative;
 `;
 
-export const SectionHeaderWrapper = styled.div``;
+
 
 export const SectionHeader = styled.h2`
   color: ${({ theme }) => theme.color.darkBrown};
-  font-size: ${({ theme }) => theme.fontSize.large};
+  font-size: ${({ theme }) => theme.fontSize.xlarge};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+  padding-bottom: 15px;
   &::after {
     content: "";
     display: block;
     width: 100%;
     border-bottom: 1px solid ${({ theme }) => theme.color.darkBrown};
     position: absolute;
-    top: 50px;
+    top: 55px;
     left:0;
   }
 `;

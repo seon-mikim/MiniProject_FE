@@ -21,7 +21,7 @@ export const getAccPending = async (page: number) => {
       Authorization: `Bearer ${getCookie('authorization')}`,
     },
   });
-  const content = data.data.content;
+  const content = data.data;
   return content;
 };
 

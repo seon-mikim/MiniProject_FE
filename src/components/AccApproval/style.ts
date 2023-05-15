@@ -24,12 +24,12 @@ export const PaginationContainer = styled.div`
   }
 `;
 export const ListContainer = styled.div`
-  height: 468px;
+  height: 510px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
-
+  
 
 
   &::-webkit-scrollbar {
@@ -42,7 +42,7 @@ export const ListContainer = styled.div`
   }
 `;
 export const TapMenus = styled.div`
-  padding: 20px 0;
+  padding: 15px 0;
   & button {
     margin-right: 15px;
   }

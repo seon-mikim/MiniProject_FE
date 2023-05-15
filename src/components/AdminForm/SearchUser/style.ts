@@ -13,8 +13,8 @@ export const Section = styled.section`
 
 export const SearchHeader = styled.span`
   font-weight: ${({ theme }) => theme.fontWeight.dark};
-  font-size: ${({ theme }) => theme.fontSize.large};
-  margin-bottom: 10px;
+  font-size: ${({ theme }) => theme.fontSize.xlarge};
+  margin-bottom: 15px;
 
   &::after {
     content: "";
@@ -22,7 +22,7 @@ export const SearchHeader = styled.span`
     width: 100%;
     border-bottom: 1px solid ${({ theme }) => theme.color.darkBrown};
     position: absolute;
-    top: 50px;
+    top: 55px;
     left:0;
   }
 `;

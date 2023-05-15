@@ -16,7 +16,7 @@ function ApplySection() {
 
   const { mutate } = useMutation(eventOrder, {
     onSuccess: (data) => {
-      console.log(data)
+      console.log(data);
       setModal(false);
       alert('신청이 완료되었습니다.');
     },
@@ -31,13 +31,13 @@ function ApplySection() {
     if (startDate && endDate) {
       const today = moment().startOf('day');
       const selectedStartDate = moment(startDate).startOf('day');
-  
+
       if (selectedStartDate.isBefore(today)) {
         alert('시작 날짜는 오늘보다 이전일 수 없습니다.');
         setModal(false);
         return;
       }
-  
+
       mutate({
         startDate,
         endDate,
@@ -46,7 +46,6 @@ function ApplySection() {
       });
     }
   };
-  
 
   const getFormattedDate = (date: Date | null) => {
     return moment(date).format('YYYY/MM/DD');
@@ -68,33 +67,35 @@ function ApplySection() {
           endDate={endDate}
           setEndDate={setEndDate}
         />
-        <DateInput
-          type={type}
-          startDate={startDate}
-          endDate={endDate}
-          count={count}
-          setCount={setCount}
-          getFormattedDate={getFormattedDate}
-        />
-        <S.FormBtn onClick={() => setModal(true)}>신청</S.FormBtn>
-        {modal &&
-          (type === 'ANNUAL' ? (
-            <ConfirmModal
-              title={'연차'}
-              subTitle={`${getFormattedDate(startDate)} - ${getFormattedDate(endDate)}`}
-              textContent={'해당 내용으로 신청하시겠습니까?'}
-              onConfirm={onSubmit}
-              onCancel={() => setModal(false)}
-            />
-          ) : (
-            <ConfirmModal
-              title={'당직'}
-              subTitle={`${getFormattedDate(startDate)}`}
-              textContent={'해당 내용으로 신청하시겠습니까?'}
-              onConfirm={onSubmit}
-              onCancel={() => setModal(false)}
-            />
-          ))}
+        <S.Container>
+          <DateInput
+            type={type}
+            startDate={startDate}
+            endDate={endDate}
+            count={count}
+            setCount={setCount}
+            getFormattedDate={getFormattedDate}
+          />
+          <S.FormBtn onClick={() => setModal(true)}>신청</S.FormBtn>
+          {modal &&
+            (type === 'ANNUAL' ? (
+              <ConfirmModal
+                title={'연차'}
+                subTitle={`${getFormattedDate(startDate)} - ${getFormattedDate(endDate)}`}
+                textContent={'해당 내용으로 신청하시겠습니까?'}
+                onConfirm={onSubmit}
+                onCancel={() => setModal(false)}
+              />
+            ) : (
+              <ConfirmModal
+                title={'당직'}
+                subTitle={`${getFormattedDate(startDate)}`}
+                textContent={'해당 내용으로 신청하시겠습니까?'}
+                onConfirm={onSubmit}
+                onCancel={() => setModal(false)}
+              />
+            ))}
+        </S.Container>
       </S.Form>
     </S.AnnualSection>
   );
