@@ -85,7 +85,7 @@ export const ModalBackground = styled.div`
   top:0;
   left:0;
   width:100%;
-  height:100vh;
+  height:100%;
   backdrop-filter:blur(3px);
   z-index:90;
   .rbc-calendar{
@@ -100,6 +100,7 @@ export const ModalBackground = styled.div`
     border-radius: 8px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 20px;
+    transform:translateY(-20px)
   }
   .rbc-toolbar-label{
     font-size: ${({ theme }) => theme.fontSize.large};

@@ -3,10 +3,9 @@ import theme from '../../styles/theme';
 export const LoginPageContainer = styled.div`
   display: flex;
   height: 100vh;
-  weight: 100vw;
 `;
 export const LogoContainer = styled.div`
-  width: 33%;
+  width: 30%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -21,13 +20,14 @@ export const LogoImg = styled.img`
 `;
 
 export const LoginForm = styled.form`
-  width: 67%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 export const LoginTag = styled.h1`
-  margin: 120px 0;
+  margin: 60px 0 80px;
   font-size: 40px;
   text-align: center;
   font-weight: ${theme.fontWeight.bold};
@@ -37,7 +37,6 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
   box-sizing: border-box;
   width: 450px;
   height: 100px;
@@ -54,6 +53,7 @@ export const Input = styled.input`
   box-sizing: border-box;
   &:focus {
     outline: none;
+  }
 `;
 export const ErrorMessage = styled.p`
   margin-top: 15px;

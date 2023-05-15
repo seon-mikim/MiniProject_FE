@@ -4,10 +4,9 @@ import theme from '../../styles/theme';
 export const ErrorPageContainer = styled.div`
   display: flex;
   height: 100vh;
-  weight: 100vw;
 `;
 export const LogoContainer = styled.div`
-  width: 33%;
+  width: 30%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -21,13 +20,14 @@ export const LogoImg = styled.img`
   width: 50%;
 `;
 export const ErrorForm = styled.div`
-  width: 67%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 export const ErrorTag = styled.h1`
-  margin-top: 180px;
+  margin-top: 80px;
   font-size: 120px;
   text-align: center;
   font-weight: ${theme.fontWeight.bold};
