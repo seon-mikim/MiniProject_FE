@@ -25,10 +25,5 @@ export const Divider = styled.div`
   margin: 2px 0;
 `;
 
-export const TapMenus = styled.div`
-  padding: 20px 0 0 30px;
-  & button {
-    margin-right: 15px;
-  }
-`;
+
 
