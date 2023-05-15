@@ -3,7 +3,6 @@ import { UserHeaderProfile } from "../../../../../interface/User"
 import { CgProfile } from "react-icons/cg"
 
 function ProfileSection({userData}: {userData: UserHeaderProfile}) {
-  console.log(userData)
 
   return (
     <S.gridDiv >

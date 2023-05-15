@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const PaginationContainer = styled.div`
   width: 100%;
+  padding-top: 12px;
   & .pagination-ul {
     display: flex;
     justify-content: center;
@@ -23,13 +24,14 @@ export const PaginationContainer = styled.div`
   }
 `;
 export const ListContainer = styled.div`
-  height: 40vh;
+  height: 468px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
-  padding: 20px 30px;
-  width: 100%;
+
+
+
   &::-webkit-scrollbar {
     width: 5px;
     background-color: ${({ theme }) => theme.color.lightBeige};
@@ -40,7 +42,7 @@ export const ListContainer = styled.div`
   }
 `;
 export const TapMenus = styled.div`
-  padding: 20px 0 0 30px;
+  padding: 20px 0;
   & button {
     margin-right: 15px;
   }

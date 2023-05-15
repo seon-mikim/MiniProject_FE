@@ -15,4 +15,8 @@ export const headerDiv = styled.div`
   transition: all 1s ease;
   filter: drop-shadow(1px 1px 3px #3E1B11);
   width: fit-content;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+
 `
