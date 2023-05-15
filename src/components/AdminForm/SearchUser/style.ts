@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  height: 70vh;
   background-color: ${(props) => props.theme.color.beige};
   display: flex;
   flex-direction: column;
@@ -9,17 +8,25 @@ export const Section = styled.section`
   flex-grow: 1;
   padding: 15px;
   border-radius: 8px;
+  position: relative;
 `;
 
 export const SearchHeader = styled.span`
   font-weight: ${({ theme }) => theme.fontWeight.dark};
   font-size: ${({ theme }) => theme.fontSize.large};
+  margin-bottom: 10px;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid ${({ theme }) => theme.color.darkBrown};
+    position: absolute;
+    top: 50px;
+    left:0;
+  }
 `;
 
-export const Divider = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.color.darkBrown};
-  margin: 2px 0;
-`;
 
 export const TabContainer = styled.div`
   display: flex;
@@ -38,7 +45,7 @@ export const SearchArea = styled.div`
 
 export const SearchNotFound = styled.div`
   width: inherit;
-  height: inherit;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

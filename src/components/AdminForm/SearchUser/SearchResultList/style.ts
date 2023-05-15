@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SearchResultList = styled.ul`
-  height: 100%;
+  height: 56vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;

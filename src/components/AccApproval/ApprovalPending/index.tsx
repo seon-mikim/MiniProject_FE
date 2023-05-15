@@ -13,14 +13,16 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 function ApprovalPending() {
   const [pendingList, setPendingList] = useState<AccPendingResponse[]>([]);
   const [page, setPage] = useState<number>(0);
+  const [totalPages, setTotalPages] = useState<number>(0);
   const queryClient = useQueryClient();
 
-  const { status, data } = useQuery({
+  const { status } = useQuery({
     queryKey: ['admin', 'accPendingList', page],
     queryFn: () => getAccPending(page),
     keepPreviousData: true,
     onSuccess: (response) => {
       setPendingList(response);
+      setTotalPages(response.totalPages);
     },
   });
 
@@ -58,30 +60,32 @@ function ApprovalPending() {
                 <span>입사일: {formatDate(listItem.createAt)}</span>,
               ]}
               buttons={[
-                { 
-                  label: '승인', 
-                  onClick: () => handleApprove(
-                    { 
+                {
+                  label: '승인',
+                  onClick: () =>
+                    handleApprove({
                       username: listItem.username,
-                       email: listItem.email 
-                    }) 
-                  },
+                      email: listItem.email,
+                    }),
+                },
               ]}
             />
           ))}
       </S.ListContainer>
       <S.PaginationContainer>
-        <ReactPaginate
-          pageCount={data?.totalPages}
-          pageRangeDisplayed={10}
-          previousLabel={<HiChevronLeft />}
-          nextLabel={<HiChevronRight />}
-          onPageChange={handlePageClick}
-          containerClassName={'pagination-ul'}
-          activeClassName={'currentPage'}
-          previousClassName={'pageLabel-btn'}
-          nextClassName={'pageLabel-btn'}
-        />
+        {totalPages > 0 && (
+          <ReactPaginate
+            pageCount={totalPages}
+            pageRangeDisplayed={10}
+            previousLabel={<HiChevronLeft />}
+            nextLabel={<HiChevronRight />}
+            onPageChange={handlePageClick}
+            containerClassName={'pagination-ul'}
+            activeClassName={'currentPage'}
+            previousClassName={'pageLabel-btn'}
+            nextClassName={'pageLabel-btn'}
+          />
+        )}
       </S.PaginationContainer>
     </>
   );
