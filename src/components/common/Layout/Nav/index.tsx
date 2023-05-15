@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { pageSeparationData } from './pageSeparationData';
 import User from './Menu/User'
 import Admin from './Menu/Admin';
@@ -29,7 +29,7 @@ function Nav() {
           {currentPage[0].isUser ? <User opacity={opacity} /> : <Admin opacity={opacity} />}
         </div>
         <S.flexColumnDiv opacity={opacity}>
-          <img src={Logo} />
+          <Link to='/main'><img src={Logo} /></Link>
           <LogoutButton opacity={opacity}/>
           <S.flexButtonDiv opacity={opacity}>
             <a href='https://github.com/MiniTeam6' target='_blank'><AiFillGithub size='3rem' color='white'/></a>
