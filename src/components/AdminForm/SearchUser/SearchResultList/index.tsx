@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 
 import * as S from './style';
 import { AuthUser, Role } from '../../../../interface/User';
@@ -12,7 +12,7 @@ interface SearchResultListProps {
 }
 
 function SearchResultList({ searchResult }: SearchResultListProps) {
-
+  const searchResultListRef = useRef<HTMLUListElement>(null)
   const dispatch = useContext(SelectUserDispatchContext);
   const handleClick = (user: AuthUser) => {
     if (dispatch) {
@@ -20,8 +20,14 @@ function SearchResultList({ searchResult }: SearchResultListProps) {
     }
   };
 
+  useEffect(() => {
+    if(searchResultListRef.current) {
+      searchResultListRef.current.scrollTo(0, 0)
+    }
+  },[searchResult])
+
   return (
-    <S.SearchResultList>
+    <S.SearchResultList ref={searchResultListRef}>
       {searchResult &&
         searchResult.map((user, index) => {
           return (
