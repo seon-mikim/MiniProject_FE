@@ -1,8 +1,9 @@
 import { useState, MouseEventHandler } from 'react';
 import * as S from './style';
-import { Props } from '../../../';
+import { UserSelectProps } from '../../../../../interface/Admin';
 
-function UserSelect({handleSelectType}:Props) {
+
+function UserSelect({handleSelectType}:UserSelectProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedText, setSelectedText] = useState<string | null>('이름');
 

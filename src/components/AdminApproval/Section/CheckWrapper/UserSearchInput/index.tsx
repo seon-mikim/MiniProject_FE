@@ -1,12 +1,12 @@
 import { useState } from 'react'
-
 import * as S from './style'
-import { Props } from '../../..'
+import { UserSearchInputProps } from '../../../../../interface/Admin'
 
-function UserSearchInput({handleInput}:Props) {
+
+function UserSearchInput({handleInput}: UserSearchInputProps) {
  const [searchTerm, setSearchTerm] = useState('')
 
- const handleChange =(e:any) => {
+ const handleChange =(e: { target: { value: string } }) => {
   const value = e.target.value
   setSearchTerm(value)
   handleInput?.(value)

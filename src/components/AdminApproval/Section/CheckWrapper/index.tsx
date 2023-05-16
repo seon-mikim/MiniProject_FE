@@ -4,12 +4,13 @@ import UserSelect from './UserSelect';
 import UserSearchInput from './UserSearchInput';
 import MonthCheck from './MonthCheck';
 import CheckApproval from './CheckApproval';
-import {Props} from '../../../AdminApproval/index'
+import { CheckWrapperProps } from '../../../../interface/Admin';
 
-function CheckWrapper({ handleRequestSelect, handleSelectType, handleInput}:Props) {
+
+function CheckWrapper({ handleEventTypeSelect, handleSelectType, handleInput}:CheckWrapperProps) {
   return (
     <S.CheckWrapper>
-      <CheckApproval handleRequestSelect={handleRequestSelect} />
+      <CheckApproval handleEventTypeSelect={handleEventTypeSelect} />
       <MonthCheck />
       <UserSelect handleSelectType={handleSelectType}/>
       <UserSearchInput handleInput={handleInput}/>
