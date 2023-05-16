@@ -191,7 +191,9 @@
 ```
 FE
 - Basic: `React`, `Typescript`, `styled-components`
-- Library:  `react-router`, `react-query`, `axios`, `eslint`, `react-cookie`, `react-big-calendar`, `react-datepicker`, `react-paginate`, `react-toastify`, `react-hook-form`, `yup`, `react-icons`, `moment`
+- Library:  `react-router`, `react-query`, `axios`, `eslint`, 
+            `react-cookie`, `react-big-calendar`, `react-datepicker`, `react-paginate`, `react-toastify`, 
+            `react-hook-form`, `yup`, `react-icons`, `moment`
 
 ```
 
