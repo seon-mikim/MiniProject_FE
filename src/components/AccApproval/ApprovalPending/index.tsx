@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ListItem from '../../common/ListItem';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { AccPendingResponse, approveAcc, approveAccParams, getAccPending } from '../../../api/Admin/accApproval';
@@ -15,6 +15,8 @@ function ApprovalPending() {
   const [pendingList, setPendingList] = useState<AccPendingResponse[]>([]);
   const [page, setPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
+  const listContainerRef = useRef<HTMLDivElement>(null)
+
   const queryClient = useQueryClient();
 
   const { status } = useQuery({
@@ -45,9 +47,15 @@ function ApprovalPending() {
     mutate({ username, email });
   };
 
+  useEffect(() => {
+    if(listContainerRef.current) {
+      listContainerRef.current.scrollTo(0, 0)
+    }
+  },[page])
+
   return (
     <>
-      <S.ListContainer>
+      <S.ListContainer ref={listContainerRef}>
 
         {(() => {
           switch (status) {

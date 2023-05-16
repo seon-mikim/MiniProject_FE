@@ -51,6 +51,8 @@ export const SelectedUserImg = styled.img`
   right: 20px;
   top: 28px;
   position: absolute;
+  padding: 3px;
+  box-sizing: border-box;
   border-radius: 50%;
   object-fit: cover;
   border: 2px dotted rgba(255,255,255,0.5);

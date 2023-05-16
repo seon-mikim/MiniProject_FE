@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style'
-import { RequestProps } from '..';
+import { RequestProps } from '../../CheckWrapper';
 
 
 function CheckApproval({handleRequestSelect}:RequestProps) {

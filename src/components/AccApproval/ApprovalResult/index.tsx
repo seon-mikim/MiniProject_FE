@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AuthUser, Role } from '../../../interface/User';
 import ListItem from '../../common/ListItem';
 import { useQuery } from 'react-query';
@@ -14,6 +14,7 @@ function ApprovalResult() {
   const [approvedList, setApprovedList] = useState<AuthUser[]>([]);
   const [page, setPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
+  const listContainerRef = useRef<HTMLDivElement>(null)
 
   const { status } = useQuery({
     queryKey: ['admin', 'approvedAcc', page],
@@ -32,10 +33,16 @@ function ApprovalResult() {
   const handlePageClick = (event: PageChangeEventData) => {
     setPage(event.selected);
   };
+  
+  useEffect(() => {
+    if(listContainerRef.current) {
+      listContainerRef.current.scrollTo(0, 0)
+    }
+  },[page])
 
   return (
     <>
-      <S.ListContainer>
+      <S.ListContainer ref={listContainerRef}>
         {(() => {
           switch (status) {
             case 'loading':
