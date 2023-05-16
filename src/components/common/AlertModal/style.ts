@@ -24,6 +24,9 @@ export const AlertModalContainer = styled.aside`
   &:last-of-type {
     margin: 0;
   }
+  button {
+    margin-bottom: 20px;
+  }
 `;
 
 export const AlertModalTitle = styled.span`

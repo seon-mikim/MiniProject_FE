@@ -9,6 +9,8 @@ import { RiTeamLine } from 'react-icons/ri'
 import * as S from './style'
 import { MdArrowBackIosNew } from 'react-icons/md'
 import LogoutButton from '../Button/LogoutButton';
+import AlertModal from '../../AlertModal';
+import ProjectInfo from './ProjectInfo';
 
 function Nav() {
   const location = useLocation()
@@ -16,6 +18,8 @@ function Nav() {
   const currentPage = pageSeparationData.filter((e) => e.name === location.pathname)
 
   const [opacity, setOpacity] = useState(0)
+
+  const [isResponseModalOpen, setIsResponseModalOpen] = useState<boolean>(false);
 
   return (
     <nav>
@@ -33,10 +37,15 @@ function Nav() {
           <LogoutButton opacity={opacity}/>
           <S.flexButtonDiv opacity={opacity}>
             <a href='https://github.com/MiniTeam6' target='_blank'><AiFillGithub size='3rem' color='white'/></a>
-            <S.introButton opacity={opacity}><RiTeamLine size='2rem' color='#452E27'/></S.introButton>
+            <S.introButton onClick={() => setIsResponseModalOpen(true)} opacity={opacity}>
+              <RiTeamLine size='2rem' color='#452E27'/>
+            </S.introButton>
           </S.flexButtonDiv>
         </S.flexColumnDiv>
       </S.navDiv>
+      {isResponseModalOpen && (
+        <AlertModal onConfirmClick={() => setIsResponseModalOpen(false)} message={<ProjectInfo />} />
+      )}
     </nav>
   )
 }
