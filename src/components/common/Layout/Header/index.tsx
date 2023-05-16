@@ -1,4 +1,4 @@
-import ProfileSection from "./ProfileSection copy"
+import ProfileSection from "./ProfileSection"
 import ButtonSection from "./ButtonSection"
 import * as S from "./style"
 import { UserHeaderProfile } from "../../../../interface/User"
