@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import Wrapper from '../../components/AdminApproval';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getRequestList, postApproval } from '../../api/request';
