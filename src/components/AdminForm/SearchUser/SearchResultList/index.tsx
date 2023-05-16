@@ -4,7 +4,7 @@ import * as S from './style';
 import { AuthUser, Role } from '../../../../interface/User';
 import ListItem from '../../../common/ListItem';
 import { SelectUserDispatchContext } from '../../../../pages/AdminAuthPage';
-import { SET_SELECTED_USER } from '../../../../contexts/selectUserReducer';
+import { SET_SELECTED_USER } from '../../../../reducers/selectUserReducer';
 
 interface SearchResultListProps {
   searchResult: AuthUser[];

@@ -1,9 +1,17 @@
+import { useQuery } from 'react-query'
 import * as S from './style'
 import { Link } from 'react-router-dom'
+import { getWaitingList } from '../../../../../api/nav'
 
 function Admin({opacity}: {opacity: number}) {
-  const holidayCount = 5
-  const nightCount = 10
+  const { data: annualList, isLoading, error } = useQuery(['annualWaitingList'], () => getWaitingList('annual'))
+  const { data: dutylList } = useQuery(['dutyWaitingList'], () => getWaitingList('duty'))
+
+  if(isLoading) return <>로딩 중...</>
+  if(error) return <>error</>
+
+  // const holidayCount = 5
+  // const nightCount = 10
 
   return (
     <S.flexDiv opacity={opacity}>
@@ -11,7 +19,7 @@ function Admin({opacity}: {opacity: number}) {
         <S.menuDiv opacity={opacity}>
           <Link to='/adminApproval' className='adminLink'>
             <span>연차 승인 대기</span>
-            <S.countSpan>{holidayCount}</S.countSpan>
+            <S.countSpan>{annualList}</S.countSpan>
           </Link>
         </S.menuDiv>
       </S.shadowDiv>
@@ -19,7 +27,7 @@ function Admin({opacity}: {opacity: number}) {
         <S.menuDiv opacity={opacity}>
           <Link to='/adminApproval' className='adminLink'>
             <span>당직 승인 대기</span>
-            <S.countSpan>{nightCount}</S.countSpan>
+            <S.countSpan>{dutylList}</S.countSpan>
           </Link>
         </S.menuDiv>
       </S.shadowDiv>

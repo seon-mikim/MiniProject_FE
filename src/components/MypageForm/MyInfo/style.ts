@@ -3,28 +3,41 @@ import theme from "../../../styles/theme";
 
 export const backgroundDiv = styled.div`
   background-color: ${theme.color.beige};
-  padding: 1.5rem 3rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  width: 100%;
 `
 export const titleSpan = styled.span`
   font-size: ${theme.fontSize.xlarge};
   font-weight: ${theme.fontWeight.bold};
+  padding: 1rem 2rem;
+  border-bottom: 1px solid ${theme.color.brown};
 `
 export const flexForm = styled.form`
-  display: grid;
-  grid-template-columns: 13rem 23rem minmax(10rem, 40rem);
-  grid-template-rows: 1fr;
-  gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* display: grid;
+  grid-template-columns: 15rem 23rem minmax(10rem, 36rem);
+  grid-template-rows: 1fr; */
+  padding: 1rem 5rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
 `
 export const imgSectionDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
   padding: 1rem;
+  padding-top: 0;
+  padding-right: 0;
   input {
     display: none;
   }
@@ -65,8 +78,8 @@ export const formDiv = styled.div`
 `
 export const formListDiv = styled.div`
   display: grid;
-  grid-template-columns: 6rem 20rem;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 7rem 20rem;
+  grid-template-rows: 1fr 0.7fr;
   gap: 0.2rem;
   p {
     grid-column: 2/3;
@@ -83,6 +96,7 @@ export const formListDiv = styled.div`
   }
   label {
     font-weight: ${theme.fontWeight.bold};
+    align-self: center;
   }
 `
 export const changeButton = styled.button`

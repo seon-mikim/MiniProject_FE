@@ -1,13 +1,14 @@
-import React from 'react';
+import * as S from './style'
 import ApplySection from '../../components/MainForm/ApplySection';
 import AnnualSection from '../../components/MainForm/AnnualSection';
 
 function MainPage() {
   return (
-    <div className="content">
+    <S.MainPage className="content">
       <AnnualSection />
       <ApplySection />
-    </div>
+
+    </S.MainPage>
   );
 }
 

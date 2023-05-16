@@ -3,7 +3,7 @@ import { AuthUser } from '../../interface/User';
 import * as S from './style';
 import SearchUser from '../../components/AdminForm/SearchUser';
 import AuthEdit from '../../components/AdminForm/AuthEdit';
-import { INITIAL_VALUE, SelectActionTypes, selectUserReducer } from '../../contexts/selectUserReducer';
+import { INITIAL_VALUE, SelectActionTypes, selectUserReducer } from '../../reducers/selectUserReducer';
 
 export const SelectUserStateContext = createContext<AuthUser>(INITIAL_VALUE);
 export const SelectUserDispatchContext = createContext<React.Dispatch<SelectActionTypes> | null>(null);

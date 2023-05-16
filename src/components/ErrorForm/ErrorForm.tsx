@@ -5,12 +5,14 @@ function ErrorForm() {
   return (
     <div>
       <S.ErrorPageContainer>
-        <S.LogoContainer src={Logo}></S.LogoContainer>
+        <S.LogoContainer>
+          <S.LogoImg src={Logo} />
+        </S.LogoContainer>
         <S.ErrorForm>
           <S.ErrorTag>404</S.ErrorTag>
           <S.ErrorContent>
-            <S.topic>Page not found</S.topic>
-            <S.main>This page will be routed to index page in a few seconds</S.main>
+            <S.h2>Page not found</S.h2>
+            <S.h2>This page will be routed to index page in a few seconds</S.h2>
           </S.ErrorContent>
         </S.ErrorForm>
       </S.ErrorPageContainer>

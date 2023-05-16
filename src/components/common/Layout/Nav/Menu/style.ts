@@ -8,7 +8,7 @@ export const flexDiv = styled.div<opacityProps>`
   display: flex;
   flex-direction: column;
   white-space: nowrap;
-  transition: all 1s ease;
+  transition: all 0.8s ease;
   width: ${(props) => props.opacity === 0 ? '3rem' : '12rem'};
   gap: 1rem;
 `
@@ -18,10 +18,10 @@ export const menuDiv = styled.div<opacityProps>`
   justify-content: end;
   width: ${(props) => props.opacity === 0 ? '3rem' : '12rem'};
   height: 3rem;
-  padding-right: 1rem;
+  padding-right: 0.6rem;
   background-color: ${theme.color.beige};
   clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, ${(props) => props.opacity === 0 ? '45%' : '12%'} 50%, 0% 0%);
-  transition: all 1s ease;
+  transition: all 0.8s ease;
   white-space: nowrap;
   .adminLink {
     display: ${(props) => props.opacity === 0 ? 'none' : 'flex'};;
@@ -31,7 +31,7 @@ export const menuDiv = styled.div<opacityProps>`
     color: ${theme.color.white};
     width: ${(props) => props.opacity === 0 ? '0' : '9rem'};
     opacity: ${(props) => props.opacity};
-    transition: all 1s ease;
+    transition: all 0.8s ease;
     white-space: nowrap;
   }
   .userLink {
@@ -45,7 +45,7 @@ export const menuDiv = styled.div<opacityProps>`
     align-items: center;
     width: ${(props) => props.opacity === 0 ? '0' : '9rem'};
     opacity: ${(props) => props.opacity};
-    transition: all 1s ease;
+    transition: all 0.8s ease;
     white-space: nowrap;
   }
 `
@@ -62,7 +62,7 @@ export const linkSpan = styled.span<opacityProps>`
     text-decoration: none;
     color: ${theme.color.white};
     opacity: ${(props) => props.opacity};
-    transition: all 1s ease;
+    transition: all 0.8s ease;
     white-space: nowrap;
     padding-left: 3rem;
     pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
@@ -81,4 +81,15 @@ export const countSpan = styled.span`
 
 export const shadowDiv = styled.div`
   filter: drop-shadow(-1.5px 0px 3.5px ${theme.color.black});
+`
+export const boldSpan = styled.span`
+  font-weight: ${theme.fontWeight.bold};
+  font-size: ${theme.fontSize.small};
+  align-self: end;
+`
+
+export const smallSpan = styled.span`
+  font-size: ${theme.fontSize.small};
+  align-self: start;
+  width: max-content;
 `
