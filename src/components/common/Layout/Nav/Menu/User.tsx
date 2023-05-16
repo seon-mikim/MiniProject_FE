@@ -26,7 +26,7 @@ function User({opacity}: {opacity: number}) {
             {
               nextEvent?.annualDDay ? 
               <>
-                <S.boldSpan>'D-'{nextEvent?.annualDDay}</S.boldSpan>
+                <S.boldSpan>D-{nextEvent?.annualDDay}</S.boldSpan>
                 <S.smallSpan>{nextEvent?.nextAnnualDate}</S.smallSpan>
               </>:
               <>
@@ -46,7 +46,7 @@ function User({opacity}: {opacity: number}) {
             {
               nextEvent?.dutyDDay ? 
               <>
-                <S.boldSpan>'D-'{nextEvent?.dutyDDay}</S.boldSpan>
+                <S.boldSpan>D-{nextEvent?.dutyDDay}</S.boldSpan>
                 <S.smallSpan>{nextEvent?.nextDutyDate}</S.smallSpan>
               </>:
               <>
