@@ -1,7 +1,9 @@
 # [팬트리(Pantry)](http://pantry1-env.eba-fdhbkdfm.ap-northeast-2.elasticbeanstalk.com/)
 
-테스트 계정
+<테스트 계정>
+<br>
 ID: ssar@nate.com
+<br>
 PW: aaaa1234@@
 
 위에 계정으로 로그인하면, 어드민 페이지로 바로 이동.
