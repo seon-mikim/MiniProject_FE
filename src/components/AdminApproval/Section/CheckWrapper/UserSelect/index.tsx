@@ -1,8 +1,8 @@
 import { useState, MouseEventHandler } from 'react';
 import * as S from './style';
-import { RequestProps } from '..';
+import { Props } from '../../../';
 
-function UserSelect({handleSelectType}:RequestProps) {
+function UserSelect({handleSelectType}:Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedText, setSelectedText] = useState<string | null>('이름');
 
@@ -13,12 +13,12 @@ function UserSelect({handleSelectType}:RequestProps) {
     setIsOpen(!isOpen);
     if(value === '이름') {
       setSelectedText(value);
-      return handleSelectType('username')
+      return handleSelectType?.('username')
     }
     
     if(value === '이메일') {
       setSelectedText(value);
-      return handleSelectType('email')
+      return handleSelectType?.('email')
     }
   };
   return (

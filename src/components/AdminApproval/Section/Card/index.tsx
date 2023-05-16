@@ -5,8 +5,8 @@ import { handleImageError } from '../../../../utils/helpers';
 
 export interface eventProps {
   eData: any;
-  handleButtonClick: (cardData: eventProps['eData'], status: string) => void;
-  breakdownType: string;
+  handleButtonClick?: (cardData: eventProps['eData'], status: string) => void;
+  breakdownType?: string;
 }
 
 function Card({ eData, handleButtonClick, breakdownType }: eventProps) {
@@ -41,10 +41,10 @@ function Card({ eData, handleButtonClick, breakdownType }: eventProps) {
       </S.CardContent>
       {breakdownType === 'request' ? (
         <S.ButtonArea>
-          <S.CheckButton onClick={() => handleButtonClick(eData, 'APPROVED')} color="approve">
+          <S.CheckButton onClick={() => handleButtonClick?.(eData, 'APPROVED')} color="approve">
             승인
           </S.CheckButton>
-          <S.CheckButton onClick={() => handleButtonClick(eData, 'REJECTED')} color="refuse">
+          <S.CheckButton onClick={() => handleButtonClick?.(eData, 'REJECTED')} color="refuse">
             거절
           </S.CheckButton>
         </S.ButtonArea>
