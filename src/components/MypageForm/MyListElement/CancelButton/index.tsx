@@ -19,7 +19,7 @@ function CancelButton({eventEl}: {eventEl: cancelEventType}) {
   if(isLoading) return <>로딩 중...</>
   if(error) return <>에러...</>
   return (
-    <button onClick={isCancled}>취소하기</button>
+    <S.cancelButton onClick={isCancled}>취소하기</S.cancelButton>
   )
 }
 

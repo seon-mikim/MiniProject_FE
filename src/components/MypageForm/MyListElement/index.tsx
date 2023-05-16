@@ -11,14 +11,14 @@ function MyListElement({myElement}: {myElement: listContent}) {
     orderState: myElement.orderState
   }
   return (
-    <div>
+    <S.flexDiv>
       <span>
         {myElement.startDate}
         {myElement.eventType === 'ANNUAL' ? 
         ' ~ ' + myElement.endDate : null}
       </span>
       <EventState eventState={eventState}/>
-    </div>
+    </S.flexDiv>
   )
 }
 
