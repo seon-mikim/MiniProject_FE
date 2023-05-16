@@ -1,25 +1,42 @@
 import * as S from './style';
 import Section from './Section';
-import { eventProps } from './Section/Card';
+import { Props } from '../../interface/Admin';
 
-export interface Props {
-  handleTabClick: (breakDown: string) => void;
-  handleButtonClick: (cardData:eventProps['eData'], status:string) => void;
-  handleRequestSelect: (eventType:string) =>  void
-  eventData: any;
-  eventType: string
-  breakdownType: string
-}
 
-function Wrapper({ handleTabClick,handleButtonClick, eventData, handleRequestSelect, eventType, breakdownType }: Props) {
-  console.log('wrapper', eventData)
+function Wrapper({
+  handleTabClick,
+  handleButtonClick,
+  handleEventTypeSelect,
+  handleSetPage,
+  handleModalOpen,
+  handleSelectType,
+  handleInput,
+  data,
+  eventType,
+  breakdownType,
+  pageTotalNumber,
+  currentPageNumber,
+
+}: Props) {
   return (
     <S.ApprovalWrapper>
       <S.SeleteTabArea>
         <span onClick={() => handleTabClick('request')}>연차/당직 요청현황</span>
         <span onClick={() => handleTabClick('approval')}>연차/당직 승인내역</span>
+        <S.CalendarIcon onClick={handleModalOpen} />
       </S.SeleteTabArea>
-      <Section eventData={eventData} handleButtonClick={handleButtonClick} handleRequestSelect={handleRequestSelect} eventType={eventType} breakdownType={breakdownType}/>
+      <Section
+        handleButtonClick={handleButtonClick}
+        handleEventTypeSelect={handleEventTypeSelect}
+        handleSelectType={handleSelectType}
+        handleSetPage={handleSetPage}
+        handleInput={handleInput}
+        data={data}
+        eventType={eventType}
+        breakdownType={breakdownType}
+        pageTotalNumber={pageTotalNumber?? 0}
+        currentPageNumber={currentPageNumber}
+      />
     </S.ApprovalWrapper>
   );
 }

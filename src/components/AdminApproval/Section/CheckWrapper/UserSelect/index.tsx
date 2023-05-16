@@ -1,16 +1,26 @@
 import { useState, MouseEventHandler } from 'react';
 import * as S from './style';
+import { UserSelectProps } from '../../../../../interface/Admin';
 
-function UserSelect() {
+
+function UserSelect({handleSelectType}:UserSelectProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedText, setSelectedText] = useState<string | null>('이름');
 
   const toggleHandle = () => setIsOpen(!isOpen);
   const optionHandle: MouseEventHandler<HTMLSpanElement> = (e) => {
     const value = (e.target as HTMLDivElement).textContent;
-
-    setSelectedText(value);
+    
     setIsOpen(!isOpen);
+    if(value === '이름') {
+      setSelectedText(value);
+      return handleSelectType?.('username')
+    }
+    
+    if(value === '이메일') {
+      setSelectedText(value);
+      return handleSelectType?.('email')
+    }
   };
   return (
     <div style={{ height: 48 }}>

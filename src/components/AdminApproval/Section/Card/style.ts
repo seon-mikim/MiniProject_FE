@@ -16,7 +16,7 @@ export const Card = styled.div`
 `;
 
 export const CardContent = styled.div`
-  width: 72%;
+  width: 76%;
   margin-left: 20px;
   margin-right: 10px;
   height: 38px;
@@ -39,7 +39,7 @@ export const UserImgWrap = styled.div`
 
 export const UserInfoWrap = styled.div`
   margin-left: 10px;
-  width: 15%;
+  width: 12%;
 `;
 
 export const UserName = styled.span`
@@ -57,7 +57,7 @@ export const UserRole = styled.div`
   margin-left: 5px;
 `;
 export const EventTpyeWrap = styled.div`
-  width: 20%;
+  width: 15%;
   text-align: center;
 `;
 
@@ -70,17 +70,20 @@ export const EventType = styled.span`
   border-radius: 8px;
 `;
 export const EventTypeDateWrap = styled.div`
-  width: 35%;
+  width: 32%;
+  text-align: center;
 `;
 
 export const CreateDate = styled.div`
-width: 20%;
+width: 25%;
+text-align: center;
 `
 
 export const EventDate = styled.span`
   display: inline-block;
 `;
 export const ButtonArea = styled.div`
+  display:flex;
   margin-right: 40px;
   button:first-child {
     margin-right: 20px;

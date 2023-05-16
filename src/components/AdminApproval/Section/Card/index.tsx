@@ -1,23 +1,21 @@
 import React from 'react';
 import * as S from './style';
 import moment from 'moment';
+import { handleImageError } from '../../../../utils/helpers';
+import { eventProps } from '../../../../interface/Admin';
 
-export interface eventProps {
-  eData: any;
-  handleButtonClick: (cardData: eventProps['eData'], status: string) => void;
-  breakdownType: string;
-}
+
+
 
 function Card({ eData, handleButtonClick, breakdownType }: eventProps) {
   const startDate = moment(eData.startDate);
   const endDate = moment(eData.endDate);
- 
- 
+ console.log(eData)
   return (
     <S.Card key={eData.eventId}>
       <S.CardContent>
         <S.UserImgWrap>
-          <img src="http://via.placeholder.com/45" alt="" />
+          <img src={eData.thumbnailUri} onError={handleImageError} alt="" />
         </S.UserImgWrap>
         <S.UserInfoWrap>
           <S.UserName>{eData.userName}</S.UserName>
@@ -36,21 +34,21 @@ function Card({ eData, handleButtonClick, breakdownType }: eventProps) {
           )}
         </S.EventTypeDateWrap>
         <S.CreateDate>
-          <span>{eData.createdAt}</span>
+          <span>{moment(eData.createdAt).format('YYYY-MM-DD HH:mm:ss').toLocaleString()}</span>
         </S.CreateDate>
       </S.CardContent>
       {breakdownType === 'request' ? (
         <S.ButtonArea>
-          <S.CheckButton onClick={() => handleButtonClick(eData, 'APPROVED')} color="approve">
+          <S.CheckButton onClick={() => handleButtonClick?.(eData, 'APPROVED')} color="approve">
             승인
           </S.CheckButton>
-          <S.CheckButton onClick={() => handleButtonClick(eData, 'REJECTED')} color="refuse">
+          <S.CheckButton onClick={() => handleButtonClick?.(eData, 'REJECTED')} color="refuse">
             거절
           </S.CheckButton>
         </S.ButtonArea>
       ) : (
-        <S.ButtonArea>
-          <span>{eData.orderState === 'APPROVED' ? '승인' : '거절'}</span>
+        <S.ButtonArea >
+          <div>{eData.orderState === 'APPROVED' ? '승인' : '거절'}</div>
         </S.ButtonArea>
       )}
     </S.Card>

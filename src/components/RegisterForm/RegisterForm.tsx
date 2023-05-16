@@ -30,10 +30,7 @@ const schema = yup.object().shape({
       '대소문자, 특수문자, 숫자를 모두 포함한 8자리 이상 입력해주세요',
     )
     .required('비밀번호를 입력해주세요'),
-  checkpw: yup
-    .string()
-    .oneOf([yup.ref('password')], '비밀번호가 일치하지 않습니다')
-    .required('비밀번호를 한번 더 입력해주세요'),
+  checkpw: yup.string().oneOf([yup.ref('password')], '비밀번호가 일치하지 않습니다'),
   phone: yup
     .string()
     .matches(/^010-\d{4}-\d{4}$/, '010-****-**** 형식으로 입력해주세요')
@@ -57,15 +54,15 @@ function RegisterForm({ mutate }: RegisterFormProps) {
     formState: { errors },
   } = useForm<onSubmitProps>({ resolver: yupResolver(schema), mode: 'onChange' });
 
-  const [previewImgUrl, setPreviewImgUrl] = useState<string>(DEFAULT_PREVIEW_URL);
-
+  const [imgUrl, setImgUrl] = useState<string>(DEFAULT_PREVIEW_URL);
+  console.log(imgUrl);
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files) {
+    if (files?.length) {
       const url = URL.createObjectURL(files[0]);
-      setPreviewImgUrl(url);
+      setImgUrl(url);
     } else {
-      setPreviewImgUrl(DEFAULT_PREVIEW_URL);
+      setImgUrl(DEFAULT_PREVIEW_URL);
     }
   };
   const onSubmitHandler: SubmitHandler<onSubmitProps> = async (data) => {
@@ -85,21 +82,36 @@ function RegisterForm({ mutate }: RegisterFormProps) {
   return (
     <div>
       <S.RegisterPageContainer>
-        <S.LogoContainer src={Logo} />
+        <S.LogoContainer>
+          <S.LogoImg src={Logo} />
+        </S.LogoContainer>
         <S.RegisterForm onSubmit={handleSubmit(onSubmitHandler)}>
           <S.RegisterTag>Sign Up</S.RegisterTag>
-          <S.ImgStyle src={previewImgUrl} />
-          <S.Input /*top="421px"*/ type="text" placeholder="name" {...register('username')} />
-          {errors.username && <S.ErrorMessage>{errors.username.message}</S.ErrorMessage>}
-          <S.Input /*top="494px"*/ type="text" placeholder="email" {...register('email')} />
-          {errors.email && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
-          <S.Input /*top="567px"*/ type="password" placeholder="********" {...register('password')} />
-          {errors.password && <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>}
-          <S.Input /*top="640px"*/ type="password" placeholder="********" {...register('checkpw')} />
-          <S.Input /*top="713px"*/ placeholder="010-****-****" {...register('phone')} />
-          {errors.phone && <S.ErrorMessage>{errors.phone.message}</S.ErrorMessage>}
-          <S.ImgSelection /*top="770px"*/ type="file" {...register('image')} onChange={handleFileChange} />
-          {errors.image && <S.ErrorMessage>{errors.image.message}</S.ErrorMessage>}
+          <S.ImgStyle src={imgUrl} />
+          <S.InputContainer>
+            <S.Input /*top="421px"*/ type="text" placeholder="name" {...register('username')} />
+            {errors.username && <S.ErrorMessage>{errors.username.message}</S.ErrorMessage>}
+          </S.InputContainer>
+          <S.InputContainer>
+            <S.Input /*top="494px"*/ type="text" placeholder="email" {...register('email')} />
+            {errors.email && <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>}
+          </S.InputContainer>
+          <S.InputContainer>
+            <S.Input /*top="567px"*/ type="password" placeholder="********" {...register('password')} />
+            {errors.password && <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>}
+          </S.InputContainer>
+          <S.InputContainer>
+            <S.Input /*top="640px"*/ type="password" placeholder="********" {...register('checkpw')} />
+            {errors.checkpw && <S.ErrorMessage>{errors.checkpw.message}</S.ErrorMessage>}
+          </S.InputContainer>
+          <S.InputContainer>
+            <S.Input /*top="713px"*/ placeholder="010-****-****" {...register('phone')} />
+            {errors.phone && <S.ErrorMessage>{errors.phone.message}</S.ErrorMessage>}
+          </S.InputContainer>
+          <S.fileInputContainer>
+            <S.ImgSelection /*top="770px"*/ type="file" {...register('image')} onChange={handleFileChange} />
+            {imgUrl === DEFAULT_PREVIEW_URL && <S.ErrorMessage>{errors.image?.message}</S.ErrorMessage>}
+          </S.fileInputContainer>
           <S.signUpButton type="submit">SignUp</S.signUpButton>
         </S.RegisterForm>
       </S.RegisterPageContainer>

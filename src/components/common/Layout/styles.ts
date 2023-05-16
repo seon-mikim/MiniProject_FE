@@ -51,7 +51,7 @@ export const gridDiv = styled.div`
 
   header {
     grid-area: header;
-    background-color: #224230;
+    /* background-color: #224230; */
     padding: 10px 190px;
     text-align: end;
   }
@@ -59,5 +59,16 @@ export const gridDiv = styled.div`
   .content {
     grid-area: content;
     padding: 30px 190px;
+    width: calc(100vw - 452px);
+    height: calc(100vh - 160px);
   }
+
+  .content.large {
+    grid-area: content;
+    padding: 0 190px;
+    width: calc(100vw - 452px);
+    height: calc(100vh - 100px);
+  }
+
+
 `;

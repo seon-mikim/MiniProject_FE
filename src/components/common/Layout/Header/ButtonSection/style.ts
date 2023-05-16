@@ -25,5 +25,6 @@ export const flexColumnDiv = styled.div<opacityProps>`
 export const annualCountSpan = styled.span<opacityProps>`
   color: ${theme.color.white};
   margin-bottom: 0.3rem;
+  font-size: ${theme.fontSize.xsmall};
   pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
 `

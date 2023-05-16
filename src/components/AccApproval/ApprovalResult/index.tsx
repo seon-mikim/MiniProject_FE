@@ -8,6 +8,7 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { SkeletonUI } from '../../common/SkeletonUI/style';
 import * as S from '../style';
 import { formatDate } from '../../../utils/helpers';
+import { SearchNotFound } from '../../AdminForm/SearchUser/style';
 
 function ApprovalResult() {
   const [approvedList, setApprovedList] = useState<AuthUser[]>([]);
@@ -35,21 +36,33 @@ function ApprovalResult() {
   return (
     <>
       <S.ListContainer>
-        {status === 'loading' && <SkeletonUI />}
-        {approvedList &&
-          approvedList.map((listItem: AuthUser, index: number) => (
-            <ListItem
-              key={index}
-              imageUri={listItem.imageUri}
-              username={listItem.username}
-              email={listItem.email}
-              textContent={[
-                <span>{listItem.role === Role.ADMIN ? '관리자' : '사원'}</span>,
-                <span>입사일: {formatDate(listItem.createAt)}</span>,
-              ]}
-            />
-          ))}
+        {(() => {
+          switch (status) {
+            case 'loading':
+              return <SkeletonUI />;
+            case 'success':
+              return approvedList.length > 0 ? (
+                approvedList.map((listItem: AuthUser, index: number) => (
+                  <ListItem
+                    key={index}
+                    imageUri={listItem.imageUri}
+                    username={listItem.username}
+                    email={listItem.email}
+                    textContent={[
+                      <span>{listItem.role === Role.ADMIN ? '관리자' : '사원'}</span>,
+                      <span>입사일: {formatDate(listItem.createAt)}</span>,
+                    ]}
+                  />
+                ))
+              ) : (
+                <SearchNotFound>승인된 계정이 없습니다.</SearchNotFound>
+              );
+            default:
+              return null;
+          }
+        })()}
       </S.ListContainer>
+
       <S.PaginationContainer>
         {totalPages !== 0 && (
           <ReactPaginate

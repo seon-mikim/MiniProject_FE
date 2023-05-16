@@ -2,7 +2,8 @@ import styled from "styled-components"
 
 export const Label = styled.label`
   color: ${({ theme }) => theme.color.darkBrown};
-  font-weight:700;
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-size: ${({ theme }) => theme.fontSize.base};
 `
 
 export const Input = styled.input`

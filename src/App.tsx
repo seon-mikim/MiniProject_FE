@@ -20,7 +20,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <GlobalStyled />
-        <ToastContainer />
+        <ToastContainer limit={1}/>
         <Routers />
       </ThemeProvider>
     </QueryClientProvider>

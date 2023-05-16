@@ -1,54 +1,45 @@
-import { useState } from 'react';
 import Wrapper from '../../components/AdminApproval';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { getRequestList, postApproval } from '../../api/request';
+import BigCalendar from '../../components/common/BigCalendar';
 import ConfirmModal from '../../components/common/ConfirmModal';
-import { eventProps } from '../../components/AdminApproval/Section/Card';
-
+import { useAdminApproval } from '../../utils/eventHandler';
+import * as S from './style'
 function AdminApprovalPage() {
- 
-  const [eventType, setEventType] = useState<string>('annual');
-  const [breakdownType, setBreakdownType] = useState<string>('request');
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [selectedCard, setSelectedCard] = useState<eventProps['eData']>(null);
-
-  const queryClient = useQueryClient();
-  const { data, isLoading, error } = useQuery(
-    ['admin', eventType, breakdownType],
-    () => getRequestList(eventType, breakdownType),
-    {
-      onSuccess: (data) => {
-        console.log(data);
-      },
-    },
-  );
-
-  const { mutate: approval, status } = useMutation(postApproval, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(['admin',  eventType, breakdownType]);
-    },
-  });
-  const handleButtonClick = (cardData: eventProps['eData'], status: string) => {
-    setSelectedCard({ ...cardData, status });
-    setShowModal(!showModal);
-  };
-
-  const handleTabClick = (breakDown: string) => {
-    setBreakdownType(breakDown)
+  const {
+    eventType,
+    showModal,
+    isShowModal,
+    selectedCard,
+    handleButtonClick,
+    handleTabClick,
+    handleModalClose,
+    handleSetPage,
+    handleModalOpen,
+    breakdownType,
+    handleEventTypeSelect,
+    handleSelectType,
+    handleInput,
+    data,
+    isLoading,
+    error,
     
-  };
-  const handleRequestSelect = (eventType: string) => {
-    setEventType(eventType);
-  };
+    approval,
+    setShowModal,
+  } = useAdminApproval();
+
   if (isLoading) {
     return <>로딩중</>;
   }
   return (
-    <div className="content">
-      {showModal && (
+    <div className="content large">
+      {isShowModal && (
+        <S.ModalBackground onClick={handleModalClose}>
+          <BigCalendar />
+        </S.ModalBackground>
+      )}
+      {showModal && selectedCard &&(
         <ConfirmModal
           title={`이름: ${selectedCard.userName}`}
-          subTitle={`[${selectedCard.eventType==='ANNUAL'? '연차':'당직'}] ${
+          subTitle={`[${selectedCard.eventType === 'ANNUAL' ? '연차' : '당직'}] ${
             selectedCard.startDate ? selectedCard.startDate : selectedCard.date
           }`}
           textContent="해당 내용을 승인하시겠습니까?"
@@ -56,7 +47,7 @@ function AdminApprovalPage() {
             approval({
               eventType: selectedCard.eventType.toLowerCase(),
               eventId: selectedCard.eventId,
-              orderState: selectedCard.status,
+              orderState: selectedCard.orderState,
             });
             setShowModal((prev) => !prev);
           }}
@@ -64,12 +55,18 @@ function AdminApprovalPage() {
         />
       )}
       <Wrapper
-        handleTabClick={handleTabClick}
-        handleRequestSelect={handleRequestSelect}
-        eventData={data.data.content}
-        handleButtonClick={handleButtonClick}
         eventType={eventType}
         breakdownType={breakdownType}
+        handleButtonClick={handleButtonClick}
+        handleTabClick={handleTabClick}
+        handleSetPage={handleSetPage}
+        handleSelectType={handleSelectType}
+        handleInput={handleInput}
+        handleEventTypeSelect={handleEventTypeSelect}
+        data={data && data.data.content}
+        handleModalOpen={handleModalOpen}
+        pageTotalNumber={data && data.data.totalElements}
+        currentPageNumber={data&& data.data.number}
       />
     </div>
   );

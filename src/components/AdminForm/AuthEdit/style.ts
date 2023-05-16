@@ -13,7 +13,7 @@ export const AuthEditSection = styled.section`
 `;
 export const AuthEditHeader = styled.span`
   font-weight: ${({ theme }) => theme.fontWeight.dark};
-  font-size: ${({ theme }) => theme.fontSize.large};
+  font-size: ${({ theme }) => theme.fontSize.xlarge};
   margin-top: 0;
   &::after {
     content: '';
@@ -49,7 +49,7 @@ export const SelectedUserImg = styled.img`
   width: 110px;
   aspect-ratio: 1/1;
   right: 20px;
-  top: 20px;
+  top: 28px;
   position: absolute;
   border-radius: 50%;
   object-fit: cover;

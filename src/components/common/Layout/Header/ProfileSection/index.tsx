@@ -1,18 +1,20 @@
 import * as S from "./style"
 import { UserHeaderProfile } from "../../../../../interface/User"
-import { CgProfile } from "react-icons/cg"
+import { handleImageError } from "../../../../../utils/helpers"
 
 function ProfileSection({userData}: {userData: UserHeaderProfile}) {
-  console.log(userData)
 
+  const email: string[] | string = userData.email ? userData.email.split('@') : ''
+  console.log(email)
   return (
     <S.gridDiv >
       <S.nameSpan>{userData.username}</S.nameSpan>
-      <S.emailSpan>{userData.email}</S.emailSpan>
+      <S.emailFlexDiv>
+        <S.emailSpan>{email[0]}</S.emailSpan>
+        <S.emailSpan>@{email[1]}</S.emailSpan>
+      </S.emailFlexDiv>
       <S.wrapperDiv>
-        {userData.thumbnailUri ? 
-        <img src={userData.thumbnailUri} className="profileImg"/> : 
-        <CgProfile color="#F8EBEB" className="profileImg"/>}
+        <img onError={handleImageError} src={userData.thumbnailUri} className="profileImg"/>
       </S.wrapperDiv>
     </S.gridDiv>
   )

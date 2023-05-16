@@ -9,6 +9,7 @@ import { formatDate } from '../../../utils/helpers';
 import * as S from '../style';
 import ReactPaginate from 'react-paginate';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { SearchNotFound } from '../../AdminForm/SearchUser/style';
 
 function ApprovalPending() {
   const [pendingList, setPendingList] = useState<AccPendingResponse[]>([]);
@@ -21,7 +22,7 @@ function ApprovalPending() {
     queryFn: () => getAccPending(page),
     keepPreviousData: true,
     onSuccess: (response) => {
-      setPendingList(response);
+      setPendingList(response.content);
       setTotalPages(response.totalPages);
     },
   });
@@ -47,31 +48,45 @@ function ApprovalPending() {
   return (
     <>
       <S.ListContainer>
-        {status === 'loading' && <SkeletonUI />}
-        {pendingList &&
-          pendingList.map((listItem: AccPendingResponse, index: number) => (
-            <ListItem
-              key={index}
-              imageUri={listItem.imageUri}
-              username={listItem.username}
-              email={listItem.email}
-              textContent={[
-                <span>{listItem.role === Role.ADMIN ? '관리자' : '사원'}</span>,
-                <span>입사일: {formatDate(listItem.createAt)}</span>,
-              ]}
-              buttons={[
-                {
-                  label: '승인',
-                  onClick: () =>
-                    handleApprove({
-                      username: listItem.username,
-                      email: listItem.email,
-                    }),
-                },
-              ]}
-            />
-          ))}
+
+        {(() => {
+          switch (status) {
+            case 'loading':
+              return <SkeletonUI />;
+            case 'success':
+              return pendingList.length > 0 ? (
+                pendingList.map((listItem: AccPendingResponse, index: number) => (
+                  <ListItem
+                    key={index}
+                    imageUri={listItem.imageUri}
+                    username={listItem.username}
+                    email={listItem.email}
+                    textContent={[
+                      <span>{listItem.role === Role.ADMIN ? '관리자' : '사원'}</span>,
+                      <span>입사일: {formatDate(listItem.createAt)}</span>,
+                    ]}
+                    buttons={[
+                      {
+                        label: '승인',
+                        onClick: () =>
+                          handleApprove({
+                            username: listItem.username,
+                            email: listItem.email,
+                          }),
+                      },
+                    ]}
+                  />
+                ))
+              ) : (
+                <SearchNotFound>대기 중인 계정이 없습니다.</SearchNotFound>
+              );
+            default:
+              return null;
+          }
+        })()}
+
       </S.ListContainer>
+
       <S.PaginationContainer>
         {totalPages > 0 && (
           <ReactPaginate
