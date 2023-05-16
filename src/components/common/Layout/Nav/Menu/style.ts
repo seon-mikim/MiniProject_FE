@@ -80,7 +80,7 @@ export const countSpan = styled.span`
 `
 
 export const shadowDiv = styled.div`
-  filter: drop-shadow(-1.5px 0px 3.5px ${theme.color.black});
+  filter: drop-shadow(-1.5px 0px 3.5px rgba(24, 24, 24, 0.01));
 `
 export const boldSpan = styled.span`
   font-weight: ${theme.fontWeight.bold};
