@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './style';
 import moment from 'moment';
+import { handleImageError } from '../../../../utils/helpers';
 
 export interface eventProps {
   eData: any;
@@ -11,13 +12,12 @@ export interface eventProps {
 function Card({ eData, handleButtonClick, breakdownType }: eventProps) {
   const startDate = moment(eData.startDate);
   const endDate = moment(eData.endDate);
- 
- 
+
   return (
     <S.Card key={eData.eventId}>
       <S.CardContent>
         <S.UserImgWrap>
-          <img src="http://via.placeholder.com/45" alt="" />
+          <img src={eData.thumbnailUri} onError={handleImageError} alt="" />
         </S.UserImgWrap>
         <S.UserInfoWrap>
           <S.UserName>{eData.userName}</S.UserName>
@@ -36,7 +36,7 @@ function Card({ eData, handleButtonClick, breakdownType }: eventProps) {
           )}
         </S.EventTypeDateWrap>
         <S.CreateDate>
-          <span>{eData.createdAt}</span>
+          <span>{moment(eData.createdAt).format('YYYY-MM-DD HH:mm:ss').toLocaleString()}</span>
         </S.CreateDate>
       </S.CardContent>
       {breakdownType === 'request' ? (
@@ -49,8 +49,8 @@ function Card({ eData, handleButtonClick, breakdownType }: eventProps) {
           </S.CheckButton>
         </S.ButtonArea>
       ) : (
-        <S.ButtonArea>
-          <span>{eData.orderState === 'APPROVED' ? '승인' : '거절'}</span>
+        <S.ButtonArea >
+          <div>{eData.orderState === 'APPROVED' ? '승인' : '거절'}</div>
         </S.ButtonArea>
       )}
     </S.Card>

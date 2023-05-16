@@ -1,11 +1,20 @@
 import { getCookie } from '../utils/cookies';
 import { axiosJsonInstance } from './axios';
 
-export const getRequestList = async (eventType: string, breakdownType: string) => {
+export const getRequestList = async (eventType: string, breakdownType: string, pageNumber:number, type: string, keyword:string) => {
+  const startIndex =(pageNumber) -1
+
   const { data } = await axiosJsonInstance.get(`/api/admin/${eventType}/${breakdownType}`, {
     headers: {
       Authorization: `Bearer ${getCookie('accessToken')}`,
     },
+    params: {
+      type,
+      keyword,
+      page:startIndex,
+      size:6,
+     
+    }
   });
   return data;
 };
