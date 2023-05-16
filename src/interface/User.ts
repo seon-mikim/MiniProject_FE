@@ -51,6 +51,7 @@ export interface eventState {
   eventId: number,
   eventType: string,
   startDate: string,
+  endDate: string,
   orderState: string
 }
 

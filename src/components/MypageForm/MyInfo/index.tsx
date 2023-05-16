@@ -7,6 +7,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { setMyInfo } from '../../../api/mypage'
 import { handleImageError } from '../../../utils/helpers'
 import { FiEdit } from 'react-icons/fi'
+import AlertModal from '../../common/AlertModal'
 
 interface mypageForm {
   username: string,
@@ -41,11 +42,15 @@ function MyInfo({username, email, phone, imageUri, role}:
   // const onValid = (data: any) => console.log(data, 'onValid')
   // const onInvalid = (data: any) => console.log(data, 'onInvalid')
 
+  const [isResponseModalOpenImg, setIsResponseModalOpenImg] = useState<boolean>(false);
+  const [isResponseModalOpenEdit, setIsResponseModalOpenEdit] = useState<boolean>(false);
+
   const isImage = (filetype: string) => {
     console.log(typeof(filetype))
     const form = /(.*?)\.(jpg|jpeg|gif|bmp|png)$/
     if(!filetype.match(form) && filetype !== ''){
-      window.alert('이미지 파일만 업로드 가능합니다!')
+      // window.alert('이미지 파일만 업로드 가능합니다!')
+      setIsResponseModalOpenImg(true)
       resetField('imageChange')
     }
   }
@@ -65,7 +70,10 @@ function MyInfo({username, email, phone, imageUri, role}:
       image: data.imageChange === '' ? null : data.imageChange[0],
       modifyInDTO
     }
+    setIsResponseModalOpenEdit(true)
     mutate(setMyInfoData)
+    resetField('password')
+    resetField('passwordCheck')
   }
   
   return (
@@ -153,6 +161,12 @@ function MyInfo({username, email, phone, imageUri, role}:
         </S.formDiv>  
         <S.changeButton type='submit'>정보 수정</S.changeButton>
       </S.flexForm>
+      {isResponseModalOpenImg && (
+        <AlertModal onConfirmClick={() => setIsResponseModalOpenImg(false)} message={'이미지 파일만 업로드 가능합니다!'} />
+      )}
+      {isResponseModalOpenEdit && (
+        <AlertModal onConfirmClick={() => setIsResponseModalOpenEdit(false)} message={'정보가 수정되었습니다!'} />
+      )}
     </S.backgroundDiv>
   )
 }
