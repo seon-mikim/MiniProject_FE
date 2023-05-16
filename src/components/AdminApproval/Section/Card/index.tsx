@@ -2,17 +2,15 @@ import React from 'react';
 import * as S from './style';
 import moment from 'moment';
 import { handleImageError } from '../../../../utils/helpers';
+import { eventProps } from '../../../../interface/Admin';
 
-export interface eventProps {
-  eData: any;
-  handleButtonClick?: (cardData: eventProps['eData'], status: string) => void;
-  breakdownType?: string;
-}
+
+
 
 function Card({ eData, handleButtonClick, breakdownType }: eventProps) {
   const startDate = moment(eData.startDate);
   const endDate = moment(eData.endDate);
-
+ console.log(eData)
   return (
     <S.Card key={eData.eventId}>
       <S.CardContent>

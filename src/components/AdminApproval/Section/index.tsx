@@ -2,25 +2,29 @@ import * as S from './style';
 import Card from './Card';
 import Pagenation from './Pagenation';
 import CheckWrapper from './CheckWrapper';
-import { Props } from '../../AdminApproval';
+import {  SectionProps } from '../../../interface/Admin';
+
 
 
 
 function Section({
   handleButtonClick,
-  handleRequestSelect,
+  handleEventTypeSelect,
   handleSetPage,
   handleSelectType,
   handleInput,
   eventType,
   breakdownType,
-  eventData,
+  data,
   pageTotalNumber,
-}: Props) {
+  currentPageNumber,
+}: SectionProps) {
+
+
   return (
     <div>
       <CheckWrapper
-        handleRequestSelect={handleRequestSelect}
+        handleEventTypeSelect={handleEventTypeSelect}
         handleSelectType={handleSelectType}
         handleInput={handleInput}
       />
@@ -32,10 +36,10 @@ function Section({
         <span>요청 처리</span>
       </S.CategoryWrap>
       <S.CradWrap>
-        {eventData.length === 0 && <S.Epmty>요청 내역이 없습니다.</S.Epmty>}
+        {data&&data.length === 0 && <S.Epmty>요청 내역이 없습니다.</S.Epmty>}
         {eventType === 'annual' &&
-          eventData &&
-          eventData.map((eData: any) => (
+          data &&
+          data.map((eData: any) => (
             <Card
               eData={eData}
               key={eData.eventId}
@@ -44,8 +48,8 @@ function Section({
             />
           ))}
         {eventType === 'duty' &&
-          eventData &&
-          eventData.map((eData: any) => (
+          data &&
+          data.map((eData) => (
             <Card
               eData={eData}
               key={eData.eventId}
@@ -54,7 +58,7 @@ function Section({
             />
           ))}
       </S.CradWrap>
-      <Pagenation handleSetPage={handleSetPage} pageTotalNumber={pageTotalNumber} />
+      <Pagenation handleSetPage={handleSetPage} pageTotalNumber={pageTotalNumber} currentPageNumber={currentPageNumber}/>
     </div>
   );
 }

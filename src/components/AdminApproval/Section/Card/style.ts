@@ -83,6 +83,7 @@ export const EventDate = styled.span`
   display: inline-block;
 `;
 export const ButtonArea = styled.div`
+  display:flex;
   margin-right: 40px;
   button:first-child {
     margin-right: 20px;

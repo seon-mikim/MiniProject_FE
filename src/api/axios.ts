@@ -10,7 +10,7 @@ const getAxiosInstance = (ContentType: string) => {
     withCredentials: true,
   };
   const instance = axios.create(config);
-  instance.defaults.timeout = 3000;
+  instance.defaults.timeout = 6000;
   instance.interceptors.request.use(
     (request) => {
       const token = getCookie('accessToken');

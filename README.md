@@ -1,4 +1,3 @@
-
 <p align="center">
 <img src="https://github.com/sung34/MiniProject_FE/assets/120437898/919ffcbd-1c87-4850-ba51-d83cbf151446" width="30%" height="30%"/>  
 
