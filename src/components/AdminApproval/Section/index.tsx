@@ -33,7 +33,7 @@ handleInput
         </S.Epmty>
 
         }
-        {eventType === 'annual' &&
+        {eventType === 'annual' && eventData&&
           eventData.map((eData: any) => (
             <Card
               eData={eData}
@@ -42,7 +42,7 @@ handleInput
               breakdownType={breakdownType}
             />
           ))}
-        {eventType === 'duty' &&
+        {eventType === 'duty' &&eventData&&
           eventData.map((eData: any) => (
             <Card
               eData={eData}

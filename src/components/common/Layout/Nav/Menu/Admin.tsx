@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 import { getWaitingList } from '../../../../../api/nav'
 
 function Admin({opacity}: {opacity: number}) {
-  const { data: annualList, isLoading, error } = useQuery(['annualWaitingList'], () => getWaitingList('annual'))
-  const { data: dutylList } = useQuery(['dutyWaitingList'], () => getWaitingList('duty'))
+  const { data: annualList, isLoading, error } = useQuery(['annualWaitingList'], ()=>getWaitingList('annual'))
+  const { data: dutyList } = useQuery(['dutyWaitingList'], ()=>getWaitingList('duty'))
 
   if(isLoading) return <>로딩 중...</>
   if(error) return <>error</>
-
+  //console.log(annualList)
   // const holidayCount = 5
   // const nightCount = 10
 
@@ -27,7 +27,7 @@ function Admin({opacity}: {opacity: number}) {
         <S.menuDiv opacity={opacity}>
           <Link to='/adminApproval' className='adminLink'>
             <span>당직 승인 대기</span>
-            <S.countSpan>{dutylList}</S.countSpan>
+            <S.countSpan>{dutyList}</S.countSpan>
           </Link>
         </S.menuDiv>
       </S.shadowDiv>

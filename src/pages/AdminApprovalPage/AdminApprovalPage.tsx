@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import Wrapper from '../../components/AdminApproval';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getRequestList, postApproval } from '../../api/request';
@@ -18,26 +18,16 @@ function AdminApprovalPage() {
   const [selectedCard, setSelectedCard] = useState<eventProps['eData']>(null);
 
   const queryClient = useQueryClient();
-
-  const fetchData = async () => {
-    const data = await getRequestList(eventType, breakdownType, pageNumber, type, keyword);
-    return data;
-  };
-
   const { data, isLoading, error } = useQuery(
-    ['admin', eventType, breakdownType, pageNumber, type,keyword], fetchData,
+    ['admin', eventType, breakdownType, pageNumber, type,keyword],
+    () => getRequestList(eventType, breakdownType, pageNumber, type, keyword),
     {
-      enabled: false,
+    
       onSuccess: (data) => {
         console.log(data);
       },
     },
   );
-
-  useEffect(() => {
-    // 검색어가 변경되면 API 호출 활성화
-    queryClient.prefetchQuery(['admin', eventType, breakdownType, pageNumber, type, keyword],  fetchData);
-  }, [queryClient, eventType, breakdownType, pageNumber, type, keyword]);
 
   const { mutate: approval, status } = useMutation(postApproval, {
     onSuccess: () => {
