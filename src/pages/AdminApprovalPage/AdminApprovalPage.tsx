@@ -69,7 +69,7 @@ function AdminApprovalPage() {
     return <>로딩중</>;
   }
   return (
-    <div className="content">
+    <div className="content large">
       {isShowModal && (
         <S.ModalBackground onClick={handleModalClose}>
           <BigCalendar />

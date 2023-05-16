@@ -1,9 +1,7 @@
 import React from 'react';
-import * as S from './style'
-import { RequestProps } from '..';
+import * as S from './style';
 
-
-function CheckApproval({handleRequestSelect}:RequestProps) {
+function CheckApproval({handleRequestSelect}:any) {
   return (
     <div>
       <S.Button color="annual" onClick={()=>handleRequestSelect('annual')}>연차</S.Button>
