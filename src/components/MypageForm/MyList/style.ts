@@ -5,6 +5,7 @@ export const backgroundDiv = styled.div`
   background-color: ${theme.color.beige};
   border-radius: 10px;
   display: flex;
+  /* flex-grow: 0.5; */
   flex-direction: column;
   box-sizing: border-box;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -16,7 +17,7 @@ export const titleSpan = styled.span`
   border-bottom: 1px solid ${theme.color.brown};
 `
 export const contentBackgroundDiv = styled.div`
-  width: 36.2rem;
+  width: 652.5px;
   height: 14rem;
   overflow-y: auto;
   margin: 1rem 2rem;

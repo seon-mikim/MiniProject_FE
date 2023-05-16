@@ -6,6 +6,7 @@ import moment from 'moment';
 import { eventOrder } from '../../../api/mainService';
 import { useMutation } from 'react-query';
 import ConfirmModal from '../../common/ConfirmModal';
+import { showToastError } from '../../common/Tostify';
 
 function ApplySection() {
   const [type, setType] = useState('ANNUAL');
@@ -18,7 +19,6 @@ function ApplySection() {
     onSuccess: (data) => {
       console.log(data);
       setModal(false);
-      alert('신청이 완료되었습니다.');
     },
   });
 
@@ -33,7 +33,7 @@ function ApplySection() {
       const selectedStartDate = moment(startDate).startOf('day');
 
       if (selectedStartDate.isBefore(today)) {
-        alert('시작 날짜는 오늘보다 이전일 수 없습니다.');
+        showToastError('오늘보다 이전 날짜는 선택할 수 없습니다.')
         setModal(false);
         return;
       }

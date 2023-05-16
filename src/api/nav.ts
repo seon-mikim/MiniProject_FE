@@ -9,6 +9,6 @@ export const getNextEvent = async ():Promise<nextEventEl> => {
 
 export const getWaitingList = async (event: string) => {
   const res = await axiosJsonInstance.get(`/api/admin/${event}/request`)
-  console.log(res.data.totalElements)
-  return res.data.totalElements
+  console.log(res.data.data.totalElements)
+  return res.data.data.totalElements
 }

@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import theme from '../../styles/theme';
 export const RegisterPageContainer = styled.div`
   display: flex;
-  height: 100%;
+  height: 100vh;
 `;
 
 export const LogoContainer = styled.div`
   width: 30%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

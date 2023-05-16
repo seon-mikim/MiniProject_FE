@@ -1,10 +1,8 @@
-import React from 'react';
 import * as S from './style'
-import { CheckApprovalProps, Props } from '../../../../../interface/Admin';
-
-
+import { CheckApprovalProps } from '../../../../../interface/Admin';
 
 function CheckApproval({ handleEventTypeSelect}:CheckApprovalProps) {
+
   return (
     <div>
       <S.Button color="annual" onClick={()=> handleEventTypeSelect('annual')}>연차</S.Button>

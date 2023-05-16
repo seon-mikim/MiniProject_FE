@@ -2,35 +2,7 @@ import { AxiosError } from 'axios';
 import { LoginResponse, RegisterResponse, LoginRequest, RegisterRequest } from '../interface/Auth';
 import { axiosFormInstance, axiosJsonInstance } from './axios';
 import { setCookie } from '../utils/cookies';
-import {  toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import theme from '../styles/theme';
-
-export const ERROR_TOAST_ID = 'ERROR_TOAST';
-let toastId: string | null | number = null;
-
-const showToastError = (message: string) => {
-  if (toastId === null || !toast.isActive(toastId)) {
-    toast.clearWaitingQueue({ containerId: ERROR_TOAST_ID }); // 큐에 있는 모든 토스트 메시지를 제거합니다.
-    toastId = toast.error(message, {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 800,
-      hideProgressBar: true,
-      icon: true,
-      style: { width: '400px', color: `${theme.color.brown}`, background: `${theme.color.lightBeige}` },
-      toastId: 'ERROR_TOAST',
-    });
-  }
-};
-const showToastSuccess = (message: string) => {
-  toast.success(message, {
-    position: toast.POSITION.TOP_CENTER,
-    autoClose: 2000,
-    hideProgressBar: true,
-    icon: true,
-    style: { width: '400px', color: `${theme.color.brown}`, background: `${theme.color.lightBeige}` },
-  });
-}
+import { showToastError, showToastSuccess } from '../components/common/Tostify';
 
 export const login = async (user: LoginRequest) => {
   try {
@@ -55,9 +27,9 @@ export const register = async (user: RegisterRequest) => {
   const blob = new Blob([JSON.stringify(user.signupInDTO)], { type: 'application/json' });
   formData.append('image', user.image as File);
   formData.append('signupInDTO', blob);
-
   try {
     const { data } = await axiosFormInstance.post<RegisterResponse>('/api/signup', formData);
+    showToastSuccess('회원가입 성공');
     return data;
   } catch (error) {
     if (error instanceof AxiosError && error.response?.data.status === 400) {

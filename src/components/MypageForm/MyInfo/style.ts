@@ -19,12 +19,12 @@ export const titleSpan = styled.span`
 export const flexForm = styled.form`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
   /* display: grid;
   grid-template-columns: 15rem 23rem minmax(10rem, 36rem);
   grid-template-rows: 1fr; */
-  padding: 1rem 5rem;
+  padding: 1rem 2rem;
   padding-top: 2rem;
   padding-right: 2rem;
   box-sizing: border-box;
@@ -46,28 +46,33 @@ export const imgSectionDiv = styled.div`
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
-    width: 6rem;
+    width: max-content;
     box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     background-color: ${theme.color.whiteBeige};
     color: ${theme.color.darkBrown};
-    border-radius: 7px;
+    border-radius: 50%;
     &:hover {
       opacity: 0.9;
     }
+    position: absolute;
+    right: 25px;
+    bottom: 20px;
   }
 `
 export const wrapperDiv = styled.div`
-  width: 12rem;
-  height: 12rem;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   border: 3px dashed ${theme.color.whiteBeige};
-  padding: 2px;
+  padding: 5px;
+  position: relative;
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.2);
   }
 `
 export const formDiv = styled.div`

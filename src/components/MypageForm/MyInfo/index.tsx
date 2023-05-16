@@ -6,6 +6,7 @@ import { modifyInDTOType } from '../../../interface/User'
 import { useMutation, useQueryClient } from 'react-query'
 import { setMyInfo } from '../../../api/mypage'
 import { handleImageError } from '../../../utils/helpers'
+import { FiEdit } from 'react-icons/fi'
 
 interface mypageForm {
   username: string,
@@ -74,8 +75,9 @@ function MyInfo({username, email, phone, imageUri, role}:
         <S.imgSectionDiv>
           <S.wrapperDiv>
             <img onError={handleImageError} src={src.current ? URL.createObjectURL(src.current) : imageUri} />
+            <label htmlFor='imageChange'><FiEdit /></label>
           </S.wrapperDiv>
-          <label htmlFor='imageChange'>이미지 변경</label>
+          {/* <label htmlFor='imageChange'>이미지 변경</label> */}
           <input type='file' 
             accept='image/*' 
             id='imageChange'
