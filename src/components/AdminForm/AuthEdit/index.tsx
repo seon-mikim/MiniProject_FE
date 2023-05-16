@@ -1,14 +1,13 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button } from '../../common/Button/style';
 import * as S from './style';
 import { AuthUser, Role } from '../../../interface/User';
 import { useMutation, useQueryClient } from 'react-query';
 
-import AlertModal from '../../common/AlertModal';
 import ConfirmModal from '../../common/ConfirmModal';
 import { CircularLoadingProgress } from '../../common/CircularLoadingProgress/style';
 import { updateRole } from '../../../api/Admin/AuthEdit';
-import { formatDate, handleImageError } from '../../../utils/helpers';
+import { handleImageError } from '../../../utils/helpers';
 import { SelectUserDispatchContext, SelectUserStateContext } from '../../../pages/AdminAuthPage';
 import { INITIAL_VALUE, RESET_SELECTED_USER } from '../../../reducers/selectUserReducer';
 import { showToastSuccess } from '../../common/Tostify';
