@@ -8,7 +8,7 @@ interface opacityProps {
 export const logoutButton = styled.button<opacityProps>`
   background-color: ${theme.color.lightBrown};
   color: ${theme.color.white};
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
   padding: 0.5rem;
   width: 100%;
@@ -24,7 +24,7 @@ export const logoutButton = styled.button<opacityProps>`
 export const mypageButton = styled.button<opacityProps>`
   background-color: ${theme.color.lightBeige};
   color: ${theme.color.darkBrown};
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 0.5rem;
   width: 100%;
   border: none;
