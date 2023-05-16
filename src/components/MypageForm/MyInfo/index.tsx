@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-import { User, setMyinfoData } from '../../../interface/User'
+import { useRef } from 'react'
+import { setMyinfoData } from '../../../interface/User'
 import * as S from './style'
 import { useForm } from 'react-hook-form'
 import { modifyInDTOType } from '../../../interface/User'
@@ -7,7 +7,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { setMyInfo } from '../../../api/mypage'
 import { handleImageError } from '../../../utils/helpers'
 import { FiEdit } from 'react-icons/fi'
-import AlertModal from '../../common/AlertModal'
+import { showToastError, showToastSuccess } from '../../common/Tostify'
 
 interface mypageForm {
   username: string,
@@ -42,14 +42,10 @@ function MyInfo({username, email, phone, imageUri, role}:
   // const onValid = (data: any) => console.log(data, 'onValid')
   // const onInvalid = (data: any) => console.log(data, 'onInvalid')
 
-  const [isResponseModalOpenImg, setIsResponseModalOpenImg] = useState<boolean>(false);
-  const [isResponseModalOpenEdit, setIsResponseModalOpenEdit] = useState<boolean>(false);
-
   const isImage = (filetype: string) => {
     const form = /(.*?)\.(jpg|jpeg|gif|bmp|png)$/
     if(!filetype.match(form) && filetype !== ''){
-      // window.alert('이미지 파일만 업로드 가능합니다!')
-      setIsResponseModalOpenImg(true)
+      showToastError('이미지 파일만 업로드 가능합니다!')
       resetField('imageChange')
     }
   }
@@ -68,7 +64,7 @@ function MyInfo({username, email, phone, imageUri, role}:
       image: data.imageChange === '' ? null : data.imageChange[0],
       modifyInDTO
     }
-    setIsResponseModalOpenEdit(true)
+    showToastSuccess('정보가 수정되었습니다!')
     mutate(setMyInfoData)
     resetField('password')
     resetField('passwordCheck')
@@ -159,12 +155,6 @@ function MyInfo({username, email, phone, imageUri, role}:
         </S.formDiv>  
         <S.changeButton type='submit'>정보 수정</S.changeButton>
       </S.flexForm>
-      {isResponseModalOpenImg && (
-        <AlertModal onConfirmClick={() => setIsResponseModalOpenImg(false)} message={'이미지 파일만 업로드 가능합니다!'} />
-      )}
-      {isResponseModalOpenEdit && (
-        <AlertModal onConfirmClick={() => setIsResponseModalOpenEdit(false)} message={'정보가 수정되었습니다!'} />
-      )}
     </S.backgroundDiv>
   )
 }

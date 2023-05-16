@@ -4,12 +4,14 @@ import * as S from './style'
 import { cancelEvent } from '../../../../api/mypage'
 import { useState } from 'react'
 import ConfirmModal from '../../../common/ConfirmModal'
+import { showToastSuccess } from '../../../common/Tostify'
 
 function CancelButton({eventEl, eventState}: {eventEl: cancelEventType, eventState: eventState}) {
   const queryClient = useQueryClient()
   const {mutate, isLoading, error} = useMutation(cancelEvent, {
     onSuccess: () => {
       queryClient.invalidateQueries(eventEl.eventType)
+      showToastSuccess('취소되었습니다!')
     }
   })
   
@@ -25,9 +27,6 @@ function CancelButton({eventEl, eventState}: {eventEl: cancelEventType, eventSta
   return (
     <>
       <S.cancelButton onClick={()=>setIsConfirmModalOpen(true)}>취소하기</S.cancelButton>
-      {/* {isResponseModalOpen && (
-        <AlertModal onConfirmClick={() => setIsResponseModalOpen(false)} message={'취소되었습니다!'} />
-      )} */}
       {isConfirmModalOpen && (
         <ConfirmModal
           title={`${
