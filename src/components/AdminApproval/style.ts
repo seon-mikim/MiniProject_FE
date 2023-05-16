@@ -1,14 +1,12 @@
-import styled from "styled-components";
-
+import { BsCalendarCheck } from 'react-icons/bs';
+import styled from 'styled-components';
 
 export const ApprovalWrapper = styled.div`
-
   width: 1308px;
-  height: 882px;
+  height: 785px;
   border-radius: 8px;
   background-color: ${(props) => props.theme.color.beige};
 `;
-
 
 export const SeleteTabArea = styled.div`
   color: ${(props) => props.theme.color.darkBrown};
@@ -28,4 +26,10 @@ export const SeleteTabArea = styled.div`
     padding-left: 37.5px;
     margin-right: 50px;
   }
+`;
+
+export const CalendarIcon = styled(BsCalendarCheck)`
+  cursor: pointer;
+  font-size: ${({ theme }) => theme.fontSize.xlarge};
+  margin-left: 690px;
 `;

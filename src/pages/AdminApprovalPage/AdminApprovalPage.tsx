@@ -1,31 +1,47 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Wrapper from '../../components/AdminApproval';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getRequestList, postApproval } from '../../api/request';
 import ConfirmModal from '../../components/common/ConfirmModal';
 import { eventProps } from '../../components/AdminApproval/Section/Card';
+import BigCalendar from '../../components/common/BigCalendar';
+import * as S from './style';
 
 function AdminApprovalPage() {
- 
   const [eventType, setEventType] = useState<string>('annual');
+  const [pageNumber, setPageNumber] = useState<number | string>(1);
+  const [type, setType] = useState<string>('이름');
+  const [keyword, setKeyword] = useState<string>('');
   const [breakdownType, setBreakdownType] = useState<string>('request');
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [isShowModal, setIsShowModal] = useState<boolean>(false);
   const [selectedCard, setSelectedCard] = useState<eventProps['eData']>(null);
 
   const queryClient = useQueryClient();
+
+  const fetchData = async () => {
+    const data = await getRequestList(eventType, breakdownType, pageNumber, type, keyword);
+    return data;
+  };
+
   const { data, isLoading, error } = useQuery(
-    ['admin', eventType, breakdownType],
-    () => getRequestList(eventType, breakdownType),
+    ['admin', eventType, breakdownType, pageNumber, type,keyword], fetchData,
     {
+      enabled: false,
       onSuccess: (data) => {
         console.log(data);
       },
     },
   );
 
+  useEffect(() => {
+    // 검색어가 변경되면 API 호출 활성화
+    queryClient.prefetchQuery(['admin', eventType, breakdownType, pageNumber, type, keyword],  fetchData);
+  }, [queryClient, eventType, breakdownType, pageNumber, type, keyword]);
+
   const { mutate: approval, status } = useMutation(postApproval, {
     onSuccess: () => {
-      queryClient.invalidateQueries(['admin',  eventType, breakdownType]);
+      queryClient.invalidateQueries(['admin', eventType, breakdownType, pageNumber, type,keyword]);
     },
   });
   const handleButtonClick = (cardData: eventProps['eData'], status: string) => {
@@ -34,21 +50,45 @@ function AdminApprovalPage() {
   };
 
   const handleTabClick = (breakDown: string) => {
-    setBreakdownType(breakDown)
-    
+    setBreakdownType(breakDown);
   };
   const handleRequestSelect = (eventType: string) => {
     setEventType(eventType);
   };
+
+  const handleSetPage = (pageNumber: number | string) => {
+    setPageNumber(pageNumber);
+  };
+  const handleModalClose = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) setIsShowModal(false);
+  };
+
+  const handleModalOpen = () => {
+    setIsShowModal(true);
+  };
+
+  const handleSelectType = (type: string) => {
+    setType(type);
+  };
+
+  const handleInput = (keyword: string) => {
+    setKeyword(keyword);
+  };
+
   if (isLoading) {
     return <>로딩중</>;
   }
   return (
     <div className="content">
+      {isShowModal && (
+        <S.ModalBackground onClick={handleModalClose}>
+          <BigCalendar />
+        </S.ModalBackground>
+      )}
       {showModal && (
         <ConfirmModal
           title={`이름: ${selectedCard.userName}`}
-          subTitle={`[${selectedCard.eventType==='ANNUAL'? '연차':'당직'}] ${
+          subTitle={`[${selectedCard.eventType === 'ANNUAL' ? '연차' : '당직'}] ${
             selectedCard.startDate ? selectedCard.startDate : selectedCard.date
           }`}
           textContent="해당 내용을 승인하시겠습니까?"
@@ -69,7 +109,12 @@ function AdminApprovalPage() {
         eventData={data.data.content}
         handleButtonClick={handleButtonClick}
         eventType={eventType}
+        handleSetPage={handleSetPage}
         breakdownType={breakdownType}
+        pageTotalNumber={data.data.totalElements}
+        handleModalOpen={handleModalOpen}
+        handleSelectType={handleSelectType}
+        handleInput={handleInput}
       />
     </div>
   );
