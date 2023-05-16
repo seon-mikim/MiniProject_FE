@@ -10,7 +10,6 @@ import { eventProps } from '../../../../interface/Admin';
 function Card({ eData, handleButtonClick, breakdownType }: eventProps) {
   const startDate = moment(eData.startDate);
   const endDate = moment(eData.endDate);
- console.log(eData)
   return (
     <S.Card key={eData.eventId}>
       <S.CardContent>

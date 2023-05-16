@@ -41,7 +41,6 @@ export interface PostApprovalProps {
 }
 
 export const postApproval = async ({ eventType, eventId, orderState }: PostApprovalProps) => {
-  console.log(eventType, eventId, orderState);
   const { data } = await axiosJsonInstance.post(
     `/api/admin/${eventType}/order`,
     { eventId, orderState },

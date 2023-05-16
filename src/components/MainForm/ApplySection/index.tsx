@@ -17,7 +17,6 @@ function ApplySection() {
 
   const { mutate } = useMutation(eventOrder, {
     onSuccess: (data) => {
-      console.log(data);
       setModal(false);
     },
   });

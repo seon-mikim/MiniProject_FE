@@ -8,7 +8,6 @@ export const login = async (user: LoginRequest) => {
   try {
     const { data, headers } = await axiosJsonInstance.post<LoginResponse>('/api/login', user);
     headers.authorization && setCookie('accessToken', headers.authorization.split(' ')[1]);
-    console.log(data);
     showToastSuccess('로그인 성공');
     return data;
   } catch (error) {

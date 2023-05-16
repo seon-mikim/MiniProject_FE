@@ -55,7 +55,6 @@ function RegisterForm({ mutate }: RegisterFormProps) {
   } = useForm<onSubmitProps>({ resolver: yupResolver(schema), mode: 'onChange' });
 
   const [imgUrl, setImgUrl] = useState<string>(DEFAULT_PREVIEW_URL);
-  console.log(imgUrl);
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files?.length) {
