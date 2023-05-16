@@ -46,7 +46,6 @@ function MyInfo({username, email, phone, imageUri, role}:
   const [isResponseModalOpenEdit, setIsResponseModalOpenEdit] = useState<boolean>(false);
 
   const isImage = (filetype: string) => {
-    console.log(typeof(filetype))
     const form = /(.*?)\.(jpg|jpeg|gif|bmp|png)$/
     if(!filetype.match(form) && filetype !== ''){
       // window.alert('이미지 파일만 업로드 가능합니다!')
@@ -59,7 +58,6 @@ function MyInfo({username, email, phone, imageUri, role}:
   password.current = watch('password')
 
   const onSubmit = (data: any) => {
-    console.log(data)
     
     const modifyInDTO: modifyInDTOType = {
       username: data.username,

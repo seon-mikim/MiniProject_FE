@@ -1,21 +1,36 @@
+import { Data, ResponesData } from '../interface/Admin';
 import { getCookie } from '../utils/cookies';
 import { axiosJsonInstance } from './axios';
 
-export const getRequestList = async (eventType: string, breakdownType: string, pageNumber:number, type: string, keyword:string) => {
-  const startIndex =(pageNumber) -1
+export const getRequestList = async (
+  eventType: string,
+  breakdownType: string,
+  pageNumber: number,
+  type: string,
+  keyword: string,
+) => {
+  const startIndex = pageNumber - 1;
 
-  const { data } = await axiosJsonInstance.get(`/api/admin/${eventType}/${breakdownType}`, {
+  const params: { [key: string]: any } = {
+    page: startIndex,
+    size: 6,
+  };
+  const config = {
     headers: {
       Authorization: `Bearer ${getCookie('accessToken')}`,
     },
-    params: {
-      type,
-      keyword,
-      page:startIndex,
-      size:6,
-     
+    params: params,
+  };
+  if (breakdownType === 'approval') {
+    if (type !== undefined) {
+      params.type = type;
     }
-  });
+
+    if (keyword !== undefined) {
+      params.keyword = keyword;
+    }
+  }
+  const { data } = await axiosJsonInstance.get<ResponesData>(`/api/admin/${eventType}/${breakdownType}`, config);
   return data;
 };
 
@@ -26,7 +41,6 @@ export interface PostApprovalProps {
 }
 
 export const postApproval = async ({ eventType, eventId, orderState }: PostApprovalProps) => {
-  console.log(eventType, eventId, orderState);
   const { data } = await axiosJsonInstance.post(
     `/api/admin/${eventType}/order`,
     { eventId, orderState },

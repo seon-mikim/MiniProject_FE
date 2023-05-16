@@ -39,6 +39,8 @@ export const ImgStyle = styled.img`
   background: ${theme.color.white};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
+  padding: 10px;
+  box-sizing: border-box;
   object-fit: cover;
 `;
 export const InputContainer = styled.div`

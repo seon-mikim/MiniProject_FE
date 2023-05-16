@@ -8,7 +8,6 @@ function LoginPage() {
   const navigate = useNavigate();
   const { mutate } = useMutation(login, {
     onSuccess: (res) => {
-      console.log(res);
       if (res && res.data.role === 'USER') {
         navigate('/main');
       } else if (res && res.data.role === 'ADMIN') {
