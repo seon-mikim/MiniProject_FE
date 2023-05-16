@@ -23,8 +23,9 @@ export const PaginationContainer = styled.div`
     }
   }
 `;
+
 export const ListContainer = styled.div`
-  height: 510px;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;

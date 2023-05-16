@@ -65,7 +65,7 @@ function SearchArea({ onSearchClick }: searchInputProps) {
   const handlePreviewClose = () => {
     setTimeout(() => {
       setIsPreviewOpen(false);
-    }, 800); // 0.2초 뒤에 setIsPreviewOpen(false) 호출
+    }, 700); // 0.7초 뒤에 setIsPreviewOpen(false) 호출
   };
 
   // 렌더링이 끝나고 검색어, 필터, 또는 props의 list가 변할 때 수행할 내용
@@ -77,11 +77,11 @@ function SearchArea({ onSearchClick }: searchInputProps) {
         const result = await searchUser({type: searchParameters.type, keyword:searchParameters.keyword}); // 검색 호출
         setFilteredPreviewList(result.content);
 
-      }, 1500);
+      }, 900);
     } 
 
     // 변할 때 마다 체크해서 실시간으로 리렌더링이 되도록 구독
-  }, [searchParameters.keyword]);
+  }, [searchParameters.keyword,searchParameters.type]);
 
   return (
     <S.SearchInputArea onChange={handleChange}>
