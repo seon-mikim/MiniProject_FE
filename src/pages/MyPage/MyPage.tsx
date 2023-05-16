@@ -3,7 +3,7 @@ import MypageForm from '../../components/MypageForm'
 
 function Mypage() {
   return (
-    <S.mainSection className='content'>
+    <S.mainSection className='content large'>
       <MypageForm />
     </S.mainSection>
   )

@@ -23,7 +23,6 @@ function App() {
         <ToastContainer limit={1}/>
         <Routers />
       </ThemeProvider>
-      <ReactQueryDevtools initialIsOpen={true}/>
     </QueryClientProvider>
   );
 }

@@ -1,6 +1,5 @@
 import * as S from './style'
-import DateType from './UserDate/DateType';
-import DDay from './UserDate/DDay';
+
 import { Link } from 'react-router-dom';
 import { getNextEvent } from '../../../../../api/nav';
 import { useQuery } from 'react-query';
@@ -26,7 +25,7 @@ function User({opacity}: {opacity: number}) {
             {
               nextEvent?.annualDDay ? 
               <>
-                <S.boldSpan>'D-'{nextEvent?.annualDDay}</S.boldSpan>
+                <S.boldSpan>D-{nextEvent?.annualDDay}</S.boldSpan>
                 <S.smallSpan>{nextEvent?.nextAnnualDate}</S.smallSpan>
               </>:
               <>
@@ -46,7 +45,7 @@ function User({opacity}: {opacity: number}) {
             {
               nextEvent?.dutyDDay ? 
               <>
-                <S.boldSpan>'D-'{nextEvent?.dutyDDay}</S.boldSpan>
+                <S.boldSpan>D-{nextEvent?.dutyDDay}</S.boldSpan>
                 <S.smallSpan>{nextEvent?.nextDutyDate}</S.smallSpan>
               </>:
               <>

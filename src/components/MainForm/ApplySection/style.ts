@@ -93,7 +93,7 @@ export const Container = styled.div`
 export const FormBtn = styled.button`
   width:100%;
   height: 65px;
-  color: inherit;
+  color: ${({ theme }) => theme.color.white};
   background-color: ${({ theme }) => theme.color.lightBrown};
   border: none;
   cursor: pointer;
