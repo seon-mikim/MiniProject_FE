@@ -9,8 +9,8 @@ import * as S from './style';
 
 function AdminApprovalPage() {
   const [eventType, setEventType] = useState<string>('annual');
-  const [pageNumber, setPageNumber] = useState<number | string>(1);
-  const [type, setType] = useState<string>('이름');
+  const [pageNumber, setPageNumber] = useState<number >(1);
+  const [type, setType] = useState<string>('username');
   const [keyword, setKeyword] = useState<string>('');
   const [breakdownType, setBreakdownType] = useState<string>('request');
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -46,7 +46,7 @@ function AdminApprovalPage() {
     setEventType(eventType);
   };
 
-  const handleSetPage = (pageNumber: number | string) => {
+  const handleSetPage = (pageNumber: number) => {
     setPageNumber(pageNumber);
   };
   const handleModalClose = (e: React.MouseEvent<HTMLDivElement>) => {

@@ -2,22 +2,28 @@ import * as S from './style';
 import Card from './Card';
 import Pagenation from './Pagenation';
 import CheckWrapper from './CheckWrapper';
-import { Props } from '..';
+import { Props } from '../../AdminApproval';
+
+
 
 function Section({
-  eventData,
   handleButtonClick,
   handleRequestSelect,
+  handleSetPage,
+  handleSelectType,
+  handleInput,
   eventType,
   breakdownType,
-  handleSetPage,
+  eventData,
   pageTotalNumber,
-handleSelectType,
-handleInput
 }: Props) {
   return (
     <div>
-      <CheckWrapper handleRequestSelect={handleRequestSelect} handleSelectType={handleSelectType} handleInput={handleInput} />
+      <CheckWrapper
+        handleRequestSelect={handleRequestSelect}
+        handleSelectType={handleSelectType}
+        handleInput={handleInput}
+      />
       <S.CategoryWrap>
         <span>사원 정보</span>
         <span>신청</span>
@@ -26,14 +32,9 @@ handleInput
         <span>요청 처리</span>
       </S.CategoryWrap>
       <S.CradWrap>
-        {eventData.length === 0
-         &&
-        <S.Epmty>
-          요청 내역이 없습니다. 
-        </S.Epmty>
-
-        }
-        {eventType === 'annual' && eventData&&
+        {eventData.length === 0 && <S.Epmty>요청 내역이 없습니다.</S.Epmty>}
+        {eventType === 'annual' &&
+          eventData &&
           eventData.map((eData: any) => (
             <Card
               eData={eData}
@@ -42,7 +43,8 @@ handleInput
               breakdownType={breakdownType}
             />
           ))}
-        {eventType === 'duty' &&eventData&&
+        {eventType === 'duty' &&
+          eventData &&
           eventData.map((eData: any) => (
             <Card
               eData={eData}
