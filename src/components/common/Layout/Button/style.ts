@@ -44,7 +44,6 @@ export const mypageButton = styled.div<opacityProps>`
     opacity: ${(props) => props.opacity};
     font-weight: ${theme.fontWeight.bold};
     box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.3);
-    cursor: ${(props) => props.opacity === 0 ? 'none' : 'auto'};;
     &:hover {
       opacity: 0.9;
     }
