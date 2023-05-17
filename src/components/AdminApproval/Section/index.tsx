@@ -12,7 +12,7 @@ function Section({
   handleEventTypeSelect,
   handleSetPage,
   handleSelectType,
-  handleInput,
+  handleSearchClick,
   eventType,
   breakdownType,
   data,
@@ -22,11 +22,11 @@ function Section({
 
 
   return (
-    <div>
+    <S.SectionWrap>
       <CheckWrapper
         handleEventTypeSelect={handleEventTypeSelect}
         handleSelectType={handleSelectType}
-        handleInput={handleInput}
+        handleSearchClick={handleSearchClick}
       />
       <S.CategoryWrap>
         <span>사원 정보</span>
@@ -59,7 +59,7 @@ function Section({
           ))}
       </S.CradWrap>
       <Pagenation handleSetPage={handleSetPage} pageTotalNumber={pageTotalNumber} currentPageNumber={currentPageNumber}/>
-    </div>
+    </S.SectionWrap>
   );
 }
 

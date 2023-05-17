@@ -20,6 +20,7 @@ export const useAdminApproval = () => {
     () => getRequestList(eventType, breakdownType, pageNumber, type, keyword),
     {
       onSuccess: (data) => {
+        console.log(data);
       },
     },
   );
@@ -54,7 +55,7 @@ export const useAdminApproval = () => {
     setType(type);
   };
 
-  const handleInput = (keyword: string) => {
+  const handleSearchClick = (keyword: string) => {
     setKeyword(keyword);
   };
 
@@ -77,7 +78,7 @@ export const useAdminApproval = () => {
     handleSetPage,
     handleModalOpen,
     handleSelectType,
-    handleInput,
+    handleSearchClick,
     handleEventTypeSelect,
     approval,
     setShowModal,

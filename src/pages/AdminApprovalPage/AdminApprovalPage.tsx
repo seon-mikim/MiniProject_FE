@@ -17,7 +17,7 @@ function AdminApprovalPage() {
     breakdownType,
     handleEventTypeSelect,
     handleSelectType,
-    handleInput,
+    handleSearchClick,
     data,
     isLoading,
     error,
@@ -61,7 +61,7 @@ function AdminApprovalPage() {
         handleTabClick={handleTabClick}
         handleSetPage={handleSetPage}
         handleSelectType={handleSelectType}
-        handleInput={handleInput}
+        handleSearchClick={handleSearchClick}
         handleEventTypeSelect={handleEventTypeSelect}
         data={data && data.data.content}
         handleModalOpen={handleModalOpen}

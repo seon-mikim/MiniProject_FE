@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const ApprovalWapper = styled.div`
-  width: 1308px;
-  height: 882px;
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
   background-color: ${(props) => props.theme.color.beige};
 `;
