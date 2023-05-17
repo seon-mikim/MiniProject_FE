@@ -10,7 +10,7 @@ const getAxiosInstance = (ContentType: string) => {
     withCredentials: true,
   };
   const instance = axios.create(config);
-  instance.defaults.timeout = 6000;
+  instance.defaults.timeout = 12000;
   instance.interceptors.request.use(
     (request) => {
       const token = getCookie('accessToken');
@@ -18,8 +18,7 @@ const getAxiosInstance = (ContentType: string) => {
       return request;
     },
     (error: AxiosError) => {
-      console.error(error);
-      return Promise.reject(error);
+      console.error('에러',error);
     }
   );
   return instance;
