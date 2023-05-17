@@ -8,6 +8,7 @@ function MyListElement({myElement}: {myElement: listContent}) {
     eventId: myElement.eventId,
     eventType: myElement.eventType,
     startDate: myElement.startDate,
+    endDate: myElement.endDate,
     orderState: myElement.orderState
   }
   return (
