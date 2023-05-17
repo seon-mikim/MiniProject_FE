@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import * as S from './style'
 import { useState } from 'react'
 
@@ -6,15 +6,16 @@ function DdayDate({nextDate, DDay}: {nextDate: string | null | undefined, DDay: 
   const [ DDayEl, setDDayEl ] = useState<any>('신청내역이')
   const [ nextDateEl, setNextDateEl ] = useState<any>('없습니다')
   
-
-  if( nextDateEl !== null) {
-    setNextDateEl(nextDate)
-    if(DDayEl === 0) {
-      setDDayEl('D-Day')
-    } else{
-      setDDayEl('D-' + DDay)
+  useEffect(()=>{
+    if( nextDate !== null) {
+      setNextDateEl(nextDate)
+      if(DDay === 0) {
+        setDDayEl('D-Day')
+      } else{
+        setDDayEl('D-' + DDay)
+      }
     }
-  }
+  }, [])
 
   return (
     <>
