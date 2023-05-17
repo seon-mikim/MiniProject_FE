@@ -1,16 +1,17 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button } from '../../common/Button/style';
 import * as S from './style';
 import { AuthUser, Role } from '../../../interface/User';
 import { useMutation, useQueryClient } from 'react-query';
 
-import AlertModal from '../../common/AlertModal';
 import ConfirmModal from '../../common/ConfirmModal';
 import { CircularLoadingProgress } from '../../common/CircularLoadingProgress/style';
 import { updateRole } from '../../../api/Admin/AuthEdit';
-import { formatDate, handleImageError } from '../../../utils/helpers';
+import { handleImageError } from '../../../utils/helpers';
 import { SelectUserDispatchContext, SelectUserStateContext } from '../../../pages/AdminAuthPage';
 import { INITIAL_VALUE, RESET_SELECTED_USER } from '../../../reducers/selectUserReducer';
+import { showToastSuccess } from '../../common/Tostify';
+import { showToastError } from '../../common/Tostify';
 
 /**
  * 관리자 권한 수정 컴포넌트
@@ -40,14 +41,6 @@ function AuthEdit() {
 
   // 권한 변경사항 저장하는 버튼 클릭 시 나올 모달 상태 관리
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
-
-  // 알림 및 경고에 사용할 모달의 상태 관리
-  const [isAlertModalOpen, setIsAlertModalOpen] = useState<boolean>(false);
-
-  // 권한 변경사항 저장 응답에 대한 알림 모달 상태 관리
-  const [isResponseModalOpen, setIsResponseModalOpen] = useState<boolean>(false);
-  const [responseMessage, setResponseMessage] = useState<ReactNode>(<></>);
-
   /**
    * mutate 응답 성공 시 -> 선택된 유저 초기화, 검색 결과 캐싱 staleTime 초기화, 응답 알림 모달 메시지 변경
    * mutate 응답 실패 시 -> 응답 알림 모달 메시지 변경
@@ -59,20 +52,12 @@ function AuthEdit() {
         selectedUserDispatch({ type: RESET_SELECTED_USER });
       }
       queryClient.invalidateQueries(['admin', 'search']);
-      setResponseMessage(
-        <>
-          <p>변경 사항이 저장되었습니다</p>
-          <p>이름: {response.data.username}</p>
-          <p>이메일: {response.data.email}</p>
-          <p>변경된 권한: {response.data.role === Role.ADMIN ? '관리자' : '사원'}</p>
-          <p>수정된 날짜: {formatDate(new Date().toString())}</p>
-        </>,
-      );
-      setIsResponseModalOpen(true);
+      showToastSuccess( `${response.data.username}님의 권한이 ${
+        response.data.role === Role.ADMIN ? '관리자' : '사원으'
+      }로 변경되었습니다.`);
     },
     onError: () => {
-      setResponseMessage(<span>저장에 실패하였습니다.</span>);
-      setIsResponseModalOpen(true);
+      showToastSuccess('저장이 실패하였습니다.');
     },
   });
 
@@ -85,7 +70,7 @@ function AuthEdit() {
   const handleSaveClick = () => {
     // 초기값이면 동작 X
     if (editProfile === INITIAL_VALUE) {
-      setIsAlertModalOpen(true);
+      showToastError('변경할 대상을 선택하세요.');
       return;
     }
     // 저장하고자 하는 권한이 선택된 유저 직급에 영향이 없을 경우 동작 X
@@ -121,12 +106,6 @@ function AuthEdit() {
           onConfirm={handleSave}
           onCancel={() => setIsConfirmModalOpen(false)}
         />
-      )}
-      {isAlertModalOpen && (
-        <AlertModal onConfirmClick={() => setIsAlertModalOpen(false)} message="사용자를 선택해주세요" />
-      )}
-      {isResponseModalOpen && (
-        <AlertModal onConfirmClick={() => setIsResponseModalOpen(false)} message={responseMessage} />
       )}
       <S.AuthEditSection style={{ position: 'relative' }}>
         {/* header */}
