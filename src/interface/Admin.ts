@@ -56,7 +56,7 @@ export interface Props {
   handleEventTypeSelect: (eventType: string) => void;
   handleSetPage: (pageNumber: number) => void;
   handleSelectType: (type: string) => void;
-  handleInput: (keyword: string) => void;
+  handleSearchClick: (keyword: string) => void;
   handleModalOpen: () => void;
   data: Content[] | undefined;
   eventType: string;
@@ -66,11 +66,11 @@ export interface Props {
 }
 
 export type SectionProps = Omit<Props, 'handleTabClick' | 'handleModalOpen'>;
-export type CheckWrapperProps = Pick<Props, 'handleEventTypeSelect' | 'handleSelectType' | 'handleInput'>;
+export type CheckWrapperProps = Pick<Props, 'handleEventTypeSelect' | 'handleSelectType' | 'handleSearchClick'>;
 export type PagenationProps = Pick<Props, 'handleSetPage' | 'pageTotalNumber'|'currentPageNumber'>;
 export type CheckApprovalProps = Pick<Props, 'handleEventTypeSelect'>;
 export type UserSelectProps = Pick<Props, 'handleSelectType'>;
-export type UserSearchInputProps = Pick<Props, 'handleInput'>;
+export type UserSearchInputProps = Pick<Props, 'handleSearchClick'>;
 
 export interface eventProps {
   eData: Content;

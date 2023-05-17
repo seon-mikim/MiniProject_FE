@@ -8,7 +8,7 @@ export const Card = styled.div`
   background-color: ${(props) => props.theme.color.white};
   font-weight: ${(props) => props.theme.fontWeight.bold};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
-  width: 1233px;
+  width: 95%;
   border-radius: 8px;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -16,8 +16,8 @@ export const Card = styled.div`
 `;
 
 export const CardContent = styled.div`
-  width: 76%;
-  margin-left: 20px;
+  width: 80%;
+  margin-left: 58px;
   margin-right: 10px;
   height: 38px;
   display: flex;
@@ -53,11 +53,12 @@ export const UserEmail = styled.span`
 `;
 
 export const UserRole = styled.div`
-  width: 7%;
+  width: 8%;
+  text-align: center;
   margin-left: 5px;
 `;
 export const EventTpyeWrap = styled.div`
-  width: 15%;
+  width: 20%;
   text-align: center;
 `;
 
@@ -70,20 +71,27 @@ export const EventType = styled.span`
   border-radius: 8px;
 `;
 export const EventTypeDateWrap = styled.div`
-  width: 32%;
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+  align-items: center;
+  width: 35%;
   text-align: center;
 `;
 
 export const CreateDate = styled.div`
-width: 25%;
-text-align: center;
-`
+  width: 25%;
+  text-align: center;
+`;
+
+
 
 export const EventDate = styled.span`
   display: inline-block;
+ 
 `;
 export const ButtonArea = styled.div`
-  display:flex;
+  display: flex;
   margin-right: 40px;
   button:first-child {
     margin-right: 20px;

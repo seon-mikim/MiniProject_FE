@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+ export const ButtonWrap = styled.div `
+ width: 34%;
+ `
+
 export const Button = styled.button`
   border: none;
   width: 110px;

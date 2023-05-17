@@ -10,7 +10,7 @@ function Wrapper({
   handleSetPage,
   handleModalOpen,
   handleSelectType,
-  handleInput,
+  handleSearchClick,
   data,
   eventType,
   breakdownType,
@@ -30,7 +30,7 @@ function Wrapper({
         handleEventTypeSelect={handleEventTypeSelect}
         handleSelectType={handleSelectType}
         handleSetPage={handleSetPage}
-        handleInput={handleInput}
+        handleSearchClick={handleSearchClick}
         data={data}
         eventType={eventType}
         breakdownType={breakdownType}
