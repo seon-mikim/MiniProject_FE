@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as S from './style';
 import DatePicker from './DatePicker';
 import DateInput from './DateInput';
-import moment from 'moment';
+import moment from 'moment-timezone'
 import { eventOrder } from '../../../api/mainService';
 import { useMutation } from 'react-query';
 import ConfirmModal from '../../common/ConfirmModal';
@@ -10,13 +10,13 @@ import { showToastError } from '../../common/Tostify';
 
 function ApplySection() {
   const [type, setType] = useState('ANNUAL');
-  const [startDate, setStartDate] = useState<Date | null>(moment().toDate());
-  const [endDate, setEndDate] = useState<Date | null>(moment().toDate());
+  const [startDate, setStartDate] = useState<Date | null>(moment.tz('Asia/Seoul').toDate());
+  const [endDate, setEndDate] = useState<Date | null>(moment.tz('Asia/Seoul').toDate());
   const [count, setCount] = useState(1);
   const [modal, setModal] = useState(false);
 
   const { mutate } = useMutation(eventOrder, {
-    onSuccess: (data) => {
+    onSuccess: () => {
       setModal(false);
     },
   });
@@ -28,7 +28,7 @@ function ApplySection() {
 
   const onSubmit = () => {
     if (startDate && endDate) {
-      const today = moment().startOf('day');
+      const today = moment.tz('Asia/seoul').startOf('day');
       const selectedStartDate = moment(startDate).startOf('day');
 
       if (selectedStartDate.isBefore(today)) {
