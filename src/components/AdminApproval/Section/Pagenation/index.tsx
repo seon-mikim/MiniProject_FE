@@ -16,7 +16,7 @@ function Pagenation({ handleSetPage, pageTotalNumber, currentPageNumber }: Pagen
       {pageNumbers.length !== 0 && (
         <S.PageNumber onClick={(e) => handleSetPage?.(Number((e.target as HTMLLIElement).textContent))}>
           {pageNumbers.map((pageNumber) => (
-            <li>{pageNumber}</li>
+            <li key={pageNumber}>{pageNumber}</li>
           ))}
         </S.PageNumber>
       )}
