@@ -20,7 +20,7 @@ function Card({ eData, handleButtonClick, breakdownType }: eventProps) {
           <S.UserName>{eData.userName}</S.UserName>
           <S.UserEmail>{eData.userEmail}</S.UserEmail>
         </S.UserInfoWrap>
-        <S.UserRole>{eData.userRole === 'Admin' ? <span>관리자</span> : <span>사원</span>}</S.UserRole>
+        <S.UserRole>{eData.userRole === 'ADMIN' ? <span>관리자</span> : <span>사원</span>}</S.UserRole>
         <S.EventTpyeWrap>
           <S.EventType>{eData.eventType === 'ANNUAL' ? '연차' : '당직'}</S.EventType>
         </S.EventTpyeWrap>
