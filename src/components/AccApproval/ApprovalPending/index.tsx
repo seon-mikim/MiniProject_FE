@@ -96,7 +96,7 @@ function ApprovalPending() {
       </S.ListContainer>
 
       <S.PaginationContainer>
-        {totalPages > 0 && (
+        {totalPages !== 0 && (
           <ReactPaginate
             pageCount={totalPages}
             pageRangeDisplayed={10}

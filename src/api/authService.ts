@@ -21,7 +21,7 @@ export const login = async (user: LoginRequest) => {
   }
 };
 
-export const register = async (user: RegisterRequest) => {
+export const requestRegister = async (user: RegisterRequest) => {
   const formData = new FormData();
   const blob = new Blob([JSON.stringify(user.signupInDTO)], { type: 'application/json' });
   formData.append('image', user.image as File);
