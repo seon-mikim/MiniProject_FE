@@ -70,7 +70,7 @@
 
 ## ⏱ Pantry 프로젝트 과정
 - 작업 기간 : 2023.05.02 ~ 2023.05.19
-- 서비스 주소: [<img src="https://github.com/sung34/MiniProject_FE/assets/120437898/42a6bde6-b1eb-407d-b8ec-9f27903595ef" width="22px" height="22px"/> Pantry ](http://Pantry1-env.eba-fdhbkdfm.ap-northeast-2.elasticbeanstalk.com)
+- 서비스 주소: <img src="https://github.com/sung34/MiniProject_FE/assets/120437898/42a6bde6-b1eb-407d-b8ec-9f27903595ef" width="22px" height="22px"/> [Pantry ](http://Pantry1-env.eba-fdhbkdfm.ap-northeast-2.elasticbeanstalk.com)
 - 팀 레포지토리 주소 : [Pantry(MiniProject_FE)](https://github.com/MiniTeam6/MiniProject_FE/tree/develop)
 <details>
     <summary>테스트용 계정</summary>
