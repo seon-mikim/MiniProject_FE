@@ -39,6 +39,8 @@ export const ImgStyle = styled.img`
   background: ${theme.color.white};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
+  padding: 10px;
+  box-sizing: border-box;
   object-fit: cover;
 `;
 export const InputContainer = styled.div`
@@ -87,6 +89,14 @@ export const signUpButton = styled.button`
   border-radius: 8px;
   border: none;
   cursor: pointer;
+
+  & > .btn-loading {
+    width: 30px;
+    height: 30px;
+    
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-top-color: ${({ theme }) => theme.color.beige};
+  }
 `;
 
 export const ErrorMessage = styled.p`

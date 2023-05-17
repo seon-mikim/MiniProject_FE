@@ -1,25 +1,46 @@
 import { useMutation, useQueryClient } from 'react-query'
-import { cancelEventType } from '../../../../interface/User'
+import { cancelEventType, eventState } from '../../../../interface/User'
 import * as S from './style'
 import { cancelEvent } from '../../../../api/mypage'
+import { useState } from 'react'
+import ConfirmModal from '../../../common/ConfirmModal'
+import { showToastSuccess } from '../../../common/Tostify'
 
-function CancelButton({eventEl}: {eventEl: cancelEventType}) {
+function CancelButton({eventEl, eventState}: {eventEl: cancelEventType, eventState: eventState}) {
   const queryClient = useQueryClient()
   const {mutate, isLoading, error} = useMutation(cancelEvent, {
     onSuccess: () => {
       queryClient.invalidateQueries(eventEl.eventType)
+      showToastSuccess('취소되었습니다!')
     }
   })
+  
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
 
   const isCancled = () => {
-    window.alert('취소 되었습니다')
     mutate(eventEl)
   }
+  console.log(isConfirmModalOpen)
 
   if(isLoading) return <>로딩 중...</>
   if(error) return <>에러...</>
   return (
-    <S.cancelButton onClick={isCancled}>취소하기</S.cancelButton>
+    <>
+      <S.cancelButton onClick={()=>setIsConfirmModalOpen(true)}>취소하기</S.cancelButton>
+      {isConfirmModalOpen && (
+        <ConfirmModal
+          title={`${
+            eventState.eventType === 'ANNUAL' ?
+            '연차':'당직'}`}
+          subTitle={`${eventState.startDate}
+            ${eventState.eventType === 'ANNUAL' ? 
+            ' ~ ' + eventState.endDate : ''}`}
+          textContent="해당 내용을 취소 하시겠습니까?"
+          onConfirm={isCancled}
+          onCancel={() => setIsConfirmModalOpen(false)}
+        />
+      )}
+    </>
   )
 }
 

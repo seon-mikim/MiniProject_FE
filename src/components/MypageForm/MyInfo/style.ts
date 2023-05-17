@@ -9,6 +9,7 @@ export const backgroundDiv = styled.div`
   box-sizing: border-box;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
   width: 100%;
+  min-width: 1190px;
 `
 export const titleSpan = styled.span`
   font-size: ${theme.fontSize.xlarge};

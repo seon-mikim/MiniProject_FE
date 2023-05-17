@@ -30,6 +30,8 @@ export const ProfileThumbnail = styled.img`
   border: 1px dotted black;
   width: 50px;
   height: 50px;
+  box-sizing: border-box;
+  padding: 2px;
   border-radius: 50%;
   object-fit: cover;
 `;

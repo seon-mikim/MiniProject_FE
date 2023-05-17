@@ -5,7 +5,6 @@ import { handleImageError } from "../../../../../utils/helpers"
 function ProfileSection({userData}: {userData: UserHeaderProfile}) {
 
   const email: string[] | string = userData.email ? userData.email.split('@') : ''
-  console.log(email)
   return (
     <S.gridDiv >
       <S.nameSpan>{userData.username}</S.nameSpan>

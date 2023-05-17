@@ -20,7 +20,6 @@ export const useAdminApproval = () => {
     () => getRequestList(eventType, breakdownType, pageNumber, type, keyword),
     {
       onSuccess: (data) => {
-        console.log(data);
       },
     },
   );

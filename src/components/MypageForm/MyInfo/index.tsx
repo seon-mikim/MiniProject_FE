@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-import { User, setMyinfoData } from '../../../interface/User'
+import { useRef } from 'react'
+import { setMyinfoData } from '../../../interface/User'
 import * as S from './style'
 import { useForm } from 'react-hook-form'
 import { modifyInDTOType } from '../../../interface/User'
@@ -7,6 +7,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { setMyInfo } from '../../../api/mypage'
 import { handleImageError } from '../../../utils/helpers'
 import { FiEdit } from 'react-icons/fi'
+import { showToastError, showToastSuccess } from '../../common/Tostify'
 
 interface mypageForm {
   username: string,
@@ -42,10 +43,9 @@ function MyInfo({username, email, phone, imageUri, role}:
   // const onInvalid = (data: any) => console.log(data, 'onInvalid')
 
   const isImage = (filetype: string) => {
-    console.log(typeof(filetype))
     const form = /(.*?)\.(jpg|jpeg|gif|bmp|png)$/
     if(!filetype.match(form) && filetype !== ''){
-      window.alert('이미지 파일만 업로드 가능합니다!')
+      showToastError('이미지 파일만 업로드 가능합니다!')
       resetField('imageChange')
     }
   }
@@ -54,7 +54,6 @@ function MyInfo({username, email, phone, imageUri, role}:
   password.current = watch('password')
 
   const onSubmit = (data: any) => {
-    console.log(data)
     
     const modifyInDTO: modifyInDTOType = {
       username: data.username,
@@ -65,7 +64,10 @@ function MyInfo({username, email, phone, imageUri, role}:
       image: data.imageChange === '' ? null : data.imageChange[0],
       modifyInDTO
     }
+    showToastSuccess('정보가 수정되었습니다!')
     mutate(setMyInfoData)
+    resetField('password')
+    resetField('passwordCheck')
   }
   
   return (

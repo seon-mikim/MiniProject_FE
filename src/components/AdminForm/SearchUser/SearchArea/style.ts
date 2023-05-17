@@ -95,6 +95,10 @@ export const filteredPreviewContainer = styled.div`
   font-size: inherit;
   min-width: 300px;
   filter: drop-shadow(0 0 1px grey);
+
+  & > ul {
+    height: auto;
+  }
   & > ul > li:last-child {
     border-bottom: none;
   

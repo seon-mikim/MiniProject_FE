@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UseMutateFunction } from 'react-query';
+import { UseMutateFunction, useMutation } from 'react-query';
 import * as yup from 'yup';
 import * as S from './style';
 import { AxiosError } from 'axios';
 import { RegisterResponse, RegisterRequest } from '../../interface/Auth';
+import { requestRegister } from '../../api/authService';
 import Logo from '../../pantry_logo.svg';
+import { useNavigate } from 'react-router';
+import { CircularLoadingProgress } from '../common/CircularLoadingProgress/style';
 export interface RegisterFormProps {
   mutate: UseMutateFunction<RegisterResponse | undefined, AxiosError<unknown, any>, RegisterRequest>;
 }
@@ -47,7 +50,16 @@ interface onSubmitProps {
 }
 
 const DEFAULT_PREVIEW_URL = './default_profile.png';
-function RegisterForm({ mutate }: RegisterFormProps) {
+function RegisterForm() {
+  const navigate = useNavigate();
+  const { mutate, status } = useMutation(requestRegister, {
+    onSuccess: (res) => {
+      if (res) navigate('/');
+    },
+    onError: (err: AxiosError) => {
+      console.error(err);
+    },
+  });
   const {
     register,
     handleSubmit,
@@ -55,7 +67,6 @@ function RegisterForm({ mutate }: RegisterFormProps) {
   } = useForm<onSubmitProps>({ resolver: yupResolver(schema), mode: 'onChange' });
 
   const [imgUrl, setImgUrl] = useState<string>(DEFAULT_PREVIEW_URL);
-  console.log(imgUrl);
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files?.length) {
@@ -112,7 +123,7 @@ function RegisterForm({ mutate }: RegisterFormProps) {
             <S.ImgSelection /*top="770px"*/ type="file" {...register('image')} onChange={handleFileChange} />
             {imgUrl === DEFAULT_PREVIEW_URL && <S.ErrorMessage>{errors.image?.message}</S.ErrorMessage>}
           </S.fileInputContainer>
-          <S.signUpButton type="submit">SignUp</S.signUpButton>
+          <S.signUpButton type="submit">{status === 'loading' ? <CircularLoadingProgress className='btn-loading'/> : "SignUp"}</S.signUpButton>
         </S.RegisterForm>
       </S.RegisterPageContainer>
     </div>

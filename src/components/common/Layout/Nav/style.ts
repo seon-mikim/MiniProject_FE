@@ -62,7 +62,11 @@ export const flexColumnDiv = styled.div<opacityProps>`
   .logout {
     width: 6rem;
   }
+  a{
+    pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
+  }
   img {
+    pointer-events: ${(props) => props.opacity === 0 ? 'none' : 'auto'};
     width: 8rem;
   }
 `

@@ -12,8 +12,7 @@ function MypageForm() {
 
   if(isLoading) return <>로딩 중...</>
   if(error) return <>error</>
-  console.log(myAnnualList)
-  console.log(myDutyList)
+
 
   return (
     <>

@@ -3,7 +3,7 @@ import * as S from './style';
 
 function AdminAccApprovalPage() {
   return (
-    <S.MainContainer className="content">
+    <S.MainContainer className="content large">
       <S.Section>
         <S.SectionHeader>계정 승인 현황</S.SectionHeader>
 
