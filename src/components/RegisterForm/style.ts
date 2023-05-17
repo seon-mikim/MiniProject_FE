@@ -89,6 +89,14 @@ export const signUpButton = styled.button`
   border-radius: 8px;
   border: none;
   cursor: pointer;
+
+  & > .btn-loading {
+    width: 30px;
+    height: 30px;
+    
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-top-color: ${({ theme }) => theme.color.beige};
+  }
 `;
 
 export const ErrorMessage = styled.p`
