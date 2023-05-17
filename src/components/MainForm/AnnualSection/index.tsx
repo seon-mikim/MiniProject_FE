@@ -31,7 +31,7 @@ function AnnualSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [type, setType] = useState('ANNUAL');
 
-  const today = moment();
+  const today = moment.tz('Asia/Seoul');
   const { data } = useQuery(['eventList', type, today.format('YYYY-MM')], () =>
     getEventList(type, today.format('YYYY-MM')),
   );
